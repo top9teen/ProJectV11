@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@page import="com.bru.model.UserAllBean"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,13 +25,20 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 </style>
 <%
-	String result = "";
-	String result2 = "";
+	UserAllBean bean = null;
 %>
 <%
-	result = (String) request.getAttribute("msg");
-	result2 = (String) request.getAttribute("box");
+	String result = "";
 %>
+<%
+	result = (String) request.getAttribute("se");
+	
+%>
+<%
+bean = (UserAllBean) request.getSession().getAttribute("Login");
+    
+%>
+
 <title>Welcome to Project</title>
 </head>
 <body class="w3-light-grey w3-content" style="max-width: 1600px">
@@ -42,26 +50,30 @@ body, h1, h2, h3, h4, h5, h6 {
 		<a href="#" onclick="w3_close()"
 			class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey"
 			title="close menu"> <i class="fa fa-remove"></i>
-		</a> <img src="assets/img/noname.png" style="width: 45%;" class="w3-round"><br>
+		</a> <img src="<%=bean.getUsImg() %>" style="width: 45%;" class="w3-round"><br>
 		<br>
 		<h4>
-			<b> Car Loan Analysis System</b>
+			<b> Wellcome <%=bean.getUsFname() %></b>
 		</h4>
 		<p class="w3-text-grey">Simple web and system</p>
 	</div>
 	<div class="w3-bar-block">
-		<a href="car" onclick="w3_close()"
+		<a href="gototabel" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
-			class="	fa fa-automobile fa-fw w3-margin-right"></i>วิเคราะห์ระบบสินเชื่อรถยต์</a>
-		<a href="select" onclick="w3_close()"
+			class="	fa fa-automobile fa-fw w3-margin-right"></i>รอการตอบกลับ</a> <a
+			href="select" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
-		</i>ข้อมูลสินเชื่อรถยนต์</a> <a href="gotoresiter" onclick="w3_close()"
+		</i>ดูรายชื่อที่ทำสินเชื่อ</a> <a href="select" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
-			class="	fa fa-automobile fa-fw w3-margin-right"></i>สมัครสมาชิก</a> <a
-			href="gotologin" onclick="w3_close()"
+			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
+		</i>ระบบเช็คเครดิต</a><a href="select" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
-			class="	fa fa-automobile fa-fw w3-margin-right"></i>เข้าสู่ระบบ</a>
+			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
+		</i>อัพเดทราคารถยนต์</a> <a href="logout" onclick="w3_close()"
+			class="w3-bar-item w3-button w3-padding w3-text-teal"> <i
+			class="	fa fa-automobile fa-fw w3-margin-right"></i>ออกจากระบบ
+		</a>
 	</div>
 	</nav>
 
@@ -75,7 +87,7 @@ body, h1, h2, h3, h4, h5, h6 {
 
 		<!-- Header -->
 		<header id="portfolio"> <a href="#"><img
-			src="assets/img/noname.png" style="width: 65px;"
+			src="<%=bean.getUsImg() %>" style="width: 65px;"
 			class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
 		<span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey"
 			onclick="w3_open()"><i class="fa fa-bars"></i></span>
@@ -86,56 +98,13 @@ body, h1, h2, h3, h4, h5, h6 {
 
 		</div>
 		</header>
-		<!-- First Photo Grid-->
-		<%
-			if (result.equals("0")) {
-		%>
-		<%@include file="Bank/dag.jsp"%>
-		<%
-			} else if (result2.equals("select")) {
-		%>
-		<div align="center">
-			<a class="btn btn-primary" href="goto1" role="button">Kasikornbank</a>
-			<a class="btn btn-primary" href="goto2" role="button">Bank of
-				Ayudhya</a> <a class="btn btn-primary" href="goto3" role="button">Siam
-				Commercial Bank</a> <a class="btn btn-primary" href="goto4"
-				role="button">Thanachart Bank Public Company Limited</a>
-		</div>
-		<%
-			} else if (result2.equals("lg")) {
-		%>
-		<%
-			}
+<%
 			if (result.equals("1")) {
 		%>
 		<div class="blank">
-			<%@include file="Bank/KBANK.jsp"%>
+			<%@include file="member/boot.jsp"%>
 		</div>
-		<%
-			}
-			if (result.equals("2")) {
-		%>
-		<div class="blank">
-			<%@include file="Bank/BAY.jsp"%>
-		</div>
-		<%
-			}
-			if (result.equals("3")) {
-		%>
-		<div class="blank">
-			<%@include file="Bank/SCB.jsp"%>
-		</div>
-		<%
-			}
-			if (result.equals("4")) {
-		%>
-		<div class="blank">
-			<%@include file="Bank/NBANK.jsp"%>
-		</div>
-		<%
-			}
-		%>
-
+		<%} %>
 		<div class="w3-row-padding w3-padding-16" id="about">
 			<div class="w3-col m6">
 				<img src="assets/img/car4.jpg" alt="Me" style="width: 100%">
@@ -155,6 +124,32 @@ body, h1, h2, h3, h4, h5, h6 {
 		<!-- End page content -->
 	</div>
 
-	<script type="text/javascript" src="assets/js/checknewuser.js"></script>
+	<script>
+		// Script to open and close sidebar
+		function w3_open() {
+			document.getElementById("mySidebar").style.display = "block";
+			document.getElementById("myOverlay").style.display = "block";
+		}
+
+		function w3_close() {
+			document.getElementById("mySidebar").style.display = "none";
+			document.getElementById("myOverlay").style.display = "none";
+		}
+		function fncSubmit(){
+			if(document.gotohome.email.value == "")
+			{
+				alert('Please input Email');
+				document.gotohome.username.focus();
+				return false;
+			}	
+			if(document.gotohome.password.value == "")
+			{
+				alert('Please input password');
+				document.gotohome.password.focus();
+				return false;
+			}	
+		}
+	</script>
+
 </body>
 </html>

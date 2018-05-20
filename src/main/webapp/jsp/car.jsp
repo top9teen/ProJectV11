@@ -1,9 +1,12 @@
+<%@page import="com.bru.model.YearBean"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
@@ -13,14 +16,10 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/select2.min.css">
 <style>
 body, h1, h2, h3, h4, h5, h6 {
 	font-family: "Raleway", sans-serif;
-}
-
-.blank {
-	width: 100%;
-	margin: 150px;
 }
 </style>
 <%
@@ -28,11 +27,15 @@ body, h1, h2, h3, h4, h5, h6 {
 	String result2 = "";
 %>
 <%
-	result = (String) request.getAttribute("msg");
-	result2 = (String) request.getAttribute("box");
+	List<YearBean> yearbean = null;
+%>
+<%
+	result = (String) request.getAttribute("sel1");
+	result2 = (String) request.getAttribute("sel2");
 %>
 <title>Welcome to Project</title>
 </head>
+
 <body class="w3-light-grey w3-content" style="max-width: 1600px">
 
 	<!-- Sidebar/menu -->
@@ -50,16 +53,13 @@ body, h1, h2, h3, h4, h5, h6 {
 		<p class="w3-text-grey">Simple web and system</p>
 	</div>
 	<div class="w3-bar-block">
-		<a href="car" onclick="w3_close()"
+		<a href="#portfolio" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="	fa fa-automobile fa-fw w3-margin-right"></i>วิเคราะห์ระบบสินเชื่อรถยต์</a>
 		<a href="select" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
-		</i>ข้อมูลสินเชื่อรถยนต์</a> <a href="gotoresiter" onclick="w3_close()"
-			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
-			class="	fa fa-automobile fa-fw w3-margin-right"></i>สมัครสมาชิก</a> <a
-			href="gotologin" onclick="w3_close()"
+		</i>ข้อมูลสินเชื่อรถยนต์</a> <a href="gotologin" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="	fa fa-automobile fa-fw w3-margin-right"></i>เข้าสู่ระบบ</a>
 	</div>
@@ -87,55 +87,51 @@ body, h1, h2, h3, h4, h5, h6 {
 		</div>
 		</header>
 		<!-- First Photo Grid-->
-		<%
-			if (result.equals("0")) {
-		%>
-		<%@include file="Bank/dag.jsp"%>
-		<%
-			} else if (result2.equals("select")) {
-		%>
-		<div align="center">
-			<a class="btn btn-primary" href="goto1" role="button">Kasikornbank</a>
-			<a class="btn btn-primary" href="goto2" role="button">Bank of
-				Ayudhya</a> <a class="btn btn-primary" href="goto3" role="button">Siam
-				Commercial Bank</a> <a class="btn btn-primary" href="goto4"
-				role="button">Thanachart Bank Public Company Limited</a>
-		</div>
-		<%
-			} else if (result2.equals("lg")) {
-		%>
-		<%
-			}
-			if (result.equals("1")) {
-		%>
-		<div class="blank">
-			<%@include file="Bank/KBANK.jsp"%>
-		</div>
-		<%
-			}
-			if (result.equals("2")) {
-		%>
-		<div class="blank">
-			<%@include file="Bank/BAY.jsp"%>
-		</div>
-		<%
-			}
-			if (result.equals("3")) {
-		%>
-		<div class="blank">
-			<%@include file="Bank/SCB.jsp"%>
-		</div>
-		<%
-			}
-			if (result.equals("4")) {
-		%>
-		<div class="blank">
-			<%@include file="Bank/NBANK.jsp"%>
-		</div>
-		<%
-			}
-		%>
 
+		<form name="gotohome" action="car2" method="post"
+			OnSubmit="return fncSubmit();"
+			style="height: 70%; width: 40%; margin: 150px;">
+			<div class="panel panel-primary" style="margin-top: 15%">
+				<div class="panel-heading">กรุณาเลือกรถยนต์รุ่นของท่าน</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label for="registration_year">ปีที่จดทะเบียน (ค.ศ.)<span
+							style="color: red;">* </span>:
+						</label> <select class="form-control" name="groupType"
+							id="groupType" list="groupTypeDropdown" listKey="value"
+							listValue="name">
+							<option value="">กรุณาเลือก</option>
+
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="brand">ยี่ห้อ<span style="color: red;">*</span>:
+						</label> <select name="carMake" id="brand" class="form-control">
+							<option value="">กรุณาเลือก</option>
+
+							<optgroup label="รถยนต์">
+							</optgroup>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="brand">รุ่น<span style="color: red;">*</span>:
+						</label> <select name="carMake2" id="carmodel" class="form-control">
+							<option value="">กรุณาเลือก</option>
+							<optgroup label="รุ่น">
+						
+							</optgroup>
+						</select>
+					</div>
+
+				
+				</div>
+				<div class="panel-footer" align="center"
+					style="background: transparent;">
+					<input type="submit" class="btn btn-success" value="ตรวจสอบ">&nbsp;
+				</div>
+
+			</div>
+		</form>
 		<div class="w3-row-padding w3-padding-16" id="about">
 			<div class="w3-col m6">
 				<img src="assets/img/car4.jpg" alt="Me" style="width: 100%">
@@ -154,7 +150,41 @@ body, h1, h2, h3, h4, h5, h6 {
 
 		<!-- End page content -->
 	</div>
+<script type="text/javascript" src="assets/js/selcarall.js"></script>
+	<script type="text/javascript">
 
-	<script type="text/javascript" src="assets/js/checknewuser.js"></script>
+
+		function w3_open() {
+			document.getElementById("mySidebar").style.display = "block";
+			document.getElementById("myOverlay").style.display = "block";
+		}
+
+		function w3_close() {
+			document.getElementById("mySidebar").style.display = "none";
+			document.getElementById("myOverlay").style.display = "none";
+		}
+		function sel1() {
+
+		}
+		function fncSubmit() {
+			if (document.gotohome.groupType.value == "") {
+				alert('Please input Year');
+				document.gotohome.groupType.focus();
+				return false;
+			}
+			if (document.gotohome.carMake.value == "") {
+				alert('Please input Brand');
+				document.gotohome.carMake.focus();
+				return false;
+				
+			}
+			if (document.gotohome.carMake2.value == "") {
+				alert('Please input CarModel');
+				document.gotohome.carMake2.focus();
+				return false;
+			}
+		}
+	</script>
+
 </body>
 </html>

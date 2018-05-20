@@ -4,6 +4,13 @@ public class CarBean {
 
 	private int carId;
 	private String carName;
+	private String yeYear;
+	public String getYeYear() {
+		return yeYear;
+	}
+	public void setYeYear(String yeYear) {
+		this.yeYear = yeYear;
+	}
 	public int getCarId() {
 		return carId;
 	}

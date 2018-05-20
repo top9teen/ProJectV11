@@ -71,17 +71,17 @@ public class CustomerDao {
 	}
 
 	// kaprice
-	public KasikornPriceBean checkpriceKa(String year, String brand) {
+	public KasikornPriceBean checkpriceKa(String carYear ,String carMake2) {
 		KasikornPriceBean kabean = new KasikornPriceBean();
 		ConnectDB con = new ConnectDB();
 		PreparedStatement prepared = null;
 		StringBuilder sql = new StringBuilder();
 
 		try {
-			sql.append(" SELECT br_name FROM kasikorn_price WHERE  ye_year= ? and br_name= ? ");
+			sql.append(" SELECT * FROM kasikorn_price WHERE  ye_year= ? and br_name= ? ");
 			prepared = con.openConnect().prepareStatement(sql.toString());
-			prepared.setString(1, year);
-			prepared.setString(2, brand);
+			prepared.setString(1, carYear);
+			prepared.setString(2, carMake2);
 			ResultSet rs = prepared.executeQuery();
 			while (rs.next()) {
 				kabean.setKaPrice(rs.getInt("ka_price"));
@@ -95,16 +95,16 @@ public class CustomerDao {
 	}
 
 	// krungsri_price
-	public KrungsriPriceBean checkpricekr(String year, String brand) {
+	public KrungsriPriceBean checkpricekr(String carYear ,String carMake2) {
 		KrungsriPriceBean krbean = new KrungsriPriceBean();
 		ConnectDB con = new ConnectDB();
 		PreparedStatement prepared = null;
 		StringBuilder sql = new StringBuilder();
 		try {
-			sql.append(" SELECT br_name FROM krungsri_price WHERE  ye_year= ? and br_name= ? ");
+			sql.append(" SELECT * FROM krungsri_price WHERE  ye_year= ? and br_name= ? ");
 			prepared = con.openConnect().prepareStatement(sql.toString());
-			prepared.setString(1, year);
-			prepared.setString(2, brand);
+			prepared.setString(1, carYear);
+			prepared.setString(2, carMake2);
 			ResultSet rs = prepared.executeQuery();
 			while (rs.next()) {
 				krbean.setKrPrice(rs.getInt("kr_price"));
@@ -118,16 +118,16 @@ public class CustomerDao {
 	}
 
 	// scbeasy_price
-	public ScbeasyPriceBean checkpricesc(String year, String brand) {
+	public ScbeasyPriceBean checkpricesc(String carYear ,String carMake2) {
 		ScbeasyPriceBean scbean = new ScbeasyPriceBean();
 		ConnectDB con = new ConnectDB();
 		PreparedStatement prepared = null;
 		StringBuilder sql = new StringBuilder();
 		try {
-			sql.append(" SELECT br_name FROM scbeasy_price WHERE  ye_year= ? and br_name= ? ");
+			sql.append(" SELECT * FROM scbeasy_price WHERE  ye_year= ? and br_name= ? ");
 			prepared = con.openConnect().prepareStatement(sql.toString());
-			prepared.setString(1, year);
-			prepared.setString(2, brand);
+			prepared.setString(1, carYear);
+			prepared.setString(2, carMake2);
 			ResultSet rs = prepared.executeQuery();
 			while (rs.next()) {
 				scbean.setScPrice(rs.getInt("sc_price"));
@@ -140,16 +140,16 @@ public class CustomerDao {
 	}
 
 	// thanachart_price
-	public ThanachartPriceBean checkpriceth(String year, String brand) {
+	public ThanachartPriceBean checkpriceth(String carYear ,String carMake2) {
 		ThanachartPriceBean thbean = new ThanachartPriceBean();
 		ConnectDB con = new ConnectDB();
 		PreparedStatement prepared = null;
 		StringBuilder sql = new StringBuilder();
 		try {
-			sql.append(" SELECT br_name FROM thanachart_price WHERE  ye_year= ? and br_name= ? ");
+			sql.append(" SELECT * FROM thanachart_price WHERE  ye_year= ? and br_name= ? ");
 			prepared = con.openConnect().prepareStatement(sql.toString());
-			prepared.setString(1, year);
-			prepared.setString(2, brand);
+			prepared.setString(1, carYear);
+			prepared.setString(2, carMake2);
 			ResultSet rs = prepared.executeQuery();
 			while (rs.next()) {
 				thbean.setThPrice(rs.getInt("th_price"));
@@ -159,6 +159,6 @@ public class CustomerDao {
 			// TODO: handle exception
 		}
 		return thbean;
-	}
+	} 
 	// end class
 }

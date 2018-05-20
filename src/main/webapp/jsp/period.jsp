@@ -1,3 +1,5 @@
+<%@page import="com.bru.model.SimBean"%>
+<%@page import="com.fasterxml.jackson.annotation.JsonInclude.Include"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@page import="java.util.List"%>
@@ -23,13 +25,13 @@ body, h1, h2, h3, h4, h5, h6 {
 	margin: 150px;
 }
 </style>
+
 <%
-	String result = "";
-	String result2 = "";
+	SimBean bean = null;
 %>
 <%
-	result = (String) request.getAttribute("msg");
-	result2 = (String) request.getAttribute("box");
+
+bean = (SimBean) request.getSession().getAttribute("simbean");
 %>
 <title>Welcome to Project</title>
 </head>
@@ -87,55 +89,60 @@ body, h1, h2, h3, h4, h5, h6 {
 		</div>
 		</header>
 		<!-- First Photo Grid-->
-		<%
-			if (result.equals("0")) {
-		%>
-		<%@include file="Bank/dag.jsp"%>
-		<%
-			} else if (result2.equals("select")) {
-		%>
-		<div align="center">
-			<a class="btn btn-primary" href="goto1" role="button">Kasikornbank</a>
-			<a class="btn btn-primary" href="goto2" role="button">Bank of
-				Ayudhya</a> <a class="btn btn-primary" href="goto3" role="button">Siam
-				Commercial Bank</a> <a class="btn btn-primary" href="goto4"
-				role="button">Thanachart Bank Public Company Limited</a>
+	
+	
+				<form action="gotoregister" method="post">
+		<h2><%=bean.getName() %></h2>
+		<input type="hidden" value="<%=bean.getPring1()%>" name="pp">
+		<input type="hidden" value="<%=bean.getMycar()%>" name="Mycar">
+					<input type="hidden" value="<%=bean.getMybrand()%>"
+						name="Mybrand"> <input type="hidden"
+						value="<%=bean.getMyYear()%>" name="MyYear">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th class="col-md-4 iefix">ระยะเวลาผ่อนชำระ</th>
+					<th class="col-md-4 iefix">อัตราดอกเบี้ย</th>
+					<th class="col-md-4 iefix">ค่างวด (ต่อเดือน)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="radio" name="yy" value="12">12 งวด</td>
+					<td>0.55</td>
+					<td>4444</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="yy" value="24">24 งวด</td>
+					<td>0.55</td>
+					<td>4444</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="yy" value="36">36งวด</td>
+					<td>0.55</td>
+					<td>4444</td>
+				</tr>
+				<%if(bean.getPring1() >= 300000){ %>
+				<tr>
+					<td><input type="radio" name="yy" value="48">48 งวด</td>
+					<td>0.60</td>
+					<td>4444</td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="yy" value="60">60 งวด</td>
+					<td>0.66</td>
+					<td>4444</td>
+				</tr>
+				<%} %>
+			</tbody>
+		</table>
+		<div class="panel-footer" align="center"
+			style="background: transparent;">
+			<input type="submit" value="ยืนยัน" class="btn btn-success">
 		</div>
-		<%
-			} else if (result2.equals("lg")) {
-		%>
-		<%
-			}
-			if (result.equals("1")) {
-		%>
-		<div class="blank">
-			<%@include file="Bank/KBANK.jsp"%>
-		</div>
-		<%
-			}
-			if (result.equals("2")) {
-		%>
-		<div class="blank">
-			<%@include file="Bank/BAY.jsp"%>
-		</div>
-		<%
-			}
-			if (result.equals("3")) {
-		%>
-		<div class="blank">
-			<%@include file="Bank/SCB.jsp"%>
-		</div>
-		<%
-			}
-			if (result.equals("4")) {
-		%>
-		<div class="blank">
-			<%@include file="Bank/NBANK.jsp"%>
-		</div>
-		<%
-			}
-		%>
+	</form>
 
+<input type="button" class="btn btn-primary" align="middle" value="กลับหน้าแรก" onclick="gotohome()">&nbsp;&nbsp;
 		<div class="w3-row-padding w3-padding-16" id="about">
 			<div class="w3-col m6">
 				<img src="assets/img/car4.jpg" alt="Me" style="width: 100%">
@@ -154,7 +161,19 @@ body, h1, h2, h3, h4, h5, h6 {
 
 		<!-- End page content -->
 	</div>
-
+<script type="text/javascript">
+function gotohome() {
+    var txt;
+    if (confirm("คุณต้องการจะกลับหน้าแรก หรือไม่")) {
+    	 window.location="/"; 
+    	
+    } else {
+    		
+    }
+    document.getElementById("demo").innerHTML = txt;
+}
+</script>
 	<script type="text/javascript" src="assets/js/checknewuser.js"></script>
 </body>
+
 </html>

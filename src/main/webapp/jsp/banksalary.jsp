@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@page import="java.util.List"%>
+<%@page import="com.bru.model.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,12 +25,18 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 </style>
 <%
-	String result = "";
-	String result2 = "";
+	KasikornPriceBean kabean = null;
+	KrungsriPriceBean krbean = null;
+	ScbeasyPriceBean scbean = null;
+	ThanachartPriceBean thbean = null;
+	SimBean sibran =null;
 %>
 <%
-	result = (String) request.getAttribute("msg");
-	result2 = (String) request.getAttribute("box");
+	kabean = (KasikornPriceBean) request.getSession().getAttribute("kabean");
+	krbean = (KrungsriPriceBean) request.getSession().getAttribute("krbean");
+	scbean = (ScbeasyPriceBean) request.getSession().getAttribute("scbean");
+	thbean = (ThanachartPriceBean) request.getSession().getAttribute("thbean");
+	sibran = (SimBean) request.getSession().getAttribute("simbean");
 %>
 <title>Welcome to Project</title>
 </head>
@@ -86,56 +93,55 @@ body, h1, h2, h3, h4, h5, h6 {
 
 		</div>
 		</header>
-		<!-- First Photo Grid-->
-		<%
-			if (result.equals("0")) {
-		%>
-		<%@include file="Bank/dag.jsp"%>
-		<%
-			} else if (result2.equals("select")) {
-		%>
-		<div align="center">
-			<a class="btn btn-primary" href="goto1" role="button">Kasikornbank</a>
-			<a class="btn btn-primary" href="goto2" role="button">Bank of
-				Ayudhya</a> <a class="btn btn-primary" href="goto3" role="button">Siam
-				Commercial Bank</a> <a class="btn btn-primary" href="goto4"
-				role="button">Thanachart Bank Public Company Limited</a>
-		</div>
-		<%
-			} else if (result2.equals("lg")) {
-		%>
-		<%
-			}
-			if (result.equals("1")) {
-		%>
-		<div class="blank">
-			<%@include file="Bank/KBANK.jsp"%>
-		</div>
-		<%
-			}
-			if (result.equals("2")) {
-		%>
-		<div class="blank">
-			<%@include file="Bank/BAY.jsp"%>
-		</div>
-		<%
-			}
-			if (result.equals("3")) {
-		%>
-		<div class="blank">
-			<%@include file="Bank/SCB.jsp"%>
-		</div>
-		<%
-			}
-			if (result.equals("4")) {
-		%>
-		<div class="blank">
-			<%@include file="Bank/NBANK.jsp"%>
-		</div>
-		<%
-			}
-		%>
 
+		<!-- First Photo Grid-->
+		<div class="form-group" align="center">
+			<form action="gotopreriod" method="post"
+				OnSubmit="return fncSubmit();" name="prig">
+				<div>
+					<input type="hidden" value="<%=sibran.getMycar()%>" name="Mycar">
+					<input type="hidden" value="<%=sibran.getMybrand()%>"
+						name="Mybrand"> <input type="hidden"
+						value="<%=sibran.getMyYear()%>" name="MyYear"> <input
+						type="radio" name="bb" value="ธนาคคารกสิกร" checked>เลือก
+					<label for="exampleInputEmail1"> ธนาคคารกสิกร : <input
+						type="text" name="ka" disabled="disabled"
+						value="<%=kabean.getKaPrice()%>" class="form-control">
+					</label>
+				</div>
+				<div class="form-group">
+					<input type="radio" name="bb" value="ธนาคารกรุงศรี">เลือก
+					<label for="exampleInputEmail1"> ธนาคารกรุงศรี : <input
+						type="text" name="kr" disabled="disabled"
+						value="<%=krbean.getKrPrice()%>" class="form-control">
+					</label>
+				</div>
+				<div class="form-group">
+					<input type="radio" name="bb" value="ธนาคาร SCB ">เลือก <label
+						for="exampleInputEmail1"> ธนาคาร SCB : <input type="text"
+						name="sc" disabled="disabled" value="<%=scbean.getScPrice()%>"
+						class="form-control">
+					</label>
+				</div>
+				<div class="form-group">
+					<input type="radio" name="bb" value="ธนาคาร ธนชาติ">เลือก
+					<label for="exampleInputEmail1"> ธนาคาร ธนชาติ : <input
+						type="text" name="th" disabled="disabled"
+						value="<%=thbean.getThPrice()%>" class="form-control">
+					</label>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputEmail1"> เงินที่ต้องการ : <input
+						type="number" name="pp" class="form-control">
+					</label>
+				</div>
+				<div class="panel-footer" align="center"
+					style="background: transparent;">
+					<input type="submit" value="ยืนยัน" class="btn btn-success">
+
+				</div>
+			</form>
+		</div>
 		<div class="w3-row-padding w3-padding-16" id="about">
 			<div class="w3-col m6">
 				<img src="assets/img/car4.jpg" alt="Me" style="width: 100%">
@@ -154,7 +160,8 @@ body, h1, h2, h3, h4, h5, h6 {
 
 		<!-- End page content -->
 	</div>
-
+	<script type="text/javascript" src="assets/js/pring.js"></script>
 	<script type="text/javascript" src="assets/js/checknewuser.js"></script>
+
 </body>
 </html>
