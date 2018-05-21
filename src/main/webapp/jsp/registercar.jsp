@@ -25,10 +25,10 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 </style>
 <%
-	SimBean bean =null;
+	SimBean bean = null;
 %>
 <%
-bean = (SimBean) request.getSession().getAttribute("simbean");
+	bean = (SimBean) request.getSession().getAttribute("simbean");
 %>
 <title>Welcome to Project</title>
 </head>
@@ -86,37 +86,14 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 		</div>
 		</header>
 		<!-- First Photo Grid-->
+		<h1 a><%=bean.getName()%></h1>
 		<div class="form-group" align="center">
 			<form id="loanForm" name="loanForm" action="finish" method="post"
 				class="form-horizontal loan-registration" role="form"
 				autocomplete="off">
-
-
-
-				<div class="row">
-					<div class="col-md-12">
-						<label class="col-sm-12"><span class="red-star"> </span> </label>
-					</div>
-				</div>
-				<div class="row fadeInBlock" style="opacity: 1;">
-					<input type="hidden" name="form.carPriceListId" value="3131203"
-						id="loanForm_form_carPriceListId">
-					<div class="col-md-6">
-						<label for="prefix" class="col-sm-5 control-label">คำนำหน้าชื่อ<span
-							class="red-star">*</span>:
-						</label>
-						<div class="col-sm-7">
-							<select name="form.prefixId" id="prefix" class="selectlist">
-								<option value="">กรุณาเลือก</option>
-								<option value="1">นาย</option>
-								<option value="2">นาง</option>
-								<option value="3">นางสาว</option>
-
-
-							</select> <input type="hidden" name="form.prefixName" value=""
-								id="prefixName">
-						</div>
-					</div>
+				<h1 a><%=bean.getName()%></h1>
+				<input type="hidden" name="bankName" value="<%=bean.getName()%>">
+				
 				</div>
 				<div class="row">
 					<div class="col-md-6">
@@ -124,7 +101,7 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 							class="red-star">*</span>:
 						</label>
 						<div class="col-sm-7">
-							<input type="text" name="form.firstName" maxlength="100" value=""
+							<input type="text" name="firstName" maxlength="100" value=""
 								id="firstname" class="form-calculate">
 						</div>
 					</div>
@@ -133,7 +110,7 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 							class="red-star">*</span>:
 						</label>
 						<div class="col-sm-7">
-							<input type="text" name="form.lastName" maxlength="150" value=""
+							<input type="text" name="lastName" maxlength="150" value=""
 								id="lastname" class="form-calculate">
 						</div>
 					</div>
@@ -144,8 +121,8 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 							class="red-star">*</span>:
 						</label>
 						<div class="col-sm-7">
-							<input type="text" name="form.age" maxlength="3" value="0"
-								id="age" class="form-calculate" onblur="isNumeric(this);">
+							<input type="number" name="age" maxlength="3" value=""
+								id="age" class="form-calculate">
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -153,90 +130,89 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 							class="red-star">*</span>:
 						</label>
 						<div class="col-sm-7">
-							<select name="form.provinceId" id="province" class="selectlist">
+							<select name="provinceId" id="province" class="selectlist">
 								<option value="">กรุณาเลือก</option>
-								<option value="72">กระบี่</option>
-								<option value="43">กรุงเทพมหานคร</option>
-								<option value="48">กาญจนบุรี</option>
-								<option value="23">กาฬสินธุ์</option>
-								<option value="3">กำแพงเพชร</option>
-								<option value="24">ขอนแก่น</option>
-								<option value="46">จันทบุรี</option>
-								<option value="44">ฉะเชิงเทรา</option>
-								<option value="47">ชลบุรี</option>
-								<option value="45">ชัยนาท</option>
-								<option value="22">ชัยภูมิ</option>
-								<option value="71">ชุมพร</option>
-								<option value="2">เชียงราย</option>
-								<option value="1">เชียงใหม่</option>
-								<option value="83">ตรัง</option>
-								<option value="65">ตราด</option>
-								<option value="14">ตาก</option>
-								<option value="51">นครนายก</option>
-								<option value="50">นครปฐม</option>
-								<option value="27">นครพนม</option>
-								<option value="28">นครราชสีมา</option>
-								<option value="73">นครศรีธรรมราช</option>
-								<option value="7">นครสวรรค์</option>
-								<option value="52">นนทบุรี</option>
-								<option value="74">นราธิวาส</option>
-								<option value="8">น่าน</option>
-								<option value="89">บึงกาฬ</option>
-								<option value="21">บุรีรัมย์</option>
-								<option value="88">เบตง</option>
-								<option value="53">ปทุมธานี</option>
-								<option value="56">ประจวบคีรีขันธ์</option>
-								<option value="55">ปราจีนบุรี</option>
-								<option value="75">ปัตตานี</option>
-								<option value="42">พระนครศรีอยุธยา</option>
-								<option value="17">พะเยา</option>
-								<option value="76">พังงา</option>
-								<option value="77">พัทลุง</option>
-								<option value="10">พิจิตร</option>
-								<option value="11">พิษณุโลก</option>
-								<option value="54">เพชรบุรี</option>
-								<option value="9">เพชรบูรณ์</option>
-								<option value="12">แพร่</option>
-								<option value="78">ภูเก็ต</option>
-								<option value="26">มหาสารคาม</option>
-								<option value="37">มุกดาหาร</option>
-								<option value="6">แม่ฮ่องสอน</option>
-								<option value="36">ยโสธร</option>
-								<option value="84">ยะลา</option>
-								<option value="30">ร้อยเอ็ด</option>
-								<option value="79">ระนอง</option>
-								<option value="58">ระยอง</option>
-								<option value="57">ราชบุรี</option>
-								<option value="49">ลพบุรี</option>
-								<option value="4">ลำปาง</option>
-								<option value="5">ลำพูน</option>
-								<option value="25">เลย</option>
-								<option value="32">ศรีสะเกษ</option>
-								<option value="31">สกลนคร</option>
-								<option value="81">สงขลา</option>
-								<option value="80">สตูล</option>
-								<option value="59">สมุทรปราการ</option>
-								<option value="61">สมุทรสงคราม</option>
-								<option value="60">สมุทรสาคร</option>
-								<option value="87">สระแก้ว</option>
-								<option value="63">สระบุรี</option>
-								<option value="62">สิงห์บุรี</option>
-								<option value="13">สุโขทัย</option>
-								<option value="64">สุพรรณบุรี</option>
-								<option value="82">สุราษฎร์ธานี</option>
-								<option value="33">สุรินทร์</option>
-								<option value="29">หนองคาย</option>
-								<option value="86">หนองบัวลำภู</option>
-								<option value="41">อ่างทอง</option>
-								<option value="85">อำนาจเจริญ</option>
-								<option value="35">อุดรธานี</option>
-								<option value="16">อุตรดิตถ์</option>
-								<option value="15">อุทัยธานี</option>
-								<option value="34">อุบลราชธานี</option>
+								<option value="กระบี่">กระบี่</option>
+								<option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
+								<option value="กาญจนบุรี">กาญจนบุรี</option>
+								<option value="กาฬสินธุ์">กาฬสินธุ์</option>
+								<option value="กำแพงเพชร">กำแพงเพชร</option>
+								<option value="ขอนแก่น">ขอนแก่น</option>
+								<option value="จันทบุรี">จันทบุรี</option>
+								<option value="ฉะเชิงเทรา">ฉะเชิงเทรา</option>
+								<option value="ชลบุรี">ชลบุรี</option>
+								<option value="ชัยนาท">ชัยนาท</option>
+								<option value="ชัยภูมิ">ชัยภูมิ</option>
+								<option value="ชุมพร">ชุมพร</option>
+								<option value="เชียงราย">เชียงราย</option>
+								<option value="เชียงใหม่">เชียงใหม่</option>
+								<option value="ตรัง">ตรัง</option>
+								<option value="ตราด">ตราด</option>
+								<option value="ตาก">ตาก</option>
+								<option value="นครนายก">นครนายก</option>
+								<option value="นครปฐม">นครปฐม</option>
+								<option value="นครพนม">นครพนม</option>
+								<option value="นครราชสีมา">นครราชสีมา</option>
+								<option value="นครศรีธรรมราช">นครศรีธรรมราช</option>
+								<option value="นครสวรรค์">นครสวรรค์</option>
+								<option value="นนทบุรี">นนทบุรี</option>
+								<option value="นราธิวาส">นราธิวาส</option>
+								<option value="น่าน">น่าน</option>
+								<option value="บึงกาฬ">บึงกาฬ</option>
+								<option value="บุรีรัมย์">บุรีรัมย์</option>
+								<option value="เบตง">เบตง</option>
+								<option value="ปทุมธานี">ปทุมธานี</option>
+								<option value="ประจวบคีรีขันธ์">ประจวบคีรีขันธ์</option>
+								<option value="ปราจีนบุรี">ปราจีนบุรี</option>
+								<option value="ปัตตานี">ปัตตานี</option>
+								<option value="พระนครศรีอยุธยา">พระนครศรีอยุธยา</option>
+								<option value="พะเยา">พะเยา</option>
+								<option value="พังงา">พังงา</option>
+								<option value="พัทลุง">พัทลุง</option>
+								<option value="พิจิตร">พิจิตร</option>
+								<option value="พิษณุโลก">พิษณุโลก</option>
+								<option value="เพชรบุรี">เพชรบุรี</option>
+								<option value="เพชรบูรณ์">เพชรบูรณ์</option>
+								<option value="แพร่">แพร่</option>
+								<option value="ภูเก็ต">ภูเก็ต</option>
+								<option value="มหาสารคาม">มหาสารคาม</option>
+								<option value="มุกดาหาร">มุกดาหาร</option>
+								<option value="แม่ฮ่องสอน">แม่ฮ่องสอน</option>
+								<option value="ยโสธร">ยโสธร</option>
+								<option value="ยะลา">ยะลา</option>
+								<option value="ร้อยเอ็ด">ร้อยเอ็ด</option>
+								<option value="ระนอง">ระนอง</option>
+								<option value="ระยอง">ระยอง</option>
+								<option value="ราชบุรี">ราชบุรี</option>
+								<option value="ลพบุรี">ลพบุรี</option>
+								<option value="ลำปาง">ลำปาง</option>
+								<option value="ลำพูน">ลำพูน</option>
+								<option value="เลย">เลย</option>
+								<option value="ศรีสะเกษ">ศรีสะเกษ</option>
+								<option value="สกลนคร">สกลนคร</option>
+								<option value="สงขลา">สงขลา</option>
+								<option value="สตูล">สตูล</option>
+								<option value="สมุทรปราการ">สมุทรปราการ</option>
+								<option value="สมุทรสงคราม">สมุทรสงคราม</option>
+								<option value="สมุทรสาคร">สมุทรสาคร</option>
+								<option value="สระแก้ว">สระแก้ว</option>
+								<option value="สระบุรี">สระบุรี</option>
+								<option value="สิงห์บุรี">สิงห์บุรี</option>
+								<option value="สุโขทัย">สุโขทัย</option>
+								<option value="สุพรรณบุรี">สุพรรณบุรี</option>
+								<option value="สุราษฎร์ธานี">สุราษฎร์ธานี</option>
+								<option value="สุรินทร์">สุรินทร์</option>
+								<option value="หนองคาย">หนองคาย</option>
+								<option value="หนองบัวลำภู">หนองบัวลำภู</option>
+								<option value="อ่างทอง">อ่างทอง</option>
+								<option value="อำนาจเจริญ">อำนาจเจริญ</option>
+								<option value="อุดรธานี">อุดรธานี</option>
+								<option value="อุตรดิตถ์">อุตรดิตถ์</option>
+								<option value="อุทัยธานี">อุทัยธานี</option>
+								<option value="อุบลราชธานี">อุบลราชธานี</option>
 
 
-							</select> <input type="hidden" name="form.provinceName" value=""
-								id="provinceName">
+							</select>
 						</div>
 					</div>
 				</div>
@@ -246,8 +222,17 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 							class="red-star">*</span>:
 						</label>
 						<div class="col-sm-7">
-							<input type="text" name="form.telephoneNo" maxlength="50"
+							<input type="number" name="telephoneNo" maxlength="50"
 								value="" id="tel" class="form-calculate">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label for="tel" class="col-sm-5 control-label">เลขบัตรประชาชน<span
+							class="red-star">*</span>:
+						</label>
+						<div class="col-sm-7">
+							<input type="number" name="idcard" maxlength="13"
+								value="">
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -255,7 +240,7 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 							class="red-star">*</span>:
 						</label>
 						<div class="col-sm-7">
-							<input type="text" name="form.email" maxlength="90" value=""
+							<input type="text" name="email" maxlength="90" value=""
 								id="email" class="form-calculate">
 						</div>
 					</div>
@@ -266,8 +251,12 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 							class="red-star">*</span>:
 						</label>
 						<div class="col-sm-7">
-							<input type="text" name="form.carMake" maxlength="50"
-								value="<%=bean.getMycar() %>" id="brand" class="form-calculate" disabled="disabled">
+							<input type="text"  maxlength="50"
+								value="<%=bean.getMycar()%>" id="brand" class="form-calculate"
+								disabled="disabled">
+								<input type="hidden" name="carMake" 
+								value="<%=bean.getMycar()%>" >
+								
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -275,9 +264,11 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 							class="red-star">*</span>:
 						</label>
 						<div class="col-sm-7">
-							<input type="text" name="form.carModel" maxlength="250"
-								value="<%=bean.getMybrand() %>" id="model" disabled="disabled"
+							<input type="text" name="" maxlength="250"
+								value="<%=bean.getMybrand()%>" id="model" disabled="disabled"
 								class="form-calculate">
+								<input type="hidden" name="carModel" 
+								value="<%=bean.getMybrand()%>" >
 						</div>
 					</div>
 				</div>
@@ -287,10 +278,13 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 							(ค.ศ.)<span class="red-star">*</span>:
 						</label>
 						<div class="col-sm-7">
-						
-<input type="text" name="form.totalIncome" maxlength="13"
-								value="<%=bean.getMyYear() %>" id="income" class="form-calculate" disabled="disabled"
-								>
+
+							<input type="text" name="" maxlength="13"
+								value="<%=bean.getMyYear()%>" id="income" class="form-calculate"
+								disabled="disabled">
+								<input type="hidden" name="totalIncome"
+								value="<%=bean.getMyYear()%>" id="income" class="form-calculate">
+								
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -298,9 +292,8 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 							class="red-star">*</span>:
 						</label>
 						<div class="col-sm-7">
-							<input type="text" name="form.totalIncome" maxlength="13"
-								value="" id="income" class="form-calculate"
-								onblur="isCurrency(this); FormatNumber(this, 2);">
+							<input type="text" name="salary" maxlength="13"
+								value="" id="income" class="form-calculate">
 						</div>
 					</div>
 				</div>
@@ -310,9 +303,16 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 							class="red-star">*</span>:
 						</label>
 						<div class="col-sm-7">
-							<input type="text" name="form.lessLimit" maxlength="13"
-								value="<%=bean.getPring1()%>" id="loan_amount" class="form-calculate"
-								onblur="isCurrency(this); FormatNumber(this, 2);" disabled="disabled">
+							<input type="text" name="lessLimit" maxlength="13"
+								value="<%=bean.getPring1()%>" id="loan_amount"
+								class="form-calculate"
+								onblur="isCurrency(this); FormatNumber(this, 2);"
+								disabled="disabled">
+								<input type="hidden" name="lessLimit" 
+								value="<%=bean.getPring1()%>" 
+								class="form-calculate">
+								
+								
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -320,14 +320,16 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 							class="red-star">*</span>:
 						</label>
 						<div class="col-sm-7">
-							
-<input type="text" name="form.lessLimit" maxlength="13"
-								value="<%=bean.getHos()%>" id="loan_amount" class="form-calculate"
-								onblur="isCurrency(this); FormatNumber(this, 2);" disabled="disabled">
 
+							<input type="text"  maxlength="13"
+								value="<%=bean.getHos()%>" id="loan_amount"
+								class="form-calculate" disabled> 
+								<input type="hidden" name="lassday" 
+								value="<%=bean.getHos()%>" 
+								class="form-calculate">
 						</div>
 					</div>
-
+					<!-- 
 					<div class="col-md-6">
 						<label for="period" class="col-sm-5 control-label">
 							รูปรถของท่าน<span class="red-star">*</span>:
@@ -344,43 +346,9 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 							รูปรถด้านขวา<span class="red-star">*</span>:
 						</label> <input type="file" name="" class="form-calculate">
 
-					</div>
+					</div> -->
 				</div>
-				<div class="row ">
-					<div class="col-md-6">
-						<label for="answer" class="col-sm-5 control-label">รหัสยืนยัน<span
-							class="red-star">*</span>:
-						</label>
-						<div class="col-sm-6" id="div_captcha">
-							<img src="assets/img/captcha">
-						</div>
-						<div class="col-sl-1">
-							<a href="javascript:doRefreshCaptcha()"><img border="0"
-								width="30" height="30" id="Btn_refresh"
-								src="assets/img/Btn_refresh.jpeg"></a>
-						</div>
-					</div>
-				</div>
-				<div class="row ">
-					<div class="col-md-6">
-						<label class="col-sm-5 control-label">&nbsp;</label>
-						<div class="col-sm-7">
-							<input type="text" name="form.captchaText" value=""
-								id="captchaText" class="form-calculate input-captcha">
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="col-md-2">&nbsp;</div>
-					<div class="col-md-10">
-						<label class="col-sm-12"><input type="checkbox"
-							name="form.tiscoPublicFlag" value="Y" checked="checked"
-							id="tiscoPublicFlag"><input type="hidden"
-							id="__checkbox_tiscoPublicFlag"
-							name="__checkbox_form.tiscoPublicFlag" value="Y">
-							ข้าพเจ้ายินยอมในการให้ข้อมูลผ่านการสมัครช่องทางออนไลน์</label>
-					</div>
-				</div>
+				<br>
 				<div id="divSubmit" class="row ">
 					<div class="col-md-6">
 						<label class="col-sm-5 control-label">&nbsp;</label>

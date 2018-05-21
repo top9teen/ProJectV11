@@ -39,14 +39,16 @@ public class FunctionController {
 	}
 
 	@RequestMapping("/gotoregister")
-	public String registercar( HttpServletRequest request , String yy ,String Mycar ,String MyYear ,String Mybrand,int pp) {
+	public String registercar( HttpServletRequest request , String yy ,String Mycar ,String MyYear ,String Mybrand,int pp ,String name) {
 
 			SimBean bran = new SimBean();
+			
 			bran.setHos(yy);
 			bran.setMycar(Mycar);
 			bran.setMybrand(Mybrand);
 			bran.setMyYear(MyYear);
 			bran.setPring1(pp);
+			bran.setName(name);
 			request.getSession().setAttribute("simbean", bran);
 		return "registercar";
 	}
@@ -58,19 +60,5 @@ public class FunctionController {
 		return "resiter";
 	}
 
-	@RequestMapping("/finish")
-	public String finish(Model model) {
-		model.addAttribute("msg", "0");
-		return "welcome";
-	}
-	@RequestMapping("/test1")
-	public String tee(HttpServletRequest request) {
-		List<BrandBean> list = new ArrayList<>();
-		list =carallDao.alls();
-		request.getSession().setAttribute("list", list);
-		return "test1"; 
-	}
-	
-	
 	//End class
 }

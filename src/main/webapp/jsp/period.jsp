@@ -93,6 +93,7 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 	
 				<form action="gotoregister" method="post">
 		<h2><%=bean.getName() %></h2>
+		<input type="hidden" value="<%=bean.getName()%>" name="name">
 		<input type="hidden" value="<%=bean.getPring1()%>" name="pp">
 		<input type="hidden" value="<%=bean.getMycar()%>" name="Mycar">
 					<input type="hidden" value="<%=bean.getMybrand()%>"
