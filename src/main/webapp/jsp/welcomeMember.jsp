@@ -32,11 +32,9 @@ body, h1, h2, h3, h4, h5, h6 {
 %>
 <%
 	result = (String) request.getAttribute("se");
-	
 %>
 <%
-bean = (UserAllBean) request.getSession().getAttribute("Login");
-    
+	bean = (UserAllBean) request.getSession().getAttribute("Login");
 %>
 
 <title>Welcome to Project</title>
@@ -50,10 +48,10 @@ bean = (UserAllBean) request.getSession().getAttribute("Login");
 		<a href="#" onclick="w3_close()"
 			class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey"
 			title="close menu"> <i class="fa fa-remove"></i>
-		</a> <img src="<%=bean.getUsImg() %>" style="width: 45%;" class="w3-round"><br>
+		</a> <img src="<%=bean.getUsImg()%>" style="width: 45%;" class="w3-round"><br>
 		<br>
 		<h4>
-			<b> Wellcome <%=bean.getUsFname() %></b>
+			<b> Wellcome <%=bean.getUsFname()%></b>
 		</h4>
 		<p class="w3-text-grey">Simple web and system</p>
 	</div>
@@ -61,13 +59,13 @@ bean = (UserAllBean) request.getSession().getAttribute("Login");
 		<a href="gototabel" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="	fa fa-automobile fa-fw w3-margin-right"></i>รอการตอบกลับ</a> <a
-			href="select" onclick="w3_close()"
+			href="#" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
-		</i>ดูรายชื่อที่ทำสินเชื่อ</a> <a href="select" onclick="w3_close()"
+		</i>ดูรายชื่อที่ทำสินเชื่อ</a> <a href="#" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
-		</i>ระบบเช็คเครดิต</a><a href="select" onclick="w3_close()"
+		</i>ระบบเช็คเครดิต</a><a href="#" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
 		</i>อัพเดทราคารถยนต์</a> <a href="logout" onclick="w3_close()"
@@ -87,7 +85,7 @@ bean = (UserAllBean) request.getSession().getAttribute("Login");
 
 		<!-- Header -->
 		<header id="portfolio"> <a href="#"><img
-			src="<%=bean.getUsImg() %>" style="width: 65px;"
+			src="<%=bean.getUsImg()%>" style="width: 65px;"
 			class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
 		<span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey"
 			onclick="w3_open()"><i class="fa fa-bars"></i></span>
@@ -98,13 +96,15 @@ bean = (UserAllBean) request.getSession().getAttribute("Login");
 
 		</div>
 		</header>
-<%
+		<%
 			if (result.equals("1")) {
 		%>
 		<div class="blank">
 			<%@include file="member/boot.jsp"%>
 		</div>
-		<%} %>
+		<%
+			}
+		%>
 		<div class="w3-row-padding w3-padding-16" id="about">
 			<div class="w3-col m6">
 				<img src="assets/img/car4.jpg" alt="Me" style="width: 100%">
@@ -135,19 +135,17 @@ bean = (UserAllBean) request.getSession().getAttribute("Login");
 			document.getElementById("mySidebar").style.display = "none";
 			document.getElementById("myOverlay").style.display = "none";
 		}
-		function fncSubmit(){
-			if(document.gotohome.email.value == "")
-			{
+		function fncSubmit() {
+			if (document.gotohome.email.value == "") {
 				alert('Please input Email');
 				document.gotohome.username.focus();
 				return false;
-			}	
-			if(document.gotohome.password.value == "")
-			{
+			}
+			if (document.gotohome.password.value == "") {
 				alert('Please input password');
 				document.gotohome.password.focus();
 				return false;
-			}	
+			}
 		}
 	</script>
 

@@ -1,5 +1,8 @@
 package com.bru.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,10 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bru.dao.CustomerDao;
+import com.bru.dao.MenberDao;
 import com.bru.dao.UserAllDao;
 
 import com.bru.model.KasikornPriceBean;
 import com.bru.model.KrungsriPriceBean;
+import com.bru.model.RegisterallBean;
 import com.bru.model.ScbeasyPriceBean;
 import com.bru.model.SimBean;
 import com.bru.model.ThanachartPriceBean;
@@ -22,7 +27,10 @@ public class WelcomeController {
 	UserAllDao userAllDao;
 	@Autowired
 	CustomerDao customerDao;
+	@Autowired
+	MenberDao menberDao;
 
+	String uu ="";
 	@RequestMapping("/Hello")
 	public String hel(Model model) {
 		model.addAttribute("msg", "0");
@@ -50,6 +58,20 @@ public class WelcomeController {
 		onpage = "car";
 		return onpage;
 	}
+
+	@RequestMapping("/gototabel")
+	public String gototabel(Model model ,String name,HttpServletRequest requst) {
+		name =uu;
+		 List<RegisterallBean> list = new ArrayList<>();
+		 
+		 list = menberDao.listuser(name);
+		
+		 requst.getSession().setAttribute("listUser", list);
+		model.addAttribute("se", "1");
+		
+		return "welcomeMember";
+	}
+
 
 	@RequestMapping("/car2")
 	public String credit2(Model model, String groupType, String carMake, String carMake2, HttpServletRequest reqest) {
@@ -98,12 +120,7 @@ public class WelcomeController {
 		return "login";
 	}
 
-	@RequestMapping("/gototabel")
-	public String gototabel(Model model) {
-		model.addAttribute("se", "1");
-		return "welcomeMember";
-	}
-
+	
 	@RequestMapping("/login")
 	public String login(String username, String password, Model model, HttpServletRequest request) {
 		String outhen = "";
@@ -116,6 +133,7 @@ public class WelcomeController {
 					outhen = "welcomeAdmin";
 				} else if (bean.getUsRole().equals("2")) {
 					model.addAttribute("se", "3");
+					uu=bean.getUsFname();
 					outhen = "welcomeMember";
 				} else {
 					model.addAttribute("messessError", "F");

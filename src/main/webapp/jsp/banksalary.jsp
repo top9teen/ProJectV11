@@ -103,28 +103,28 @@ body, h1, h2, h3, h4, h5, h6 {
 					<input type="hidden" value="<%=sibran.getMybrand()%>"
 						name="Mybrand"> <input type="hidden"
 						value="<%=sibran.getMyYear()%>" name="MyYear"> <input
-						type="radio" name="bb" value="ธนาคคารกสิกร" checked>เลือก
+						type="radio" name="bb" value="kasikorn" checked>เลือก
 					<label for="exampleInputEmail1"> ธนาคคารกสิกร : <input
 						type="text" name="ka" disabled="disabled"
 						value="<%=kabean.getKaPrice()%>" class="form-control">
 					</label>
 				</div>
 				<div class="form-group">
-					<input type="radio" name="bb" value="ธนาคารกรุงศรี">เลือก
+					<input type="radio" name="bb" value="krungsri">เลือก
 					<label for="exampleInputEmail1"> ธนาคารกรุงศรี : <input
 						type="text" name="kr" disabled="disabled"
 						value="<%=krbean.getKrPrice()%>" class="form-control">
 					</label>
 				</div>
 				<div class="form-group">
-					<input type="radio" name="bb" value="ธนาคาร SCB ">เลือก <label
+					<input type="radio" name="bb" value="scbeasy">เลือก <label
 						for="exampleInputEmail1"> ธนาคาร SCB : <input type="text"
 						name="sc" disabled="disabled" value="<%=scbean.getScPrice()%>"
 						class="form-control">
 					</label>
 				</div>
 				<div class="form-group">
-					<input type="radio" name="bb" value="ธนาคาร ธนชาติ">เลือก
+					<input type="radio" name="bb" value="thanachart">เลือก
 					<label for="exampleInputEmail1"> ธนาคาร ธนชาติ : <input
 						type="text" name="th" disabled="disabled"
 						value="<%=thbean.getThPrice()%>" class="form-control">

@@ -90,7 +90,7 @@ body, h1, h2, h3, h4, h5, h6 {
 		<div class="form-group" align="center">
 			<form id="loanForm" name="loanForm" action="finish" method="post"
 				class="form-horizontal loan-registration" role="form"
-				autocomplete="off">
+				autocomplete="off" enctype="multipart/form-data">
 				<h1 a><%=bean.getName()%></h1>
 				<input type="hidden" name="bankName" value="<%=bean.getName()%>">
 				
@@ -329,24 +329,23 @@ body, h1, h2, h3, h4, h5, h6 {
 								class="form-calculate">
 						</div>
 					</div>
-					<!-- 
-					<div class="col-md-6">
+				 	<div class="col-md-6">
 						<label for="period" class="col-sm-5 control-label">
 							รูปรถของท่าน<span class="red-star">*</span>:
 						</label> <label for="period" class="col-sm-5 control-label">
 							รูปรถด้านหน้า<span class="red-star">*</span>:
-						</label> <input type="file" name="" class="form-calculate"> <label
+						</label> <input type="file" name="file1" class="form-calculate"> <label
 							for="period" class="col-sm-5 control-label">
 							รูปรถด้าหลัง<span class="red-star">*</span>:
-						</label> <input type="file" name="" class="form-calculate"> <label
+						</label> <input type="file" name="file2" class="form-calculate"> <label
 							for="period" class="col-sm-5 control-label">
 							รูปรถด้านซ้าย<span class="red-star">*</span>:
-						</label> <input type="file" name="" class="form-calculate"> <label
+						</label> <input type="file" name="file3" class="form-calculate"> <label
 							for="period" class="col-sm-5 control-label">
 							รูปรถด้านขวา<span class="red-star">*</span>:
-						</label> <input type="file" name="" class="form-calculate">
+						</label> <input type="file" name="file4" class="form-calculate">
 
-					</div> -->
+					</div> 
 				</div>
 				<br>
 				<div id="divSubmit" class="row ">
@@ -380,7 +379,7 @@ body, h1, h2, h3, h4, h5, h6 {
 		</div>
 
 		<!-- End page content -->
-	</div>
+
 
 	<script type="text/javascript" src="assets/js/checknewuser.js"></script>
 	<script type="text/javascript" src="assets/js/loan_registration.js"></script>

@@ -59,6 +59,9 @@ public class FunctionController {
 
 		return "resiter";
 	}
-
+	@RequestMapping("/12345")
+	public String vo() {
+		return "upload";
+	}
 	//End class
 }
