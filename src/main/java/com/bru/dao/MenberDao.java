@@ -80,5 +80,67 @@ public class MenberDao {
 		}
 		return list;
 	}
-
+//adminsel1
+	public List<RegisterallBean> listuser1(){
+		ConnectDB con = new ConnectDB();
+		PreparedStatement prepared = null;
+		StringBuilder sql = new StringBuilder();
+		List<RegisterallBean> list = new ArrayList<>();
+		RegisterallBean bean = new RegisterallBean();
+		
+		try {
+			
+			sql.append(" SELECT * FROM  registerall  ");
+			prepared = con.openConnect().prepareStatement(sql.toString());
+			ResultSet rs = prepared.executeQuery();
+			
+			while(rs.next()) {
+				bean = new RegisterallBean();
+				bean.setRegId(rs.getInt("reg_id"));
+				bean.setRegFirstname(rs.getString("reg_firstname"));
+				bean.setRegLastname(rs.getString("reg_lastname"));
+				bean.setRegTelephone(rs.getInt("reg_telephone"));
+				bean.setRegProvince(rs.getString("reg_province"));
+				bean.setRegCarmake(rs.getString("reg_carmake"));
+				bean.setRegLesslimit(rs.getString("reg_lesslimit"));
+				list.add(bean);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public List<RegnameBean> listuser3(){
+		ConnectDB con = new ConnectDB();
+		PreparedStatement prepared = null;
+		StringBuilder sql = new StringBuilder();
+		List<RegnameBean> list = new ArrayList<>();
+		RegnameBean bean = new RegnameBean();
+		
+		try {
+			
+			sql.append(" SELECT * FROM  regname ");
+			prepared = con.openConnect().prepareStatement(sql.toString());
+			ResultSet rs = prepared.executeQuery();
+			
+			while(rs.next()) {
+				bean = new RegnameBean();
+				bean.setRegId(rs.getInt("na_id"));
+				bean.setRegFirstname(rs.getString("na_firstname"));
+				bean.setRegLastname(rs.getString("na_lastname"));
+				bean.setRegTelephone(rs.getInt("na_telephone"));
+				bean.setRegProvince(rs.getString("na_province"));
+				bean.setRegCarmake(rs.getString("na_carmake"));
+				bean.setRegLesslimit(rs.getString("na_lesslimit"));
+				list.add(bean);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

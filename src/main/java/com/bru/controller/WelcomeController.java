@@ -250,7 +250,11 @@ public class WelcomeController {
 		}
 		res.getSession().setAttribute("resultBean", bean);
 		return "member/update";
+		
 	}
+	
+	
+	
 	@RequestMapping( value = "/gotoUpdate2" , method = RequestMethod.POST)
 	public String gotoUpdate2(Model model,String regid,HttpServletRequest res) {	
 		RegnameBean bean = new RegnameBean();

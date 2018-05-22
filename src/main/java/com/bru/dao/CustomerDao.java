@@ -12,6 +12,7 @@ import com.bru.model.KasikornPriceBean;
 import com.bru.model.KrungsriPriceBean;
 import com.bru.model.ScbeasyPriceBean;
 import com.bru.model.ThanachartPriceBean;
+import com.bru.model.UserAllBean;
 import com.bru.model.YearBean;
 import com.bru.util.ConnectDB;
 
@@ -160,5 +161,35 @@ public class CustomerDao {
 		}
 		return thbean;
 	} 
+	//user
+	public List<UserAllBean> userall() {
+
+		List<UserAllBean> list = new ArrayList<>();
+		ConnectDB con = new ConnectDB();
+		PreparedStatement prepared = null;
+		StringBuilder sql = new StringBuilder();
+
+		try {
+			sql.append(" SELECT * FROM userall WHERE us_role ='2' ");
+			prepared = con.openConnect().prepareStatement(sql.toString());
+			ResultSet rs = prepared.executeQuery();
+
+			while (rs.next()) {
+				UserAllBean bean = new UserAllBean();
+				bean.setUsUsername(rs.getString("us_username"));
+				bean.setUsPassword(rs.getString("us_password"));
+				bean.setUsFname(rs.getString("us_fname"));
+				bean.setUsLname(rs.getString("us_lname"));
+				bean.setUsAddress(rs.getString("us_address"));
+				bean.setUsCreatedate(rs.getDate("us_createdate"));
+				list.add(bean);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return list;
+	}
+
 	// end class
 }

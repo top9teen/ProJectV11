@@ -2,6 +2,10 @@
 <%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    		<%@page import="com.bru.model.RegnameBean"%>
+	<%@page import="java.util.List"%>
+    	<% List<RegnameBean> list = null; %>
+	<%list = (List<RegnameBean>) request.getSession().getAttribute("listUser"); %>
     <html xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
@@ -125,7 +129,7 @@ bean = (UserAllBean) request.getSession().getAttribute("Login");
 					<li><a class="" href="adminsel2">
 						<span class="fa fa-arrow-right">&nbsp;</span> ดูสินเชื่อที่ผ่านอนุมัต
 					</a></li>
-					<li><a class="" href="#">
+					<li><a class="" href="adminsel3">
 						<span class="fa fa-arrow-right">&nbsp;</span> ดูรายละเอียดธนาคาร
 					</a></li>
 				</ul>
@@ -189,36 +193,46 @@ bean = (UserAllBean) request.getSession().getAttribute("Login");
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">
-						Site Traffic Overview
-						<ul class="pull-right panel-settings panel-button-tab-right">
-							<li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
-								<em class="fa fa-cogs"></em>
-							</a>
-								<ul class="dropdown-menu dropdown-menu-right">
-									<li>
-										<ul class="dropdown-settings">
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 1
-											</a></li>
-											<li class="divider"></li>
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 2
-											</a></li>
-											<li class="divider"></li>
-											<li><a href="#">
-												<em class="fa fa-cog"></em> Settings 3
-											</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+					
 					<div class="panel-body">
-						<div class="canvas-wrapper">
-							<canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
-						</div>
+						
+	<form name="welcome" action="." method="post">
+<input type="hidden" name="regid" id="regid">
+		<table class="table table-bordered">
+			<tr>
+				<th class="text-center">ลำดับ</th>
+				<th class="text-center">ชื่อ</th>
+				<th class="text-center">นามสกุล</th>
+				<th class="text-center">เบอร์โทร</th>
+				<th class="text-center">รถรุ่น</th>
+				<th class="text-center">จังหวัด</th>
+				<th class="text-center">เงินต้องการ</th>
+				<th class="text-center">รายละเอียด</th>
+			</tr>
+			<%
+				
+					for (int i = 0; i < list.size(); i++) {
+				%>
+			<tr class="text-center">
+			
+				<td><%=i + 1 %></td>
+				<td><%=list.get(i).getRegFirstname()%></td>
+				<td><%=list.get(i).getRegLastname() %></td>
+				<td><%=list.get(i).getRegTelephone() %></td>
+				<td><%=list.get(i).getRegCarmake() %></td>
+				<td><%=list.get(i).getRegProvince() %></td>
+				<td><%=list.get(i).getRegLesslimit() %></td>
+				<td><a onclick="gotoUpdate('<%=list.get(i).getRegId()%>')"><span
+						class="glyphicon glyphicon-search"> </span></a>
+					</td>
+					
+					
+			</tr>
+		<%} %>
+		</table>
+
+	</form>
+
 					</div>
 				</div>
 			</div>
@@ -351,62 +365,7 @@ bean = (UserAllBean) request.getSession().getAttribute("Login");
 						</ul>
 						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
 					<div class="panel-body">
-						<ul class="todo-list">
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-1" />
-									<label for="checkbox-1">Make coffee</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
-							</li>
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-2" />
-									<label for="checkbox-2">Check emails</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
-							</li>
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-3" />
-									<label for="checkbox-3">Reply to Jane</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
-							</li>
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-4" />
-									<label for="checkbox-4">Make more coffee</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
-							</li>
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-5" />
-									<label for="checkbox-5">Work on the new design</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
-							</li>
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox-6" />
-									<label for="checkbox-6">Get feedback on design</label>
-								</div>
-								<div class="pull-right action-buttons"><a href="#" class="trash">
-									<em class="fa fa-trash"></em>
-								</a></div>
-							</li>
-						</ul>
+				
 					</div>
 					<div class="panel-footer">
 						<div class="input-group">
@@ -430,15 +389,15 @@ bean = (UserAllBean) request.getSession().getAttribute("Login");
 									<li>
 										<ul class="dropdown-settings">
 											<li><a href="#">
-												<em class="fa fa-cog"></em> ดูจำนวนสินเชื่อที่มาทำทั้งหมด
+												<em class="fa fa-cog"></em> 
 											</a></li>
 											<li class="divider"></li>
 											<li><a href="#">
-												<em class="fa fa-cog"></em> ดูสินเชื่อที่ผ่านการอนุมัติทั้งหมด
+												<em class="fa fa-cog"></em> 
 											</a></li>
 											<li class="divider"></li>
 											<li><a href="#">
-												<em class="fa fa-cog"></em> ดูรายละเอียดของธนาคาร
+												<em class="fa fa-cog"></em> 
 											</a></li>
 										</ul>
 									</li>
@@ -520,6 +479,11 @@ bean = (UserAllBean) request.getSession().getAttribute("Login");
 	scaleFontColor: "#c5c7cc"
 	});
 };
+function gotoUpdate(filter) {
+	document.getElementById("regid").value = filter;
+	document.welcome.action="gotoUpdateadmin2";
+	document.welcome.submit();
+}
 	</script>
 		
 </body>
