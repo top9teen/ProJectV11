@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bru.model.BrandBean;
 import com.bru.model.CarBean;
+import com.bru.model.ColeridcardBean;
 import com.bru.model.YearBean;
 import com.bru.util.ConnectDB;
 
@@ -97,5 +98,33 @@ public List<BrandBean> findAll(String year ,String brand) {
 		}
 		return list;
 	}
+public ColeridcardBean coler(int number) {
+		ColeridcardBean bean = new ColeridcardBean();
+		
+		ConnectDB con = new ConnectDB();
+		PreparedStatement prepared = null;
+		StringBuilder sql = new StringBuilder();
+		try {
+			sql.append(" SELECT * FROM coleridcard WHERE co_idcard = ? ");
+			prepared = con.openConnect().prepareStatement(sql.toString());
+			prepared.setInt(1, number);
+			ResultSet rs = prepared.executeQuery();
+			while(rs.next()) {
+				bean = new ColeridcardBean();
+				bean.setCoName(rs.getString("co_colername"));
+
+			}
+			if(bean.getCoName() !=null) {
+				
+			}
+			else {
+				bean.setCoName("#FFFFFF");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	
+	return bean;
+}
 	// end class
 }

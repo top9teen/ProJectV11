@@ -163,9 +163,6 @@ body, h1, h2, h3, h4, h5, h6 {
 			document.getElementById("mySidebar").style.display = "none";
 			document.getElementById("myOverlay").style.display = "none";
 		}
-		function sel1() {
-
-		}
 		function fncSubmit() {
 			if (document.gotohome.groupType.value == "") {
 				alert('Please input Year');

@@ -5,7 +5,14 @@ public class CriteriaBean {
 	private String year;
 	private String brand;
 	private String carModel;
+	private Integer coler;
 	
+	public Integer getColer() {
+		return coler;
+	}
+	public void setColer(Integer coler) {
+		this.coler = coler;
+	}
 	public String getYear() {
 		return year;
 	}

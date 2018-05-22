@@ -2,7 +2,7 @@ package com.bru.model;
 
 import java.util.Date;
 
-public class RegisterallBean {
+public class RegnameBean {
 
 	private int regId;
 	private  String regBankname;
@@ -24,20 +24,6 @@ public class RegisterallBean {
 	private String regImgLeft;
 	private String regImgright;
 	private Date regDate;
-	
-	
-	public int getRegIdCard() {
-		return regIdCard;
-	}
-	public void setRegIdCard(int regIdCard) {
-		this.regIdCard = regIdCard;
-	}
-	public Date getRegDate() {
-		return regDate;
-	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
-	}
 	public int getRegId() {
 		return regId;
 	}
@@ -80,7 +66,12 @@ public class RegisterallBean {
 	public void setRegTelephone(int regTelephone) {
 		this.regTelephone = regTelephone;
 	}
-
+	public int getRegIdCard() {
+		return regIdCard;
+	}
+	public void setRegIdCard(int regIdCard) {
+		this.regIdCard = regIdCard;
+	}
 	public String getRegEmail() {
 		return regEmail;
 	}
@@ -146,6 +137,12 @@ public class RegisterallBean {
 	}
 	public void setRegImgright(String regImgright) {
 		this.regImgright = regImgright;
+	}
+	public Date getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 	
 	

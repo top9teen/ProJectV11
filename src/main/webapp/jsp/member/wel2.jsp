@@ -31,6 +31,12 @@ body, h1, h2, h3, h4, h5, h6 {
 	UserAllBean bean = null;
 %>
 <%
+	ColeridcardBean bean2 = null;
+%>
+<%
+	bean2 = (ColeridcardBean) request.getSession().getAttribute("resultBean");
+%>
+<%
 	String result = "";
 %>
 <%
@@ -100,33 +106,29 @@ body, h1, h2, h3, h4, h5, h6 {
 		</div>
 		</header>
 		<%
-			if (result.equals("1")) {
-		%>
-		<div class="blank">
-			<%@include file="member/boot.jsp"%>
-		</div>
-		<%
-			}
-		%>
-		<%
-			if (result.equals("2")) {
-		%>
-		<div class="blank">
-			<%@include file="member/boot2.jsp"%>
-		</div>
-		<%
-			}
-		%>
-		<%
 			if (result.equals("3")) {
 		%>
 		<div class="blank">
-			<%@include file="member/selcard.jsp"%>
+			<%@include file="selcard.jsp"%>
 		</div>
 		<%
 			}
 		%>
-	
+		<%
+			if (result.equals("4")) {
+		%>
+		<div class="blank">
+			<%@include file="selcard.jsp"%>
+			<div>
+				<h2 align="center">บัตรประชาชน : <%=bean2.getVo() %> ได้สี</h2>
+				<textarea rows="5"
+					style="background-color:<%=bean2.getCoName()%>;width: 500px; height: 300px"
+					disabled="disabled"></textarea>
+			</div>
+		</div>
+		<%
+			}
+		%>
 		<div class="w3-row-padding w3-padding-16" id="about">
 			<div class="w3-col m6">
 				<img src="assets/img/car4.jpg" alt="Me" style="width: 100%">

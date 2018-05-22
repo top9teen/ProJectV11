@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<%@page import="com.bru.model.RegisterallBean"%>
+	<%@page import="com.bru.model.RegnameBean"%>
 	<%@page import="java.util.List"%>
-	<% List<RegisterallBean> list = null; %>
-	<%list = (List<RegisterallBean>) request.getSession().getAttribute("listUser"); %>
+	<% List<RegnameBean> list = null; %>
+	<%list = (List<RegnameBean>) request.getSession().getAttribute("listUser"); %>
 	<form name="welcome" action="." method="post">
 <input type="hidden" name="regid" id="regid">
 		<table class="table table-bordered">
@@ -44,7 +44,7 @@
 <script type="text/javascript">
 			function gotoUpdate(filter) {
 				document.getElementById("regid").value = filter;
-				document.welcome.action="gotoUpdate";
+				document.welcome.action="gotoUpdate2";
 				document.welcome.submit();
 			}
 		</script>

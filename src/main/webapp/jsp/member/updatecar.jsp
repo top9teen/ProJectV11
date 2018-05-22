@@ -61,17 +61,17 @@ body, h1, h2, h3, h4, h5, h6 {
 	<div class="w3-bar-block">
 		<a href="gototabel" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
-			class="	fa fa-automobile fa-fw w3-margin-right"></i>รอการตอบกลับ</a>  <a
+			class="	fa fa-automobile fa-fw w3-margin-right"></i>รอการตอบกลับ</a> <a
 			href="gotofist" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
 		</i>ดูรายชื่อที่ทำสินเชื่อ</a> <a href="selidcard" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
-		</i>ระบบเช็คเครดิต</a><!-- <a href="updatecar" onclick="w3_close()"
+		</i>ระบบเช็คเครดิต</a><a href="updatecar" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
-		</i>อัพเดทราคารถยนต์</a> --> <a href="logout" onclick="w3_close()"
+		</i>อัพเดทราคารถยนต์</a> <a href="logout" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"> <i
 			class="	fa fa-automobile fa-fw w3-margin-right"></i>ออกจากระบบ
 		</a>
@@ -99,34 +99,49 @@ body, h1, h2, h3, h4, h5, h6 {
 
 		</div>
 		</header>
-		<%
-			if (result.equals("1")) {
-		%>
-		<div class="blank">
-			<%@include file="member/boot.jsp"%>
-		</div>
-		<%
-			}
-		%>
-		<%
-			if (result.equals("2")) {
-		%>
-		<div class="blank">
-			<%@include file="member/boot2.jsp"%>
-		</div>
-		<%
-			}
-		%>
-		<%
-			if (result.equals("3")) {
-		%>
-		<div class="blank">
-			<%@include file="member/selcard.jsp"%>
-		</div>
-		<%
-			}
-		%>
-	
+		<form name="gotohome" action="updatecar2" method="post"
+			OnSubmit="return fncSubmit();"
+			style="height: 70%; width: 40%; margin: 150px;">
+			<div class="panel panel-primary" style="margin-top: 15%">
+				<div class="panel-heading">กรุณาเลือกรถยนต์รุ่นของท่าน</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label for="registration_year">ปีที่จดทะเบียน (ค.ศ.)<span
+							style="color: red;">* </span>:
+						</label> <select class="form-control" name="groupType" id="groupType"
+							list="groupTypeDropdown" listKey="value" listValue="name">
+							<option value="">กรุณาเลือก</option>
+
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="brand">ยี่ห้อ<span style="color: red;">*</span>:
+						</label> <select name="carMake" id="brand" class="form-control">
+							<option value="">กรุณาเลือก</option>
+
+							<optgroup label="รถยนต์">
+							</optgroup>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="brand">รุ่น<span style="color: red;">*</span>:
+						</label> <select name="carMake2" id="carmodel" class="form-control">
+							<option value="">กรุณาเลือก</option>
+							<optgroup label="รุ่น">
+
+							</optgroup>
+						</select>
+					</div>
+
+
+				</div>
+				<div class="panel-footer" align="center"
+					style="background: transparent;">
+					<input type="submit" class="btn btn-success" value="ตรวจสอบ">&nbsp;
+				</div>
+
+			</div>
+		</form>
 		<div class="w3-row-padding w3-padding-16" id="about">
 			<div class="w3-col m6">
 				<img src="assets/img/car4.jpg" alt="Me" style="width: 100%">
@@ -145,8 +160,9 @@ body, h1, h2, h3, h4, h5, h6 {
 
 		<!-- End page content -->
 	</div>
-
-	<script>
+<script type="text/javascript" src="assets/js/selcarall.js"></script>
+	<script type="text/javascript">
+	
 		// Script to open and close sidebar
 		function w3_open() {
 			document.getElementById("mySidebar").style.display = "block";
@@ -157,17 +173,23 @@ body, h1, h2, h3, h4, h5, h6 {
 			document.getElementById("mySidebar").style.display = "none";
 			document.getElementById("myOverlay").style.display = "none";
 		}
-		function fncSubmit() {
-			if (document.gotohome.email.value == "") {
-				alert('Please input Email');
-				document.gotohome.username.focus();
-				return false;
-			}
-			if (document.gotohome.password.value == "") {
-				alert('Please input password');
-				document.gotohome.password.focus();
-				return false;
-			}
+			function fncSubmit() {
+				if (document.gotohome.groupType.value == "") {
+					alert('Please input Year');
+					document.gotohome.groupType.focus();
+					return false;
+				}
+				if (document.gotohome.carMake.value == "") {
+					alert('Please input Brand');
+					document.gotohome.carMake.focus();
+					return false;
+					
+				}
+				if (document.gotohome.carMake2.value == "") {
+					alert('Please input CarModel');
+					document.gotohome.carMake2.focus();
+					return false;
+				}
 		}
 	</script>
 

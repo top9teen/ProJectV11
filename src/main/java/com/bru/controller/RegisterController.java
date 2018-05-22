@@ -6,22 +6,24 @@ import java.nio.file.Paths;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bru.dao.RegisterDao;
 import com.bru.model.RegisterallBean;
 
-@RestController
+
+@Controller
 public class RegisterController {
 	@Autowired
 	RegisterDao registerDao;
-
+	//rename
 	@RequestMapping(value = "/finish")
 	public String register(@ModelAttribute("SpringWeb") RegisterallBean bean, String bankName, String firstName,
 			String lastName, int age, String provinceId, int telephoneNo, int idcard, String email, String carMake,
@@ -49,6 +51,7 @@ public class RegisterController {
 		bean.setRegImgLeft("assets/img/imgreg/"+file3.getOriginalFilename());
 		bean.setRegImgright("assets/img/imgreg/"+file4.getOriginalFilename());
 		bean.setRegDate(new Date());
+		
 
 		try {
 			byte[] bytes1 = file1.getBytes();
@@ -103,7 +106,7 @@ public class RegisterController {
 		return "redirect:/uploadStatus";
 	}*/
 
-
+	
 
 // end class
 }

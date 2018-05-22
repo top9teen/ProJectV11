@@ -353,8 +353,7 @@ body, h1, h2, h3, h4, h5, h6 {
 						<label class="col-sm-5 control-label">&nbsp;</label>
 						<div class="col-sm-7">
 							<button type="submit" class="btn btn-success">ส่งข้อมูล</button>
-							<a type="button" class="btn btn-danger"
-								href="javascript: document.backForm.submit()"> Back</a>
+							<a type="button" class="btn btn-danger" onclick="black()"> Back</a>
 						</div>
 					</div>
 				</div>
@@ -383,6 +382,17 @@ body, h1, h2, h3, h4, h5, h6 {
 
 	<script type="text/javascript" src="assets/js/checknewuser.js"></script>
 	<script type="text/javascript" src="assets/js/loan_registration.js"></script>
+	<script type="text/javascript">
+	function black() {
+	    var txt;
+	    if (confirm("คุณต้องการจะยกเลิกหรือไม่")) {
+	    	 window.location="/"; 
+	    	
+	    } 
+	    document.getElementById("demo").innerHTML = txt;
+	}
+	
+	</script>
 </body>
 
 </html>

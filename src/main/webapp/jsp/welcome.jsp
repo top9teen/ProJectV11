@@ -56,9 +56,9 @@ body, h1, h2, h3, h4, h5, h6 {
 		<a href="select" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
-		</i>ข้อมูลสินเชื่อรถยนต์</a> <a href="gotoresiter" onclick="w3_close()"
+		</i>ข้อมูลสินเชื่อรถยนต์</a><!--  <a href="gotoresiter" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
-			class="	fa fa-automobile fa-fw w3-margin-right"></i>สมัครสมาชิก</a> <a
+			class="	fa fa-automobile fa-fw w3-margin-right"></i>สมัครสมาชิก</a> --> <a
 			href="gotologin" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="	fa fa-automobile fa-fw w3-margin-right"></i>เข้าสู่ระบบ</a>

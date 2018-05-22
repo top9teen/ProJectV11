@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.bru.model.RegisterallBean;
+import com.bru.model.RegnameBean;
 import com.bru.util.ConnectDB;
 
 @Repository
@@ -30,6 +31,7 @@ public class MenberDao {
 			
 			while(rs.next()) {
 				bean = new RegisterallBean();
+				bean.setRegId(rs.getInt("reg_id"));
 				bean.setRegFirstname(rs.getString("reg_firstname"));
 				bean.setRegLastname(rs.getString("reg_lastname"));
 				bean.setRegTelephone(rs.getInt("reg_telephone"));
@@ -45,4 +47,38 @@ public class MenberDao {
 		}
 		return list;
 	}
+	
+	public List<RegnameBean> listuser2(String name){
+		ConnectDB con = new ConnectDB();
+		PreparedStatement prepared = null;
+		StringBuilder sql = new StringBuilder();
+		List<RegnameBean> list = new ArrayList<>();
+		RegnameBean bean = new RegnameBean();
+		
+		try {
+			
+			sql.append(" SELECT * FROM  regname WHERE na_bankname = ? ");
+			prepared = con.openConnect().prepareStatement(sql.toString());
+			prepared.setString(1,name);
+			ResultSet rs = prepared.executeQuery();
+			
+			while(rs.next()) {
+				bean = new RegnameBean();
+				bean.setRegId(rs.getInt("na_id"));
+				bean.setRegFirstname(rs.getString("na_firstname"));
+				bean.setRegLastname(rs.getString("na_lastname"));
+				bean.setRegTelephone(rs.getInt("na_telephone"));
+				bean.setRegProvince(rs.getString("na_province"));
+				bean.setRegCarmake(rs.getString("na_carmake"));
+				bean.setRegLesslimit(rs.getString("na_lesslimit"));
+				list.add(bean);
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }

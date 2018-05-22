@@ -1,3 +1,4 @@
+<%@page import="com.bru.model.SimpleTestBean"%>
 <%@page import="com.bru.model.SimBean"%>
 <%@page import="com.fasterxml.jackson.annotation.JsonInclude.Include"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -28,9 +29,10 @@ body, h1, h2, h3, h4, h5, h6 {
 
 <%
 	SimBean bean = null;
+	SimpleTestBean test = null;
 %>
 <%
-
+test =(SimpleTestBean) request.getSession().getAttribute("test");
 bean = (SimBean) request.getSession().getAttribute("simbean");
 %>
 <title>Welcome to Project</title>
@@ -99,6 +101,7 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 					<input type="hidden" value="<%=bean.getMybrand()%>"
 						name="Mybrand"> <input type="hidden"
 						value="<%=bean.getMyYear()%>" name="MyYear">
+						<h2>เงินที่คุณต้องการคือ : <%=bean.getPring1() %> บาท</h2>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -109,30 +112,30 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 			</thead>
 			<tbody>
 				<tr>
-					<td><input type="radio" name="yy" value="12">12 งวด</td>
+					<td><input type="radio" name="yy" value="12" checked="checked">12 งวด</td>
 					<td>0.55</td>
-					<td>4444</td>
+					<td><%=test.getPrig1() %></td>
 				</tr>
 				<tr>
 					<td><input type="radio" name="yy" value="24">24 งวด</td>
 					<td>0.55</td>
-					<td>4444</td>
+					<td><%=test.getPrig2() %></td>
 				</tr>
 				<tr>
 					<td><input type="radio" name="yy" value="36">36งวด</td>
 					<td>0.55</td>
-					<td>4444</td>
+					<td><%=test.getPrig3() %></td>
 				</tr>
 				<%if(bean.getPring1() >= 300000){ %>
 				<tr>
 					<td><input type="radio" name="yy" value="48">48 งวด</td>
 					<td>0.60</td>
-					<td>4444</td>
+					<td><%=test.getPrig4() %></td>
 				</tr>
 				<tr>
 					<td><input type="radio" name="yy" value="60">60 งวด</td>
 					<td>0.66</td>
-					<td>4444</td>
+					<td><%=test.getPrig5() %></td>
 				</tr>
 				<%} %>
 			</tbody>
