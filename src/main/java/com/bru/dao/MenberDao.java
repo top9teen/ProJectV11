@@ -97,12 +97,14 @@ public class MenberDao {
 			while(rs.next()) {
 				bean = new RegisterallBean();
 				bean.setRegId(rs.getInt("reg_id"));
+				bean.setRegBankname(rs.getString("reg_bankname"));
 				bean.setRegFirstname(rs.getString("reg_firstname"));
 				bean.setRegLastname(rs.getString("reg_lastname"));
 				bean.setRegTelephone(rs.getInt("reg_telephone"));
 				bean.setRegProvince(rs.getString("reg_province"));
 				bean.setRegCarmake(rs.getString("reg_carmake"));
 				bean.setRegLesslimit(rs.getString("reg_lesslimit"));
+				bean.setRegDate(rs.getDate("reg_date"));
 				list.add(bean);
 			}
 			
@@ -128,12 +130,14 @@ public class MenberDao {
 			while(rs.next()) {
 				bean = new RegnameBean();
 				bean.setRegId(rs.getInt("na_id"));
+				bean.setRegBankname(rs.getString("na_bankname"));
 				bean.setRegFirstname(rs.getString("na_firstname"));
 				bean.setRegLastname(rs.getString("na_lastname"));
 				bean.setRegTelephone(rs.getInt("na_telephone"));
 				bean.setRegProvince(rs.getString("na_province"));
 				bean.setRegCarmake(rs.getString("na_carmake"));
 				bean.setRegLesslimit(rs.getString("na_lesslimit"));
+				bean.setRegDate(rs.getDate("na_date"));
 				list.add(bean);
 			}
 			

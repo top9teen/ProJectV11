@@ -16,10 +16,10 @@
 	</div>
 	</form>
 	<div>
-	<input checked="checked" style="background-color: #FFFFFF;width: 80px;height: 80px;"><p> ไม่เคยทำสินเชื่อ </p>
-	<input checked="checked" style="background-color: #33FF33;width: 80px;height: 80px;"><p> ส่งตรงตามเวลา </p>
-	<input checked="checked" style="background-color: #FF9933;width: 80px;height: 80px;"><p> ส่งช้า1-2เดือน </p>
-	<input checked="checked" style="background-color: #FF3333;width: 80px;height: 80px;"><p> ส่งช้า3เดือนขึ้นไป </p>
+	<input disabled="disabled" checked="checked" style="background-color: #FFFFFF;width: 80px;height: 80px;"><p> ไม่เคยทำสินเชื่อ </p>
+	<input  disabled="disabled" checked="checked" style="background-color: #33FF33;width: 80px;height: 80px;"><p> ส่งตรงตามเวลา </p>
+	<input disabled="disabled" checked="checked" style="background-color: #FF9933;width: 80px;height: 80px;"><p> ส่งช้า1-2เดือน </p>
+	<input disabled="disabled" checked="checked" style="background-color: #FF3333;width: 80px;height: 80px;"><p> ส่งช้า3เดือนขึ้นไป </p>
 	</div>
 	
 <script type="text/javascript">

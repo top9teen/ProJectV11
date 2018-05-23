@@ -61,17 +61,19 @@ body, h1, h2, h3, h4, h5, h6 {
 	<div class="w3-bar-block">
 		<a href="gototabel" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
-			class="	fa fa-automobile fa-fw w3-margin-right"></i>รอการตอบกลับ</a>  <a
+			class="	fa fa-automobile fa-fw w3-margin-right"></i>รอการตอบกลับ</a> <a
 			href="gotofist" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
 		</i>ดูรายชื่อที่ทำสินเชื่อ</a> <a href="selidcard" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
-		</i>ระบบเช็คเครดิต</a><!-- <a href="updatecar" onclick="w3_close()"
+		</i>ระบบเช็คเครดิต</a>
+		<!-- <a href="updatecar" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
-		</i>อัพเดทราคารถยนต์</a> --> <a href="logout" onclick="w3_close()"
+		</i>อัพเดทราคารถยนต์</a> -->
+		<a href="logout" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"> <i
 			class="	fa fa-automobile fa-fw w3-margin-right"></i>ออกจากระบบ
 		</a>
@@ -100,6 +102,24 @@ body, h1, h2, h3, h4, h5, h6 {
 		</div>
 		</header>
 		<%
+						if (result.equals("sss")) {
+					%>
+		<div class="alert alert-success">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>สำเร็จ </strong> เรียบร้อย
+		</div>
+
+		<%	}	%>
+		<%
+						if (result.equals("gg")) {
+					%>
+		<div class="alert alert-danger">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>เตือน  </strong> ได้เพิ่มไว้ก่อนหน้านี้แล้ว
+		</div>
+
+		<%	}	%>
+		<%
 			if (result.equals("1")) {
 		%>
 		<div class="blank">
@@ -126,7 +146,7 @@ body, h1, h2, h3, h4, h5, h6 {
 		<%
 			}
 		%>
-	
+
 		<div class="w3-row-padding w3-padding-16" id="about">
 			<div class="w3-col m6">
 				<img src="assets/img/car4.jpg" alt="Me" style="width: 100%">

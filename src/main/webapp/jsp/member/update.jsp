@@ -113,6 +113,7 @@ body, h1, h2, h3, h4, h5, h6 {
 						</label>
 						<div class="col-sm-7">
 						<input type="hidden" value="<%=be.getRegBankname()%>" name="bankName">
+						<input type="hidden" value="<%=be.getRegId()%>" name="idname">
 							<input type="text" maxlength="100"
 								value="<%=be.getRegFirstname()%>" id="firstname"
 								class="form-calculate" disabled="disabled"> <input

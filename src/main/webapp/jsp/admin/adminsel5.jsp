@@ -195,7 +195,7 @@ bean = (UserAllBean) request.getSession().getAttribute("Login");
 				<div class="panel panel-default">
 					
 					<div class="panel-body">
-						
+						<h2 align="center">ดูรายละเอียดธนาคาร</h2>
 						<form name="welcome" action="." method="post">
 <input type="hidden" name="regid" id="regid">
 		<table class="table table-bordered">

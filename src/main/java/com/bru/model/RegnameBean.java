@@ -24,6 +24,16 @@ public class RegnameBean {
 	private String regImgLeft;
 	private String regImgright;
 	private Date regDate;
+	private int regidrole;
+	
+	
+	
+	public int getRegidrole() {
+		return regidrole;
+	}
+	public void setRegidrole(int regidrole) {
+		this.regidrole = regidrole;
+	}
 	public int getRegId() {
 		return regId;
 	}

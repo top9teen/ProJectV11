@@ -60,7 +60,7 @@ public class RegisterDao {
 
 		try {
 			sql.append(
-					" INSERT INTO  regname(na_bankname,na_firstname,na_lastname,na_age,na_province,na_telephone,na_idcard,na_email,na_carmodel,na_carmake,na_totalincome,na_salary,na_lesslimit,na_lessday,na_imgfront,na_imgback,na_imgleft,na_imgright,na_date) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
+					" INSERT INTO  regname(na_bankname,na_firstname,na_lastname,na_age,na_province,na_telephone,na_idcard,na_email,na_carmodel,na_carmake,na_totalincome,na_salary,na_lesslimit,na_lessday,na_imgfront,na_imgback,na_imgleft,na_imgright,na_date,na_idrole) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
 			prepared = con.openConnect().prepareStatement(sql.toString());
 			prepared.setString(1, bean.getRegBankname());
 			prepared.setString(2, bean.getRegFirstname());
@@ -81,6 +81,7 @@ public class RegisterDao {
 			prepared.setString(17, bean.getRegImgLeft());
 			prepared.setString(18, bean.getRegImgright());
 			prepared.setDate(19, new Date(bean.getRegDate().getTime()));
+			prepared.setInt(20, bean.getRegidrole());
 
 			prepared.executeUpdate();
 		} catch (Exception e) {
@@ -88,6 +89,29 @@ public class RegisterDao {
 			e.printStackTrace();
 		}
 
+	}
+	//ckerename
+	public RegnameBean ck(int idname) {
+		RegnameBean bean = new RegnameBean();
+		
+		ConnectDB con = new ConnectDB();
+		PreparedStatement prepared = null;
+		StringBuilder sql = new StringBuilder();
+
+		try {
+			sql.append(" SELECT * FROM regname WHERE na_idrole = ?");
+			prepared = con.openConnect().prepareStatement(sql.toString());
+			prepared.setInt(1, idname);
+			ResultSet rs = prepared.executeQuery();
+			while (rs.next()) {
+				bean.setRegidrole(rs.getInt("na_idrole"));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return bean ;
 	}
 
 	// sel reg 1 to 1
@@ -105,6 +129,7 @@ public class RegisterDao {
 
 			ResultSet rs = prepared.executeQuery();
 			while (rs.next()) {
+				bean.setRegId(rs.getInt("reg_id"));
 				bean.setRegBankname(rs.getString("reg_bankname"));
 				bean.setRegFirstname(rs.getString("reg_firstname"));
 				bean.setRegLastname(rs.getString("reg_lastname"));
