@@ -60,8 +60,8 @@
 									</a>
 									<div class="message-body">
 										<small class="pull-right">3 mins ago</small> <a href="#"><strong>John
-												Doe</strong> commented on <strong>your photo</strong>.</a> <br />
-										<small class="text-muted">1:24 pm - 25/03/2015</small>
+												Doe</strong> commented on <strong>your photo</strong>.</a> <br /> <small
+											class="text-muted">1:24 pm - 25/03/2015</small>
 									</div>
 								</div>
 							</li>
@@ -74,8 +74,8 @@
 									<div class="message-body">
 										<small class="pull-right">1 hour ago</small> <a href="#">New
 											message from <strong>Jane Doe</strong>.
-										</a> <br />
-										<small class="text-muted">12:27 pm - 25/03/2015</small>
+										</a> <br /> <small class="text-muted">12:27 pm -
+											25/03/2015</small>
 									</div>
 								</div>
 							</li>
@@ -164,6 +164,15 @@
 					</a></li>
 					<li><a class="" href="adminsel3"> <span
 							class="fa fa-arrow-right">&nbsp;</span> ดูรายละเอียดธนาคาร
+					</a></li>
+					<li><a class="" href="adminmsg"> <span
+							class="fa fa-arrow-right">&nbsp;</span> ข้อความจากสมาชิก
+					</a></li>
+					<li><a class="" href="adminupdate"> <span
+							class="fa fa-arrow-right">&nbsp;</span> อัพเดทราคารถยนต์
+					</a></li>
+					<li><a class="" href="admininsert"> <span
+							class="fa fa-arrow-right">&nbsp;</span> เพิ่มรถยนต์
 					</a></li>
 				</ul></li>
 			<li><a href="logoutadmin"><em class="fa fa-power-off">&nbsp;</em>

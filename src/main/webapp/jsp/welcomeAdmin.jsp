@@ -125,8 +125,17 @@ bean = (UserAllBean) request.getSession().getAttribute("Login");
 					<li><a class="" href="adminsel2">
 						<span class="fa fa-arrow-right">&nbsp;</span> ดูสินเชื่อที่ผ่านอนุมัต
 					</a></li>
-					<li><a class="" href="#">
+					<li><a class="" href="adminsel3">
 						<span class="fa fa-arrow-right">&nbsp;</span> ดูรายละเอียดธนาคาร
+					</a></li>
+					<li><a class="" href="adminmsg">
+						<span class="fa fa-arrow-right">&nbsp;</span> ข้อความจากสมาชิก
+					</a></li>
+					<li><a class="" href="adminupdate">
+						<span class="fa fa-arrow-right">&nbsp;</span> อัพเดทราคารถยนต์
+					</a></li>
+					<li><a class="" href="admininsert">
+						<span class="fa fa-arrow-right">&nbsp;</span> เพิ่มรถยนต์
 					</a></li>
 				</ul>
 			</li>

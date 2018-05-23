@@ -4,11 +4,26 @@
 	pageEncoding="utf-8"%>
 <%@page import="com.bru.model.RegisterallBean"%>
 <%@page import="java.util.List"%>
+<%@page import="com.bru.model.*"%>
 <%
 	List<RegisterallBean> list = null;
 %>
 <%
 	list = (List<RegisterallBean>) request.getSession().getAttribute("listUser");
+%>
+<%
+	KasikornPriceBean kabean = null;
+	KrungsriPriceBean krbean = null;
+	ScbeasyPriceBean scbean = null;
+	ThanachartPriceBean thbean = null;
+	SimBean sibran = null;
+%>
+<%
+	kabean = (KasikornPriceBean) request.getSession().getAttribute("kabean");
+	krbean = (KrungsriPriceBean) request.getSession().getAttribute("krbean");
+	scbean = (ScbeasyPriceBean) request.getSession().getAttribute("scbean");
+	thbean = (ThanachartPriceBean) request.getSession().getAttribute("thbean");
+	sibran = (SimBean) request.getSession().getAttribute("simbean");
 %>
 <html xmlns:th="http://www.thymeleaf.org">
 <html>
@@ -33,17 +48,9 @@
 <body>
 	<%
 		UserAllBean bean = null;
-		RegisterallBean be = null;
-	%>
-	<%
-		String result = "";
-	%>
-	<%
-		result = (String) request.getAttribute("se");
 	%>
 	<%
 		bean = (UserAllBean) request.getSession().getAttribute("Login");
-		be = (RegisterallBean) request.getSession().getAttribute("resultBean");
 	%>
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
@@ -68,8 +75,8 @@
 									</a>
 									<div class="message-body">
 										<small class="pull-right">3 mins ago</small> <a href="#"><strong>John
-												Doe</strong> commented on <strong>your photo</strong>.</a> <br />
-										<small class="text-muted">1:24 pm - 25/03/2015</small>
+												Doe</strong> commented on <strong>your photo</strong>.</a> <br /> <small
+											class="text-muted">1:24 pm - 25/03/2015</small>
 									</div>
 								</div>
 							</li>
@@ -82,8 +89,8 @@
 									<div class="message-body">
 										<small class="pull-right">1 hour ago</small> <a href="#">New
 											message from <strong>Jane Doe</strong>.
-										</a> <br />
-										<small class="text-muted">12:27 pm - 25/03/2015</small>
+										</a> <br /> <small class="text-muted">12:27 pm -
+											25/03/2015</small>
 									</div>
 								</div>
 							</li>
@@ -163,27 +170,26 @@
 					data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em
 						class="fa fa-plus"></em></span>
 			</a>
-			<ul class="children collapse" id="sub-item-1">
-					<li><a class="" href="adminsel1">
-						<span class="fa fa-arrow-right">&nbsp;</span> ดูสินเชื่อทั้งหมด
+				<ul class="children collapse" id="sub-item-1">
+					<li><a class="" href="adminsel1"> <span
+							class="fa fa-arrow-right">&nbsp;</span> ดูสินเชื่อทั้งหมด
 					</a></li>
-					<li><a class="" href="adminsel2">
-						<span class="fa fa-arrow-right">&nbsp;</span> ดูสินเชื่อที่ผ่านอนุมัต
+					<li><a class="" href="adminsel2"> <span
+							class="fa fa-arrow-right">&nbsp;</span> ดูสินเชื่อที่ผ่านอนุมัต
 					</a></li>
-					<li><a class="" href="adminsel3">
-						<span class="fa fa-arrow-right">&nbsp;</span> ดูรายละเอียดธนาคาร
+					<li><a class="" href="adminsel3"> <span
+							class="fa fa-arrow-right">&nbsp;</span> ดูรายละเอียดธนาคาร
 					</a></li>
-					<li><a class="" href="adminmsg">
-						<span class="fa fa-arrow-right">&nbsp;</span> ข้อความจากสมาชิก
+					<li><a class="" href="adminmsg"> <span
+							class="fa fa-arrow-right">&nbsp;</span> ข้อความจากสมาชิก
 					</a></li>
-					<li><a class="" href="adminupdate">
-						<span class="fa fa-arrow-right">&nbsp;</span> อัพเดทราคารถยนต์
+					<li><a class="" href="adminupdate"> <span
+							class="fa fa-arrow-right">&nbsp;</span> อัพเดทราคารถยนต์
 					</a></li>
-					<li><a class="" href="admininsert">
-						<span class="fa fa-arrow-right">&nbsp;</span> เพิ่มรถยนต์
+					<li><a class="" href="admininsert"> <span
+							class="fa fa-arrow-right">&nbsp;</span> เพิ่มรถยนต์
 					</a></li>
-				</ul>
-				</li>
+				</ul></li>
 			<li><a href="logoutadmin"><em class="fa fa-power-off">&nbsp;</em>
 					Logout</a></li>
 		</ul>
@@ -253,233 +259,44 @@
 				<div class="panel panel-default">
 
 					<div class="panel-body">
-
-						<form id="loanForm" name="loanForm" action="rename" method="post"
-							class="form-horizontal loan-registration" role="form"
-							autocomplete="off" enctype="multipart/form-data">
-							<h1 a><%=be.getRegFirstname()%></h1>
-
-							<div class="row">
-								<div class="col-md-6">
-									<label for="firstname" class="col-sm-5 control-label">ชื่อ<span
-										class="red-star">*</span>:
+						<h2 align="center">แก้ไขราคารถยนต์</h2>
+						<form action="gotoupdatecarall" method="post"
+							OnSubmit="return fncSubmit();" name="prig">
+							<div class="form-group" align="center">
+										<input type="hidden" value="<%=sibran.getMycar()%>" name="Mycar">
+					<input type="hidden" value="<%=sibran.getMybrand()%>"
+						name="Mybrand"> <input type="hidden"
+						value="<%=sibran.getMyYear()%>" name="MyYear">
+								<div class="form-group">
+									<label for="exampleInputEmail1"> ธนาคคารกสิกร : <input
+										type="number" name="ka" value="<%=kabean.getKaPrice()%>"
+										class="form-control">
 									</label>
-									<div class="col-sm-7">
-										<input type="hidden" value="<%=be.getRegBankname()%>"
-											name="bankName"> <input type="text" maxlength="100"
-											value="<%=be.getRegFirstname()%>" id="firstname"
-											class="form-calculate" disabled="disabled"> <input
-											type="hidden" value="<%=be.getRegFirstname()%>"
-											name="firstName">
-									</div>
 								</div>
-								<div class="col-md-6">
-									<label for="lastname" class="col-sm-5 control-label">นามสกุล<span
-										class="red-star">*</span>:
+								<div class="form-group">
+									<label for="exampleInputEmail1"> ธนาคารกรุงศรี : <input
+										type="number" name="kr" value="<%=krbean.getKrPrice()%>"
+										class="form-control">
 									</label>
-									<div class="col-sm-7">
-										<input type="text" maxlength="150"
-											value="<%=be.getRegLastname()%>" id="lastname"
-											class="form-calculate" disabled="disabled"> <input
-											type="hidden" value="<%=be.getRegLastname()%>"
-											name="lastName">
-									</div>
 								</div>
-							</div>
-							<div class="col-md-6">
-								<label for="age" class="col-sm-5 control-label">อายุ<span
-									class="red-star">*</span>:
-								</label>
-								<div class="col-sm-7">
-									<input type="number" maxlength="3" value="<%=be.getRegAge()%>"
-										id="age" class="form-calculate" disabled="disabled"> <input
-										type="hidden" value="<%=be.getRegAge()%>" name="age">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<label for="province" class="col-sm-5 control-label">จังหวัดที่อยู่ปัจจุบัน<span
-									class="red-star">*</span>:
-								</label>
-								<div class="col-sm-7">
-									<input type="text" value="<%=be.getRegProvince()%>" id="age"
-										class="form-calculate" disabled="disabled"> <input
-										type="hidden" value="<%=be.getRegProvince()%>" name="province">
-								</div>
-							</div>
-
-							<div class="row ">
-								<div class="col-md-6">
-									<label for="tel" class="col-sm-5 control-label">เบอร์โทรศัพท์ที่ติดต่อได้<span
-										class="red-star">*</span>:
+								<div class="form-group">
+									<label for="exampleInputEmail1"> ธนาคาร SCB : <input
+										type="number" name="sc" value="<%=scbean.getScPrice()%>"
+										class="form-control">
 									</label>
-									<div class="col-sm-7">
-										<input type="number" name="" maxlength="50"
-											value="<%=be.getRegTelephone()%>" id="tel"
-											class="form-calculate" disabled="disabled"> <input
-											value="<%=be.getRegTelephone()%>" type="hidden"
-											name="telephoneNo">
-									</div>
 								</div>
-								<div class="col-md-6">
-									<label for="tel" class="col-sm-5 control-label">เลขบัตรประชาชน<span
-										class="red-star">*</span>:
+								<div class="form-group">
+
+									<label for="exampleInputEmail1"> ธนาคาร ธนชาติ : <input
+										type="number" name="th" value="<%=thbean.getThPrice()%>"
+										class="form-control">
 									</label>
-									<div class="col-sm-7">
-										<input type="number" name="" maxlength="13"
-											value="<%=be.getRegIdCard()%>" disabled="disabled"> <input
-											value="<%=be.getRegIdCard()%>" type="hidden" name="idcard">
-									</div>
 								</div>
-								<div class="col-md-6">
-									<label for="email" class="col-sm-5 control-label">อีเมล์<span
-										class="red-star">*</span>:
-									</label>
-									<div class="col-sm-7">
-										<input type="text" name="" maxlength="90"
-											value="<%=be.getRegEmail()%>" id="email"
-											class="form-calculate" disabled="disabled"> <input
-											value="<%=be.getRegEmail()%>" type="hidden" name="email">
-									</div>
+								<div class="panel-footer" align="center"
+									style="background: transparent;">
+									<input type="submit" value="ยืนยัน" class="btn btn-success">
 								</div>
 							</div>
-							<div class="row ">
-								<div class="col-md-6">
-									<label for="brand" class="col-sm-5 control-label">ยี่ห้อ<span
-										class="red-star">*</span>:
-									</label>
-									<div class="col-sm-7">
-										<input type="text" maxlength="50"
-											value="<%=be.getRegCarmake()%>" id="brand"
-											class="form-calculate" disabled="disabled"> <input
-											type="hidden" name="carMake" value="<%=be.getRegCarmake()%>">
-
-									</div>
-								</div>
-								<div class="col-md-6">
-									<label for="model" class="col-sm-5 control-label">รุ่น<span
-										class="red-star">*</span>:
-									</label>
-									<div class="col-sm-7">
-										<input type="text" name="" maxlength="250"
-											value="<%=be.getRegCarmodel()%>" id="model"
-											disabled="disabled" class="form-calculate"> <input
-											type="hidden" name="carModel"
-											value="<%=be.getRegCarmodel()%>">
-									</div>
-								</div>
-							</div>
-							<div class="row ">
-								<div class="col-md-6">
-									<label for="year_registration" class="col-sm-5 control-label">ปีที่จดทะเบียน
-										(ค.ศ.)<span class="red-star">*</span>:
-									</label>
-									<div class="col-sm-7">
-
-										<input type="text" name="" maxlength="13"
-											value="<%=be.getRegTotalincome()%>" id="income"
-											class="form-calculate" disabled="disabled"> <input
-											type="hidden" name="totalIncome"
-											value="<%=be.getRegTotalincome()%>" id="income"
-											class="form-calculate">
-
-									</div>
-								</div>
-								<div class="col-md-6">
-									<label for="income" class="col-sm-5 control-label">รายได้สุทธิต่อเดือน<span
-										class="red-star">*</span>:
-									</label>
-									<div class="col-sm-7">
-										<input type="text" name="" disabled="disabled"
-											value="<%=be.getRegSalary()%>" id="income"
-											class="form-calculate"> <input type="hidden"
-											value="<%=be.getRegSalary()%>" name="salary">
-									</div>
-								</div>
-							</div>
-							<div class="row ">
-								<div class="col-md-6">
-									<label for="loan_amount" class="col-sm-5 control-label">วงเงินขั้นต่ำที่ต้องการ<span
-										class="red-star">*</span>:
-									</label>
-									<div class="col-sm-7">
-										<input type="text" name="" maxlength="13"
-											value="<%=be.getRegLesslimit()%>" id="loan_amount"
-											class="form-calculate" disabled="disabled"> <input
-											type="hidden" name="lessLimit"
-											value="<%=be.getRegLesslimit()%>" class="form-calculate">
-
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<label for="period" class="col-sm-5 control-label">ระยะเวลาในการชำระคืน<span
-									class="red-star">*</span>:
-								</label>
-								<div class="col-sm-7">
-
-									<input type="text" maxlength="13"
-										value="<%=be.getRegLessday()%>" id="loan_amount"
-										class="form-calculate" disabled> <input type="hidden"
-										name="lassday" value="<%=be.getRegLessday()%>"
-										class="form-calculate">
-								</div>
-							</div>
-							<div>
-								<label for="period" class="col-sm-5 control-label">
-									รูปรถด้านหน้า<span class="red-star">*</span>:
-								</label> <input type="hidden" value="<%=be.getRegImgfront()%>"
-									name="file1"> <img alt=""
-									src="<%=be.getRegImgfront()%>">
-							</div>
-							<div>
-								<label for="period" class="col-sm-5 control-label">
-									รูปรถด้านหลัง<span class="red-star">*</span>:
-								</label> <input type="hidden" value="<%=be.getRegImgback()%>"
-									name="file2"> <img alt="" src="<%=be.getRegImgback()%>">
-							</div>
-							<div>
-								<label for="period" class="col-sm-5 control-label">
-									รูปรถด้านซ้าย<span class="red-star">*</span>:
-								</label> <input type="hidden" value="<%=be.getRegImgLeft()%>"
-									name="file3"> <img alt="" src="<%=be.getRegImgLeft()%>">
-							</div>
-							<div>
-								<label for="period" class="col-sm-5 control-label">
-									รูปรถด้านขวา<span class="red-star">*</span>:
-								</label> <input type="hidden" value="<%=be.getRegImgright()%>"
-									name="file4"> <img alt=""
-									src="<%=be.getRegImgright()%>">
-							</div>
-							<!-- 	<div class="col-md-6">
-						<label for="period" class="col-sm-5 control-label">
-							รูปรถของท่าน<span class="red-star">*</span>:
-						</label> <label for="period" class="col-sm-5 control-label">
-							รูปรถด้านหน้า<span class="red-star">*</span>:
-						</label> <input type="file" name="file1" class="form-calculate"> <label
-							for="period" class="col-sm-5 control-label">
-							รูปรถด้าหลัง<span class="red-star">*</span>:
-						</label> <input type="file" name="file2" class="form-calculate"> <label
-							for="period" class="col-sm-5 control-label">
-							รูปรถด้านซ้าย<span class="red-star">*</span>:
-						</label> <input type="file" name="file3" class="form-calculate"> <label
-							for="period" class="col-sm-5 control-label">
-							รูปรถด้านขวา<span class="red-star">*</span>:
-						</label> <input type="file" name="file4" class="form-calculate">
-
-					</div>  -->
-
-							<br>
-							<div id="divSubmit" class="row " align="center">
-								<div class="col-md-6">
-									<label class="col-sm-5 control-label">&nbsp;</label>
-									<div class="col-sm-7">
-										<a type="button" class="btn btn-danger" onclick="black()">
-											Back</a>
-									</div>
-								</div>
-
-							</div>
-
 						</form>
 
 					</div>
@@ -768,24 +585,17 @@
 	<script src="assets/admin/js/bootstrap-datepicker.js"></script>
 	<script src="assets/admin/js/custom.js"></script>
 	<script>
-		window.onload = function () {
-	var chart1 = document.getElementById("line-chart").getContext("2d");
-	window.myLine = new Chart(chart1).Line(lineChartData, {
-	responsive: true,
-	scaleLineColor: "rgba(0,0,0,.2)",
-	scaleGridLineColor: "rgba(0,0,0,.05)",
-	scaleFontColor: "#c5c7cc"
-	});
-};
-function black() {
-	var txt;
-	if (confirm("คุณต้องการจะย้อนกลับหรือไม่")) {
-		window.location = "/adminsel1";
-
-	}
-	document.getElementById("demo").innerHTML = txt;
-}
+		window.onload = function() {
+			var chart1 = document.getElementById("line-chart").getContext("2d");
+			window.myLine = new Chart(chart1).Line(lineChartData, {
+				responsive : true,
+				scaleLineColor : "rgba(0,0,0,.2)",
+				scaleGridLineColor : "rgba(0,0,0,.05)",
+				scaleFontColor : "#c5c7cc"
+			});
+		};
 	</script>
+	<script type="text/javascript" src="assets/js/selcarall.js"></script>
 
 </body>
 </html>

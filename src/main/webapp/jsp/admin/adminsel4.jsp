@@ -162,16 +162,26 @@
 						class="fa fa-plus"></em></span>
 			</a>
 				<ul class="children collapse" id="sub-item-1">
-					<li><a class="" href="adminsel1"> <span
-							class="fa fa-arrow-right">&nbsp;</span> ดูสินเชื่อทั้งหมด
+					<li><a class="" href="adminsel1">
+						<span class="fa fa-arrow-right">&nbsp;</span> ดูสินเชื่อทั้งหมด
 					</a></li>
-					<li><a class="" href="adminsel2"> <span
-							class="fa fa-arrow-right">&nbsp;</span> ดูสินเชื่อที่ผ่านอนุมัต
+					<li><a class="" href="adminsel2">
+						<span class="fa fa-arrow-right">&nbsp;</span> ดูสินเชื่อที่ผ่านอนุมัต
 					</a></li>
-					<li><a class="" href="adminsel3"> <span
-							class="fa fa-arrow-right">&nbsp;</span> ดูรายละเอียดธนาคาร
+					<li><a class="" href="adminsel3">
+						<span class="fa fa-arrow-right">&nbsp;</span> ดูรายละเอียดธนาคาร
 					</a></li>
-				</ul></li>
+					<li><a class="" href="adminmsg">
+						<span class="fa fa-arrow-right">&nbsp;</span> ข้อความจากสมาชิก
+					</a></li>
+					<li><a class="" href="adminupdate">
+						<span class="fa fa-arrow-right">&nbsp;</span> อัพเดทราคารถยนต์
+					</a></li>
+					<li><a class="" href="admininsert">
+						<span class="fa fa-arrow-right">&nbsp;</span> เพิ่มรถยนต์
+					</a></li>
+				</ul>
+				</li>
 			<li><a href="logoutadmin"><em class="fa fa-power-off">&nbsp;</em>
 					Logout</a></li>
 		</ul>

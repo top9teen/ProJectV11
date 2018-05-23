@@ -122,7 +122,7 @@ bean = (UserAllBean) request.getSession().getAttribute("Login");
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 				<em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
-				<ul class="children collapse" id="sub-item-1">
+			<ul class="children collapse" id="sub-item-1">
 					<li><a class="" href="adminsel1">
 						<span class="fa fa-arrow-right">&nbsp;</span> ดูสินเชื่อทั้งหมด
 					</a></li>
@@ -131,6 +131,15 @@ bean = (UserAllBean) request.getSession().getAttribute("Login");
 					</a></li>
 					<li><a class="" href="adminsel3">
 						<span class="fa fa-arrow-right">&nbsp;</span> ดูรายละเอียดธนาคาร
+					</a></li>
+					<li><a class="" href="adminmsg">
+						<span class="fa fa-arrow-right">&nbsp;</span> ข้อความจากสมาชิก
+					</a></li>
+					<li><a class="" href="adminupdate">
+						<span class="fa fa-arrow-right">&nbsp;</span> อัพเดทราคารถยนต์
+					</a></li>
+					<li><a class="" href="admininsert">
+						<span class="fa fa-arrow-right">&nbsp;</span> เพิ่มรถยนต์
 					</a></li>
 				</ul>
 			</li>

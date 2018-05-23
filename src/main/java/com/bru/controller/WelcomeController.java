@@ -20,6 +20,7 @@ import com.bru.dao.UserAllDao;
 import com.bru.model.ColeridcardBean;
 import com.bru.model.KasikornPriceBean;
 import com.bru.model.KrungsriPriceBean;
+import com.bru.model.MsgadminBean;
 import com.bru.model.RegisterallBean;
 import com.bru.model.RegnameBean;
 import com.bru.model.ScbeasyPriceBean;
@@ -101,12 +102,36 @@ public class WelcomeController {
 		model.addAttribute("se", "3");
 		return "welcomeMember";
 	}
+	@RequestMapping("/msg")
+	public String msg(Model model) {
+		
+		model.addAttribute("se", "5");
+		model.addAttribute("dd", "");
+		return "welcomeMember";
+	}
+	@RequestMapping("/gotomsg")
+	public String msgg(Model model,String name ,String msghard ,String msgbody) {
+		name=uu;
+		MsgadminBean  bean = new MsgadminBean();
+		bean.setMsName(name);
+		bean.setMsMsgbody(msgbody);
+		bean.setMsMsghard(msghard);
+		bean.setMsDate(new Date());
+		try {
+
+		menberDao.sssss(bean);
+		model.addAttribute("se", "5");
+		model.addAttribute("dd", "L");
+		} catch (Exception e) {
+			model.addAttribute("se", "5");
+			model.addAttribute("dd", "G");
+		}
+		return "welcomeMember";
+	}
 
 	@RequestMapping("/car2")
 	public String credit2(Model model, String groupType, String carMake, String carMake2, HttpServletRequest reqest) {
 		String lin = "";
-		String a = groupType;
-		String b = carMake2;
 		SimBean bb = new SimBean();
 		KasikornPriceBean kabean = new KasikornPriceBean();
 		KrungsriPriceBean krbean = new KrungsriPriceBean();

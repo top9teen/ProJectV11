@@ -1,11 +1,13 @@
 package com.bru.controller;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.tomcat.util.buf.UEncoder;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +18,16 @@ import com.bru.dao.CustomerDao;
 import com.bru.dao.MenberDao;
 import com.bru.dao.RegisterDao;
 import com.bru.dao.UserAllDao;
+import com.bru.model.KasikornPriceBean;
+import com.bru.model.KrungsriPriceBean;
+import com.bru.model.MsgadminBean;
 import com.bru.model.RegisterallBean;
 import com.bru.model.RegnameBean;
+import com.bru.model.ScbeasyPriceBean;
+import com.bru.model.SimBean;
+import com.bru.model.SimpleTestBean;
+import com.bru.model.ThanachartPriceBean;
+import com.bru.model.UpdatecarBean;
 import com.bru.model.UserAllBean;
 
 @Controller
@@ -125,6 +135,82 @@ public class AdminController {
 		res.getSession().setAttribute("listUser", list);
 		model.addAttribute("se", "");
 		return "admin/adminsel5";
+	}
+	
+	@RequestMapping("/adminmsg")
+	public String adminmsg(HttpServletRequest res) {
+		List<MsgadminBean> list = new ArrayList<>();
+		list=menberDao.listmsg();
+		res.getSession().setAttribute("listUser", list);
+		return "admin/adminsel6";
+	}
+	
+	@RequestMapping("/adminupdate")
+	public String adminupdate(HttpServletRequest res , Model model) {
+		model.addAttribute("ss", "");
+		return "admin/adminsel7";
+	}
+	@RequestMapping("/gotoupdatecar")
+	public String gotoupdatecar(Model model, String groupType, String carMake, String carMake2, HttpServletRequest reqest) {
+		String lin = "";
+		SimBean bb = new SimBean();
+		KasikornPriceBean kabean = new KasikornPriceBean();
+		KrungsriPriceBean krbean = new KrungsriPriceBean();
+		ScbeasyPriceBean scbean = new ScbeasyPriceBean();
+		ThanachartPriceBean thbean = new ThanachartPriceBean();
+		try {
+			kabean = customerDao.checkpriceKa(groupType, carMake2);
+			krbean = customerDao.checkpricekr(groupType, carMake2);
+			scbean = customerDao.checkpricesc(groupType, carMake2);
+			thbean = customerDao.checkpriceth(groupType, carMake2);
+			if (kabean.getKaPrice() > 0 && krbean.getKrPrice() > 0 && scbean.getScPrice() > 0
+					&& thbean.getThPrice() > 0) {
+				lin = "admin/adminsel8";
+				bb.setMycar(carMake);
+				bb.setMybrand(carMake2);
+				bb.setMyYear(groupType);
+			} else {
+				lin = "admin/adminsel7";
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		//// model.addAttribute("sel1","1");
+		/// model.addAttribute("sel2","1");
+		reqest.getSession().setAttribute("kabean", kabean);
+		reqest.getSession().setAttribute("krbean", krbean);
+		reqest.getSession().setAttribute("scbean", scbean);
+		reqest.getSession().setAttribute("thbean", thbean);
+		reqest.getSession().setAttribute("simbean", bb);
+		model.addAttribute("ss", "");
+		return lin;
+	}
+	
+	@RequestMapping("/gotoupdatecarall")
+	public String gotoupdatecarall(int ka,int sc,int th,int kr,Model model ,HttpServletRequest request,String bb,String Mycar ,String MyYear ,String Mybrand) {
+		UpdatecarBean bean = new UpdatecarBean();
+		String kk = "";
+		bean.setCar(Mybrand);
+		bean.setKa(ka);
+		bean.setKr(kr);
+		bean.setSc(sc);
+		bean.setTh(th);
+		try {
+			menberDao.ka2(bean);
+			menberDao.kr2(bean);
+			menberDao.sc2(bean);
+			menberDao.th2(bean);
+			model.addAttribute("ss", "1");
+			kk="admin/adminsel7";
+		} catch (Exception e) {
+			// TODO: handle exception
+			model.addAttribute("ss", "2");
+			kk= "admin/adminsel7";
+		}
+		
+		return kk ;
 	}
 	// end class
 }

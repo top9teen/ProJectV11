@@ -74,10 +74,10 @@ body, h1, h2, h3, h4, h5, h6 {
 		</i>ดูรายชื่อที่ทำสินเชื่อ</a> <a href="selidcard" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
-		</i>ระบบเช็คเครดิต</a><!-- <a href="updatecar" onclick="w3_close()"
+		</i>ระบบเช็คเครดิต</a><a href="msg" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
-		</i>อัพเดทราคารถยนต์</a> --> <a href="logout" onclick="w3_close()"
+		</i>ข้อความถึงผู้ดูเเล</a>  <a href="logout" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"> <i
 			class="	fa fa-automobile fa-fw w3-margin-right"></i>ออกจากระบบ
 		</a>

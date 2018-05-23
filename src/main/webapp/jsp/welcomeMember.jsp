@@ -32,9 +32,11 @@ body, h1, h2, h3, h4, h5, h6 {
 %>
 <%
 	String result = "";
+String result2 = "";
 %>
 <%
 	result = (String) request.getAttribute("se");
+result2 = (String) request.getAttribute("dd");
 %>
 <%
 	bean = (UserAllBean) request.getSession().getAttribute("Login");
@@ -69,10 +71,10 @@ body, h1, h2, h3, h4, h5, h6 {
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
 		</i>ระบบเช็คเครดิต</a>
-		<!-- <a href="updatecar" onclick="w3_close()"
+		 <a href="msg" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
 			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
-		</i>อัพเดทราคารถยนต์</a> -->
+		</i>ข้อความถึงผู้ดูเเล</a> 
 		<a href="logout" onclick="w3_close()"
 			class="w3-bar-item w3-button w3-padding w3-text-teal"> <i
 			class="	fa fa-automobile fa-fw w3-margin-right"></i>ออกจากระบบ
@@ -146,6 +148,54 @@ body, h1, h2, h3, h4, h5, h6 {
 		<%
 			}
 		%>
+		<%if(result.equals("5")){ %>
+		<div class="container" >
+		
+		<form name="msg" action="gotomsg" method="post" OnSubmit="return fncSubmit();">
+			<div class="panel panel-primary" style="margin-top: 15%">
+				<div class="panel-heading" align="center"></div>
+				<h2 align="center">WELCOME MAP CAR</h2>
+				<br>
+				<div class="panel-body"> 
+				<%
+						if (result2.equals("E")) {
+					%>
+					<div class="alert alert-danger">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>danner </strong> error 
+					</div>
+					
+					<%
+						}else if(result2.equals("L")){
+					%>
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							<div class="alert alert-success">
+						<strong>Success </strong>  Success
+					</div>
+					<%
+						}
+					%>
+					<div class="form-group">
+						<label for="exampleInputEmail1">ชื่อเรื่อง</label> <input type="text"
+							class="form-control" name="msghard">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">ข้อความ</label><textarea  rows="5" class="form-control" cols="" name="msgbody"></textarea>
+					</div>
+					<input type="hidden" value=" <%=bean.getUsFname()%>" name="name">
+				<br>
+				<div class="panel-footer" align="right">
+					<input type="submit" class="btn btn-success" value="ส่งข่อความ">&nbsp;
+				</div>
+			</div>
+			</div>
+		</form>
+	</div>
+	
+		
+		</div>
+		
+		<%} %>
 
 		<div class="w3-row-padding w3-padding-16" id="about">
 			<div class="w3-col m6">
@@ -177,17 +227,19 @@ body, h1, h2, h3, h4, h5, h6 {
 			document.getElementById("mySidebar").style.display = "none";
 			document.getElementById("myOverlay").style.display = "none";
 		}
-		function fncSubmit() {
-			if (document.gotohome.email.value == "") {
-				alert('Please input Email');
-				document.gotohome.username.focus();
+		function fncSubmit(){
+			if(document.msg.msghard.value == "")
+			{
+				alert('Please input หัวเรื่อง');
+				document.msg.msghard.focus();
 				return false;
-			}
-			if (document.gotohome.password.value == "") {
-				alert('Please input password');
-				document.gotohome.password.focus();
+			}	
+			if(document.msg.msgbody.value == "")
+			{
+				alert('Please input ข้อความ');
+				document.msg.msgbody.focus();
 				return false;
-			}
+			}	
 		}
 	</script>
 

@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.bru.model.AdminInsertallBean;
 import com.bru.model.BrandBean;
 import com.bru.model.KasikornPriceBean;
 import com.bru.model.KrungsriPriceBean;
@@ -190,6 +191,8 @@ public class CustomerDao {
 
 		return list;
 	}
+	//add for admin
+		
 
 	// end class
 }
