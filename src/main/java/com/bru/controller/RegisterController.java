@@ -26,60 +26,75 @@ public class RegisterController {
 	//rename
 	@RequestMapping(value = "/finish")
 	public String register(@ModelAttribute("SpringWeb") RegisterallBean bean, String bankName, String firstName,
-			String lastName, int age, String provinceId, int telephoneNo, int idcard, String email, String carMake,
+			String lastName, int age, String provinceId, int telephoneNo, Long idcard, String email, String carMake,
 			String carModel, String totalIncome, String salary, String lessLimit, String lassday ,@RequestParam("file1") MultipartFile file1
 			,@RequestParam("file2") MultipartFile file2,@RequestParam("file3") MultipartFile file3,@RequestParam("file4") MultipartFile file4,
 						RedirectAttributes redirectAttributes,Model model) {
 		
+		String oo ="";
+		
+if(file1.isEmpty() || file2.isEmpty() || file3.isEmpty() || file4.isEmpty()) {
+	
+	oo ="registercar";
+	
+}
+else
+{
+	bean.setRegBankname(bankName);
+	bean.setRegFirstname(firstName);
+	bean.setRegLastname(lastName);
+	bean.setRegAge(age);                         
+	bean.setRegProvince(provinceId);
+	bean.setRegTelephone(telephoneNo);
+	bean.setRegIdCard(idcard);
+	bean.setRegEmail(email);
+	bean.setRegCarmodel(carModel);
+	bean.setRegCarmake(carMake);
+	bean.setRegTotalincome(totalIncome);
+	bean.setRegSalary(salary);
+	bean.setRegLesslimit(lessLimit);
+	bean.setRegLessday(lassday);
+	bean.setRegImgback("assets/img/imgreg/"+file2.getOriginalFilename());
+	bean.setRegImgfront("assets/img/imgreg/"+file1.getOriginalFilename());
+	bean.setRegImgLeft("assets/img/imgreg/"+file3.getOriginalFilename());
+	bean.setRegImgright("assets/img/imgreg/"+file4.getOriginalFilename());
+	bean.setRegDate(new Date());
+	
 
-		bean.setRegBankname(bankName);
-		bean.setRegFirstname(firstName);
-		bean.setRegLastname(lastName);
-		bean.setRegAge(age);
-		bean.setRegProvince(provinceId);
-		bean.setRegTelephone(telephoneNo);
-		bean.setRegIdCard(idcard);
-		bean.setRegEmail(email);
-		bean.setRegCarmodel(carModel);
-		bean.setRegCarmake(carMake);
-		bean.setRegTotalincome(totalIncome);
-		bean.setRegSalary(salary);
-		bean.setRegLesslimit(lessLimit);
-		bean.setRegLessday(lassday);
-		bean.setRegImgback("assets/img/imgreg/"+file2.getOriginalFilename());
-		bean.setRegImgfront("assets/img/imgreg/"+file1.getOriginalFilename());
-		bean.setRegImgLeft("assets/img/imgreg/"+file3.getOriginalFilename());
-		bean.setRegImgright("assets/img/imgreg/"+file4.getOriginalFilename());
-		bean.setRegDate(new Date());
+	try {
+		byte[] bytes1 = file1.getBytes();
+		Path path1 = Paths.get("C://Users//Hz_RoyJangHo//eclipse-workspace//ProjectBru-Ver3//src//main//resources//static//assets//img//imgreg//" + file1.getOriginalFilename());
+		Files.write(path1, bytes1);
+		
+		byte[] bytes2 = file2.getBytes();
+		Path path2 = Paths.get("C://Users//Hz_RoyJangHo//eclipse-workspace//ProjectBru-Ver3//src//main//resources//static//assets//img//imgreg//" + file2.getOriginalFilename());
+		Files.write(path2, bytes2);
+		
+		byte[] bytes3 = file3.getBytes();
+		Path path3 = Paths.get("C://Users//Hz_RoyJangHo//eclipse-workspace//ProjectBru-Ver3//src//main//resources//static//assets//img//imgreg//" + file3.getOriginalFilename());
+		Files.write(path3, bytes3);
+		
+		byte[] bytes4 = file4.getBytes();
+		Path path4 = Paths.get("C://Users//Hz_RoyJangHo//eclipse-workspace//ProjectBru-Ver3//src//main//resources//static//assets//img//imgreg//" + file4.getOriginalFilename());
+		Files.write(path4, bytes4);
+		
+	/*	redirectAttributes.addFlashAttribute("message",
+				"You successfully uploaded '" + file.getOriginalFilename() + "'");*/
+
+		registerDao.register(bean);
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	model.addAttribute("msg", "0");
+	oo="welcome";
+	
+}
+		
+	
 		
 
-		try {
-			byte[] bytes1 = file1.getBytes();
-			Path path1 = Paths.get("C://Users//Hz_RoyJangHo//eclipse-workspace//ProjectBru-Ver3//src//main//resources//static//assets//img//imgreg//" + file1.getOriginalFilename());
-			Files.write(path1, bytes1);
-			
-			byte[] bytes2 = file2.getBytes();
-			Path path2 = Paths.get("C://Users//Hz_RoyJangHo//eclipse-workspace//ProjectBru-Ver3//src//main//resources//static//assets//img//imgreg//" + file2.getOriginalFilename());
-			Files.write(path2, bytes2);
-			
-			byte[] bytes3 = file3.getBytes();
-			Path path3 = Paths.get("C://Users//Hz_RoyJangHo//eclipse-workspace//ProjectBru-Ver3//src//main//resources//static//assets//img//imgreg//" + file3.getOriginalFilename());
-			Files.write(path3, bytes3);
-			
-			byte[] bytes4 = file4.getBytes();
-			Path path4 = Paths.get("C://Users//Hz_RoyJangHo//eclipse-workspace//ProjectBru-Ver3//src//main//resources//static//assets//img//imgreg//" + file4.getOriginalFilename());
-			Files.write(path4, bytes4);
-			
-		/*	redirectAttributes.addFlashAttribute("message",
-					"You successfully uploaded '" + file.getOriginalFilename() + "'");*/
-
-			registerDao.register(bean);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		model.addAttribute("msg", "0");
-		return "welcome";
+		return oo;
 	}
 /*@RequestMapping(value = "/upload")
 	public String singleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {

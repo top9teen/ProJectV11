@@ -28,6 +28,7 @@
 					dataType : "json",
 					success : function(msg) {
 						console.log('Success')
+						$('#brand').append('<option value="'+'">' + "เลือก" + '</option>');
 						for(var i=0; i<msg.length; i++) {
 							$('#brand').append('<option value="' + msg[i].carName+ '">' + msg[i].carName + '</option>');
 						}
@@ -49,6 +50,7 @@
 
 				success : function(msg) {
 						console.log('Success')
+						$('#carmodel').append('<option value="'+'">' + "เลือก" + '</option>');
 						for(var i=0; i<msg.length; i++) {
 							$('#carmodel').append('<option value="' + msg[i].brName+ '">' + msg[i].brName + '</option>');
 						}

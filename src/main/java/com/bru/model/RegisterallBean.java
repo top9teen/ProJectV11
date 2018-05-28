@@ -11,7 +11,7 @@ public class RegisterallBean {
 	private int regAge;
 	private String regProvince;
 	private int regTelephone;
-	private int regIdCard;
+	private Long regIdCard;
 	private  String regEmail;
 	private String regCarmodel;
 	private String regCarmake;
@@ -19,6 +19,12 @@ public class RegisterallBean {
 	private String regSalary;
 	private String regLesslimit;
 	private String regLessday;
+	public Long getRegIdCard() {
+		return regIdCard;
+	}
+	public void setRegIdCard(Long regIdCard) {
+		this.regIdCard = regIdCard;
+	}
 	private String regImgfront;
 	private String regImgback;
 	private String regImgLeft;
@@ -26,12 +32,7 @@ public class RegisterallBean {
 	private Date regDate;
 	
 	
-	public int getRegIdCard() {
-		return regIdCard;
-	}
-	public void setRegIdCard(int regIdCard) {
-		this.regIdCard = regIdCard;
-	}
+
 	public Date getRegDate() {
 		return regDate;
 	}

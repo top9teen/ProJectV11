@@ -4,11 +4,13 @@
 	pageEncoding="utf-8"%>
 <%@page import="com.bru.model.RegisterallBean"%>
 <%@page import="java.util.List"%>
+
 <%
-	List<RegisterallBean> list = null;
+String  result = "";
 %>
 <%
-	list = (List<RegisterallBean>) request.getSession().getAttribute("listUser");
+	result = (String) request.getAttribute("ss");
+
 %>
 <html xmlns:th="http://www.thymeleaf.org">
 <html>
@@ -33,17 +35,9 @@
 <body>
 	<%
 		UserAllBean bean = null;
-		RegisterallBean be = null;
-	%>
-	<%
-		String result = "";
-	%>
-	<%
-		result = (String) request.getAttribute("se");
 	%>
 	<%
 		bean = (UserAllBean) request.getSession().getAttribute("Login");
-		be = (RegisterallBean) request.getSession().getAttribute("resultBean");
 	%>
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
@@ -68,8 +62,8 @@
 									</a>
 									<div class="message-body">
 										<small class="pull-right">3 mins ago</small> <a href="#"><strong>John
-												Doe</strong> commented on <strong>your photo</strong>.</a> <br />
-										<small class="text-muted">1:24 pm - 25/03/2015</small>
+												Doe</strong> commented on <strong>your photo</strong>.</a> <br /> <small
+											class="text-muted">1:24 pm - 25/03/2015</small>
 									</div>
 								</div>
 							</li>
@@ -82,8 +76,8 @@
 									<div class="message-body">
 										<small class="pull-right">1 hour ago</small> <a href="#">New
 											message from <strong>Jane Doe</strong>.
-										</a> <br />
-										<small class="text-muted">12:27 pm - 25/03/2015</small>
+										</a> <br /> <small class="text-muted">12:27 pm -
+											25/03/2015</small>
 									</div>
 								</div>
 							</li>
@@ -163,27 +157,26 @@
 					data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em
 						class="fa fa-plus"></em></span>
 			</a>
-			<ul class="children collapse" id="sub-item-1">
-					<li><a class="" href="adminsel1">
-						<span class="fa fa-arrow-right">&nbsp;</span> ดูสินเชื่อทั้งหมด
+				<ul class="children collapse" id="sub-item-1">
+					<li><a class="" href="adminsel1"> <span
+							class="fa fa-arrow-right">&nbsp;</span> ดูสินเชื่อทั้งหมด
 					</a></li>
-					<li><a class="" href="adminsel2">
-						<span class="fa fa-arrow-right">&nbsp;</span> ดูสินเชื่อที่ผ่านอนุมัต
+					<li><a class="" href="adminsel2"> <span
+							class="fa fa-arrow-right">&nbsp;</span> ดูสินเชื่อที่ผ่านอนุมัต
 					</a></li>
-					<li><a class="" href="adminsel3">
-						<span class="fa fa-arrow-right">&nbsp;</span> ดูรายละเอียดธนาคาร
+					<li><a class="" href="adminsel3"> <span
+							class="fa fa-arrow-right">&nbsp;</span> ดูรายละเอียดธนาคาร
 					</a></li>
-					<li><a class="" href="adminmsg">
-						<span class="fa fa-arrow-right">&nbsp;</span> ข้อความจากสมาชิก
+					<li><a class="" href="adminmsg"> <span
+							class="fa fa-arrow-right">&nbsp;</span> ข้อความจากสมาชิก
 					</a></li>
-					<li><a class="" href="adminupdate">
-						<span class="fa fa-arrow-right">&nbsp;</span> อัพเดทราคารถยนต์
+					<li><a class="" href="adminupdate"> <span
+							class="fa fa-arrow-right">&nbsp;</span> อัพเดทราคารถยนต์
 					</a></li>
-					<li><a class="" href="admininsert">
-						<span class="fa fa-arrow-right">&nbsp;</span> เพิ่มรถยนต์
+					<li><a class="" href="admininsert"> <span
+							class="fa fa-arrow-right">&nbsp;</span> เพิ่มรถยนต์
 					</a></li>
-				</ul>
-				</li>
+				</ul></li>
 			<li><a href="logoutadmin"><em class="fa fa-power-off">&nbsp;</em>
 					Logout</a></li>
 		</ul>
@@ -253,212 +246,54 @@
 				<div class="panel panel-default">
 
 					<div class="panel-body">
-<form id="loanForm" name="loanForm" action="rename" method="post"
-				class="form-horizontal loan-registration" role="form"
-				autocomplete="off" enctype="multipart/form-data">
-				<h1 a><%=be.getRegFirstname()%></h1>
+					<form name="gotoinsertadmin" action="gotoinsertadmin" method="post"
+			OnSubmit="return fncSubmit();"
+			style="height: 70%; width: 40%; margin: 150px;">
+			<%
+						if (result.equals("2")) {
+					%>
+					<div class="alert alert-danger">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>ERROR </strong> มีข้อมูลอยู่แล้ว 
+					</div>
+					
+					<%
+						}else if(result.equals("1")){
+					%>
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							<div class="alert alert-success">
+						<strong>Success </strong>  Success
+					</div>
+					<%
+						}
+					%>
+			<div class="panel panel-primary" style="margin-top: 15%">
+				<div class="panel-heading">กรุณาเลือกรถยนต์รุ่นของท่าน</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<label for="registration_year">ปีที่จดทะเบียน (ค.ศ.)<span
+							style="color: red;">* </span>:
+						</label> <input value="" name="year" type="text">
+					</div>
+					<div class="form-group">
+						<label for="brand">ยี่ห้อ<span style="color: red;">*</span>:
+						</label> 
+						<input type="text" value="" name="band" >
+					</div>
+					<div class="form-group">
+						<label for="brand">รุ่น<span style="color: red;">*</span>:
+						</label> <input type="text" value="" name="modelcar">
+					</div>
 
-				<div class="form-group row">
-					<div class="form-group col-md-6">
-						<label for="firstname" class="col-sm-5 control-label">ชื่อ<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-						<input type="hidden" value="<%=be.getRegBankname()%>" name="bankName">
-							<input type="text" maxlength="100"
-								value="<%=be.getRegFirstname()%>" id="firstname"
-								class="form-control" disabled="disabled"> <input
-								type="hidden" value="<%=be.getRegFirstname()%>" name="firstName">
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						<label for="lastname" class="col-sm-5 control-label">นามสกุล<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="text" maxlength="150"
-								value="<%=be.getRegLastname()%>" id="lastname"
-								class="form-control" disabled="disabled"> <input
-								type="hidden" value="<%=be.getRegLastname()%>" name="lastName">
-						</div>
-					</div>
-				</div>
-				<div class="form-group col-md-6">
-					<label for="age" class="col-sm-5 control-label">อายุ<span
-						class="red-star">*</span>:
-					</label>
-					<div class="form-group col-sm-7">
-						<input type="number" maxlength="3" value="<%=be.getRegAge()%>"
-							id="age" class="form-control" disabled="disabled"> <input
-							type="hidden" value="<%=be.getRegAge()%>" name="age">
-					</div>
-				</div>
-				<div class="form-group col-md-6">
-					<label for="province" class="col-sm-5 control-label">จังหวัดที่อยู่ปัจจุบัน<span
-						class="red-star">*</span>:
-					</label>
-					<div class="form-group col-sm-7">
-						<input type="text" value="<%=be.getRegProvince()%>" id="age"
-							class="form-control" disabled="disabled"> <input
-							type="hidden" value="<%=be.getRegProvince()%>" name="province">
-					</div>
-				</div>
-
-				<div class="form-group row ">
-					<div class="form-group col-md-6">
-						<label for="tel" class="col-sm-5 control-label">เบอร์โทรศัพท์ที่ติดต่อได้<span
-							class="red-star">*</span>:
-						</label>
-						<div class="col-sm-7">
-							<input type="number" name="" maxlength="50"
-								value="<%=be.getRegTelephone()%>" id="tel"
-								class="form-control" disabled="disabled"> <input
-								value="<%=be.getRegTelephone()%>" type="hidden"
-								name="telephoneNo">
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						<label for="tel" class="col-sm-5 control-label">เลขบัตรประชาชน<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="number" name="" maxlength="13"
-								value="<%=be.getRegIdCard()%>" disabled="disabled" class="form-control"> <input
-								value="<%=be.getRegIdCard()%>" type="hidden" name="idcard">
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						<label for="email" class="col-sm-5 control-label">อีเมล์<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="text" name="" maxlength="90"
-								value="<%=be.getRegEmail()%>" id="email" class="form-control"
-								disabled="disabled"> <input
-								value="<%=be.getRegEmail()%>" type="hidden" name="email">
-						</div>
-					</div>
-				</div>
-				<div class="form-group row ">
-					<div class="form-group col-md-6">
-						<label for="brand" class="col-sm-5 control-label">ยี่ห้อ<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="text" maxlength="50" value="<%=be.getRegCarmake()%>"
-								id="brand" class="form-control" disabled="disabled"> <input
-								type="hidden" name="carMake" value="<%=be.getRegCarmake()%>">
-
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						<label for="model" class="col-sm-5 control-label">รุ่น<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="text" name="" maxlength="250"
-								value="<%=be.getRegCarmodel()%>" id="model" disabled="disabled"
-								class="form-control"> <input type="hidden"
-								name="carModel" value="<%=be.getRegCarmodel()%>">
-						</div>
-					</div>
-				</div>
-				<div class="form-group row ">
-					<div class="form-groupcol-md-6">
-						<label for="year_registration" class="col-sm-5 control-label">ปีที่จดทะเบียน
-							(ค.ศ.)<span class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-
-							<input type="text" name="" maxlength="13"
-								value="<%=be.getRegTotalincome()%>" id="income"
-								class="form-control" disabled="disabled"> <input
-								type="hidden" name="totalIncome"
-								value="<%=be.getRegTotalincome()%>" id="income"
-								class="form-calculate">
-
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						<label for="income" class="col-sm-5 control-label">รายได้สุทธิต่อเดือน<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="text" name="" disabled="disabled"
-								value="<%=be.getRegSalary()%>" id="income"
-								class="form-control"> <input type="hidden"
-								value="<%=be.getRegSalary()%>" name="salary">
-						</div>
-					</div>
-				</div>
-				<div class="form-group row ">
-					<div class="form-group col-md-6">
-						<label for="loan_amount" class="col-sm-5 control-label">วงเงินขั้นต่ำที่ต้องการ<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="text" name="" maxlength="13"
-								value="<%=be.getRegLesslimit()%>" id="loan_amount"
-								class="form-control" disabled="disabled"> <input
-								type="hidden" name="lessLimit" value="<%=be.getRegLesslimit()%>"
-								class="form-control">
-
-						</div>
-					</div>
 				
-				<div class="form-group col-md-6">
-					<label for="period" class="col-sm-5 control-label">ระยะเวลาในการชำระคืน<span
-						class="red-star">*</span>:
-					</label>
-					<div class="form-group col-sm-7">
+				</div>
+				<div class="panel-footer" align="center"
+					style="background: transparent;">
+					<input type="submit" class="btn btn-success" value="เพิ่ม">&nbsp;
+				</div>
 
-						<input type="text" maxlength="13" value="<%=be.getRegLessday()%>"
-							id="loan_amount" class="form-control" disabled> <input
-							type="hidden" name="lassday" value="<%=be.getRegLessday()%>"
-							class="form-control">
-					</div>
-				</div>
-				</div>
-				<div class="form-group row">
-				<div class="form-group col-md-3" >
-						</div>
-						<div class="form-group col-md-6" >
-					<label for="period" class="col-sm-5 control-label">
-						รูปรถด้านหน้า<span class="red-star">*</span>:
-					</label> <input type="hidden" value="<%=be.getRegImgfront()%>" name="file1">
-					<img alt="" src="<%=be.getRegImgfront()%>"style="width: 900px;height: 720px;">
-				
-				
-					<label for="period" class="col-sm-5 control-label">
-						รูปรถด้านหลัง<span class="red-star">*</span>:
-					</label> <input type="hidden" value="<%=be.getRegImgback()%>" name="file2">
-					<img alt="" src="<%=be.getRegImgback()%>"style="width: 900px;height: 720px;">
-				
-					<label for="period" class="col-sm-5 control-label">
-						รูปรถด้านซ้าย<span class="red-star">*</span>:
-					</label> <input type="hidden" value="<%=be.getRegImgLeft()%>" name="file3">
-					<img alt="" src="<%=be.getRegImgLeft()%>"style="width: 900px;height: 720px;">
-				
-					<label for="period" class="col-sm-5 control-label">
-						รูปรถด้านขวา<span class="red-star">*</span>:
-					</label> <input type="hidden" value="<%=be.getRegImgright()%>" name="file4">
-					<img alt="" src="<%=be.getRegImgright()%>"style="width: 900px;height: 720px;">
-				</div>
-					<div class="form-group col-md-3" >
-						</div>
-				</div> 
-				
-				<br>
-				<div id="divSubmit" class="row " align="center">
-					<div class="col-md-6">
-						<label class="col-sm-5 control-label">&nbsp;</label>
-						
-							<a type="button" class="btn btn-danger" onclick="black()">
-								Back</a>
-						</div>
-					</div>
-</form>
-					</div>
+			</div>
+		</form>
 				</div>
 			</div>
 		</div>
@@ -753,14 +588,6 @@
 	scaleFontColor: "#c5c7cc"
 	});
 };
-function black() {
-	var txt;
-	if (confirm("คุณต้องการจะย้อนกลับหรือไม่")) {
-		window.location = "/adminsel1";
-
-	}
-	document.getElementById("demo").innerHTML = txt;
-}
 	</script>
 
 </body>

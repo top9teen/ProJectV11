@@ -9,9 +9,12 @@ import org.springframework.stereotype.Repository;
 
 import com.bru.model.AdminInsertallBean;
 import com.bru.model.BrandBean;
+import com.bru.model.CarBean;
 import com.bru.model.KasikornPriceBean;
 import com.bru.model.KrungsriPriceBean;
 import com.bru.model.ScbeasyPriceBean;
+import com.bru.model.SimBean;
+import com.bru.model.TestBean;
 import com.bru.model.ThanachartPriceBean;
 import com.bru.model.UserAllBean;
 import com.bru.model.YearBean;
@@ -45,6 +48,9 @@ public class CustomerDao {
 		return yearlist;
 	}
 
+	
+	
+
 	// SELECT "yea and car r"
 	public List<BrandBean> check(String year, String car) {
 
@@ -73,7 +79,7 @@ public class CustomerDao {
 	}
 
 	// kaprice
-	public KasikornPriceBean checkpriceKa(String carYear ,String carMake2) {
+	public KasikornPriceBean checkpriceKa(String carYear, String carMake2) {
 		KasikornPriceBean kabean = new KasikornPriceBean();
 		ConnectDB con = new ConnectDB();
 		PreparedStatement prepared = null;
@@ -97,7 +103,7 @@ public class CustomerDao {
 	}
 
 	// krungsri_price
-	public KrungsriPriceBean checkpricekr(String carYear ,String carMake2) {
+	public KrungsriPriceBean checkpricekr(String carYear, String carMake2) {
 		KrungsriPriceBean krbean = new KrungsriPriceBean();
 		ConnectDB con = new ConnectDB();
 		PreparedStatement prepared = null;
@@ -120,7 +126,7 @@ public class CustomerDao {
 	}
 
 	// scbeasy_price
-	public ScbeasyPriceBean checkpricesc(String carYear ,String carMake2) {
+	public ScbeasyPriceBean checkpricesc(String carYear, String carMake2) {
 		ScbeasyPriceBean scbean = new ScbeasyPriceBean();
 		ConnectDB con = new ConnectDB();
 		PreparedStatement prepared = null;
@@ -142,7 +148,7 @@ public class CustomerDao {
 	}
 
 	// thanachart_price
-	public ThanachartPriceBean checkpriceth(String carYear ,String carMake2) {
+	public ThanachartPriceBean checkpriceth(String carYear, String carMake2) {
 		ThanachartPriceBean thbean = new ThanachartPriceBean();
 		ConnectDB con = new ConnectDB();
 		PreparedStatement prepared = null;
@@ -161,8 +167,9 @@ public class CustomerDao {
 			// TODO: handle exception
 		}
 		return thbean;
-	} 
-	//user
+	}
+
+	// user
 	public List<UserAllBean> userall() {
 
 		List<UserAllBean> list = new ArrayList<>();
@@ -191,8 +198,141 @@ public class CustomerDao {
 
 		return list;
 	}
-	//add for admin
-		
+	// add for admin
+public void nnn (String yy) {
+	ConnectDB con = new ConnectDB();
+	PreparedStatement prepared = null;
+	StringBuilder sql = new StringBuilder();
+	
+	try {
+		sql.append(
+				" INSERT INTO year(ye_year) VALUES(?)");
+		prepared = con.openConnect().prepareStatement(sql.toString());
+		prepared.setString(1, yy);
+		prepared.executeUpdate();
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}
+	
+}
+public void nnn2 (String yy ,String cc) {
+	ConnectDB con = new ConnectDB();
+	PreparedStatement prepared = null;
+	StringBuilder sql = new StringBuilder();
+	
+	try {
+		sql.append(
+				" INSERT INTO  car(ye_year,car_name) VALUES(?,?) ");
+		prepared = con.openConnect().prepareStatement(sql.toString());
+		prepared.setString(1, yy);
+		prepared.setString(2, cc);
+		prepared.executeUpdate();
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}
+	
+}
+public void nnn3 (SimBean bean) {
+	ConnectDB con = new ConnectDB();
+	PreparedStatement prepared = null;
+	StringBuilder sql = new StringBuilder();
+	try {
+		sql.append(
+				" INSERT INTO  brand(ye_year,car_name,br_name) VALUES(?,?,?) ");
+		prepared = con.openConnect().prepareStatement(sql.toString());
+		prepared.setString(1, bean.getMyYear());
+		prepared.setString(2, bean.getMycar());
+		prepared.setString(3, bean.getName());  
+		prepared.executeUpdate();
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}
+}
 
+public void nnn4 (SimBean bean) {
+	ConnectDB con = new ConnectDB();
+	PreparedStatement prepared = null;
+	StringBuilder sql = new StringBuilder();
+		try {
+			sql.append(
+					" INSERT INTO  thanachart_price(ye_year,br_name,th_price) VALUES(?,?,?) ");
+			prepared = con.openConnect().prepareStatement(sql.toString());
+			prepared.setString(1, bean.getMyYear());
+			prepared.setString(2, bean.getName());
+			prepared.setInt(3, 10);
+			prepared.executeUpdate();
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}}
+	
+public void nnn5 (SimBean bean) {
+	ConnectDB con = new ConnectDB();
+	PreparedStatement prepared = null;
+	StringBuilder sql = new StringBuilder();
+		try {
+			sql.append(
+					" INSERT INTO  scbeasy_price(ye_year,br_name,sc_price) VALUES(?,?,?) ");
+			prepared = con.openConnect().prepareStatement(sql.toString());
+			prepared.setString(1, bean.getMyYear());
+			prepared.setString(2, bean.getName());
+			prepared.setInt(3, 10);
+			prepared.executeUpdate();
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}}
+
+public void nnn6 (SimBean bean) {
+	ConnectDB con = new ConnectDB();
+	PreparedStatement prepared = null;
+	StringBuilder sql = new StringBuilder();
+		try {
+			sql.append(
+					" INSERT INTO  krungsri_price(ye_year,br_name,kr_price) VALUES(?,?,?) ");
+			prepared = con.openConnect().prepareStatement(sql.toString());
+			prepared.setString(1, bean.getMyYear());
+			prepared.setString(2, bean.getName());
+			prepared.setInt(3, 10);
+			prepared.executeUpdate();
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}}
+
+public void nnn7 (SimBean bean) {
+	ConnectDB con = new ConnectDB();
+	PreparedStatement prepared = null;
+	StringBuilder sql = new StringBuilder();
+		try {
+			sql.append(
+					" INSERT INTO  kasikorn_price(ye_year,br_name,ka_price) VALUES(?,?,?) ");
+			prepared = con.openConnect().prepareStatement(sql.toString());
+			prepared.setString(1, bean.getMyYear());
+			prepared.setString(2, bean.getName());
+			prepared.setInt(3, 10);
+			prepared.executeUpdate();
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}}
+public void coler23 (SimBean bean) {
+	ConnectDB con = new ConnectDB();
+	PreparedStatement prepared = null;
+	StringBuilder sql = new StringBuilder();
+		try {
+			sql.append(
+					" INSERT INTO  coleridcard(co_idcard,co_colername) VALUES(?,?) ");
+			prepared = con.openConnect().prepareStatement(sql.toString());
+			prepared.setLong(1, bean.getCoco());
+			prepared.setString(2, bean.getConame());
+			prepared.executeUpdate();
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}}
 	// end class
 }

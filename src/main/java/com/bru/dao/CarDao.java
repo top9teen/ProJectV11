@@ -98,7 +98,7 @@ public List<BrandBean> findAll(String year ,String brand) {
 		}
 		return list;
 	}
-public ColeridcardBean coler(int number) {
+public ColeridcardBean coler(Long number) {
 		ColeridcardBean bean = new ColeridcardBean();
 		
 		ConnectDB con = new ConnectDB();
@@ -107,12 +107,12 @@ public ColeridcardBean coler(int number) {
 		try {
 			sql.append(" SELECT * FROM coleridcard WHERE co_idcard = ? ");
 			prepared = con.openConnect().prepareStatement(sql.toString());
-			prepared.setInt(1, number);
+			prepared.setLong(1, number);
 			ResultSet rs = prepared.executeQuery();
 			while(rs.next()) {
 				bean = new ColeridcardBean();
 				bean.setCoName(rs.getString("co_colername"));
-
+				bean.setCoIdcard(rs.getLong(""));
 			}
 			if(bean.getCoName() !=null) {
 				

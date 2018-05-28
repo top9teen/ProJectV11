@@ -1,13 +1,13 @@
 package com.bru.model;
 
-import java.math.BigInteger;
+
 
 public class ColeridcardBean {
 
 	private int coId;
-	private BigInteger coIdcard;
+	private Long coIdcard;
 	private String coName;
-	private Integer vo;
+	private Long vo;
 	
 	
 	public int getCoId() {
@@ -16,23 +16,26 @@ public class ColeridcardBean {
 	public void setCoId(int coId) {
 		this.coId = coId;
 	}
-	public BigInteger getCoIdcard() {
-		return coIdcard;
-	}
-	public void setCoIdcard(BigInteger coIdcard) {
-		this.coIdcard = coIdcard;
-	}
+	
 	public String getCoName() {
 		return coName;
 	}
 	public void setCoName(String coName) {
 		this.coName = coName;
 	}
-	public Integer getVo() {
+	
+
+	public Long getVo() {
 		return vo;
 	}
-	public void setVo(Integer vo) {
+	public void setVo(Long vo) {
 		this.vo = vo;
+	}
+	public Long getCoIdcard() {
+		return coIdcard;
+	}
+	public void setCoIdcard(Long coIdcard) {
+		this.coIdcard = coIdcard;
 	}
 	
 	

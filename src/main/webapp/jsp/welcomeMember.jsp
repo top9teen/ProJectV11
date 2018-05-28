@@ -154,7 +154,7 @@ result2 = (String) request.getAttribute("dd");
 		<form name="msg" action="gotomsg" method="post" OnSubmit="return fncSubmit();">
 			<div class="panel panel-primary" style="margin-top: 15%">
 				<div class="panel-heading" align="center"></div>
-				<h2 align="center">WELCOME MAP CAR</h2>
+				<h2 align="center">ส่งถึง Admin</h2>
 				<br>
 				<div class="panel-body"> 
 				<%
@@ -186,6 +186,7 @@ result2 = (String) request.getAttribute("dd");
 				<br>
 				<div class="panel-footer" align="right">
 					<input type="submit" class="btn btn-success" value="ส่งข่อความ">&nbsp;
+					
 				</div>
 			</div>
 			</div>
@@ -194,6 +195,34 @@ result2 = (String) request.getAttribute("dd");
 	
 		
 		</div>
+		
+		<%} %>
+			<%if(result.equals("6")){ %>
+		<div class="container" >
+				<div class="panel-body"> 
+				<%
+						if (result2.equals("E")) {
+					%>
+					<div class="alert alert-danger">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>danner </strong> error 
+					</div>
+					
+					<%
+						}else if(result2.equals("L")){
+					%>
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							<div class="alert alert-success">
+						<strong>Success </strong>  Success
+					</div>
+					<%
+					}
+					%>
+					
+					<%@include file="member/insertcoler.jsp"%>
+	</div>
+		
+		
 		
 		<%} %>
 
@@ -241,7 +270,10 @@ result2 = (String) request.getAttribute("dd");
 				return false;
 			}	
 		}
+		
+		
 	</script>
+
 
 </body>
 </html>

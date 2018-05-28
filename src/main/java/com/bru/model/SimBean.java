@@ -10,7 +10,27 @@ public class SimBean {
 	private String mycar;
 	private String mybrand;
 	private String myYear;
+	
+	private String coname;
+	private Long coco;
+	
 
+
+	public String getConame() {
+		return coname;
+	}
+
+	public void setConame(String coname) {
+		this.coname = coname;
+	}
+
+	public Long getCoco() {
+		return coco;
+	}
+
+	public void setCoco(Long coco) {
+		this.coco = coco;
+	}
 
 	public String getMycar() {
 		return mycar;

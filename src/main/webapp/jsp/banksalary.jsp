@@ -103,28 +103,28 @@ body, h1, h2, h3, h4, h5, h6 {
 					<input type="hidden" value="<%=sibran.getMybrand()%>"
 						name="Mybrand"> <input type="hidden"
 						value="<%=sibran.getMyYear()%>" name="MyYear"> <input
-						type="radio" name="bb" value="kasikorn" checked>เลือก
+						type="radio" name="bb" id="ka" value="kasikorn" checked>เลือก
 					<label for="exampleInputEmail1"> ธนาคคารกสิกร : <input
 						type="text" name="ka" disabled="disabled"
 						value="<%=kabean.getKaPrice()%>" class="form-control">
 					</label>
 				</div>
 				<div class="form-group">
-					<input type="radio" name="bb" value="krungsri">เลือก
+					<input type="radio" name="bb" id="kr" value="krungsri">เลือก
 					<label for="exampleInputEmail1"> ธนาคารกรุงศรี : <input
 						type="text" name="kr" disabled="disabled"
 						value="<%=krbean.getKrPrice()%>" class="form-control">
 					</label>
 				</div>
 				<div class="form-group">
-					<input type="radio" name="bb" value="scbeasy">เลือก <label
+					<input type="radio" name="bb" id="sc" value="scbeasy">เลือก <label
 						for="exampleInputEmail1"> ธนาคาร SCB : <input type="text"
 						name="sc" disabled="disabled" value="<%=scbean.getScPrice()%>"
 						class="form-control">
 					</label>
 				</div>
 				<div class="form-group">
-					<input type="radio" name="bb" value="thanachart">เลือก
+					<input type="radio" name="bb" id="th" value="thanachart">เลือก
 					<label for="exampleInputEmail1"> ธนาคาร ธนชาติ : <input
 						type="text" name="th" disabled="disabled"
 						value="<%=thbean.getThPrice()%>" class="form-control">
@@ -132,12 +132,12 @@ body, h1, h2, h3, h4, h5, h6 {
 				</div>
 				<div class="form-group">
 					<label for="exampleInputEmail1"> เงินที่ต้องการ : <input
-						type="number" name="pp" class="form-control">
+						type="number" name="pp" min="50000"  class="form-control">
 					</label>
 				</div>
 				<div class="panel-footer" align="center"
 					style="background: transparent;">
-					<input type="submit" value="ยืนยัน" class="btn btn-success">
+					<input type="submit" value="ยืนยัน"  class="btn btn-success">
 
 				</div>
 			</form>
@@ -162,6 +162,46 @@ body, h1, h2, h3, h4, h5, h6 {
 	</div>
 	<script type="text/javascript" src="assets/js/pring.js"></script>
 	<script type="text/javascript" src="assets/js/checknewuser.js"></script>
+<script type="text/javascript">
+function fncSubmit(){
+	if(document.prig.pp.value == "" || document.prig.pp.length <7)
+	{
+		alert('Please input monnny');
+		document.prig.pp.focus();
+		return false;
+	}
+	
+	/* if(document.getElementById("th").checked = true)
+	{
+		if(document.prig.pp.value > document.prig.th.value )
+		alert('Please input no maxmonny');
+		document.prig.pp.focus();
+		return false;
+	}	
+	if(document.getElementById("sc").checked = true)
+	{
+		if(document.prig.pp.value > document.prig.sc.value )
+		alert('Please input no maxmonny');
+		document.prig.pp.focus();
+		return false;
+	}	
+	if(document.getElementById("kr").checked = true)
+	{
+		if(document.prig.pp.value > document.prig.kr.value )
+		alert('Please input no maxmonny');
+		document.prig.pp.focus();
+		return false;
+	}	
+	if(document.getElementById("ka").checked = true)
+	{
+		if(document.prig.pp.value > document.prig.ka.value )
+		alert('Please input no maxmonny');
+		document.prig.pp.focus();
+		return false;
+	}	
+} */
+}
 
+</script>
 </body>
 </html>

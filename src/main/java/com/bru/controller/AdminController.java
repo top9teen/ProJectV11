@@ -14,10 +14,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bru.dao.CarallDao;
 import com.bru.dao.CustomerDao;
 import com.bru.dao.MenberDao;
 import com.bru.dao.RegisterDao;
 import com.bru.dao.UserAllDao;
+import com.bru.model.BrandBean;
+import com.bru.model.CarBean;
 import com.bru.model.KasikornPriceBean;
 import com.bru.model.KrungsriPriceBean;
 import com.bru.model.MsgadminBean;
@@ -26,9 +29,11 @@ import com.bru.model.RegnameBean;
 import com.bru.model.ScbeasyPriceBean;
 import com.bru.model.SimBean;
 import com.bru.model.SimpleTestBean;
+import com.bru.model.TestBean;
 import com.bru.model.ThanachartPriceBean;
 import com.bru.model.UpdatecarBean;
 import com.bru.model.UserAllBean;
+import com.bru.model.YearBean;
 
 @Controller
 public class AdminController {
@@ -40,7 +45,8 @@ public class AdminController {
 	MenberDao menberDao;
 	@Autowired
 	RegisterDao registerDao;
-
+	@Autowired
+	CarallDao carallDao;
 	@RequestMapping("/widgets")
 	public String widgets() {
 
@@ -211,6 +217,55 @@ public class AdminController {
 		}
 		
 		return kk ;
+		}
+	
+	@RequestMapping("/admininsert")
+	public String admininsert(Model model) {
+		model.addAttribute("ss", "");
+		return "admin/adminsel9";
+	}
+	@RequestMapping("/gotoinsertadmin")
+	public String gotoinsertadmin(Model model ,String year ,String band ,String modelcar  ,SimBean si) {
+		si.setMyYear(year);
+		si.setName(modelcar);
+		si.setMycar(band);
+		 YearBean ye = new YearBean();
+		 CarBean ca = new CarBean();
+		 BrandBean br = new BrandBean();
+		try {
+			ye= carallDao.year1(si);
+			ca= carallDao.brand(si);
+				br = carallDao.model1(si);
+			/*System.out.println(ye.getYeYear());
+			System.out.println(ca.getCarName());
+			System.out.println(br.getBrName());*/
+			if(ye.getYeYear() == null) {
+				customerDao.nnn(year);
+			}
+
+			if(ca.getCarName() == null) {
+				customerDao.nnn2(year,band);
+				
+			}
+			if(br.getBrName() == null) {
+				customerDao.nnn3(si);
+				customerDao.nnn4(si);
+				customerDao.nnn5(si);
+				customerDao.nnn6(si);
+				customerDao.nnn7(si);
+				model.addAttribute("ss", "1");
+				
+			}
+			if(br.getBrName() != null) {
+				model.addAttribute("ss", "2");
+			
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	
+		return "admin/adminsel9";
+		
 	}
 	// end class
 }

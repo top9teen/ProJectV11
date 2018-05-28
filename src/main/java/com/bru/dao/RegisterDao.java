@@ -29,7 +29,7 @@ public class RegisterDao {
 			prepared.setInt(4, bean.getRegAge());
 			prepared.setString(5, bean.getRegProvince());
 			prepared.setInt(6, bean.getRegTelephone());
-			prepared.setInt(7, bean.getRegIdCard());
+			prepared.setLong(7, bean.getRegIdCard());
 			prepared.setString(8, bean.getRegEmail());
 			prepared.setString(9, bean.getRegCarmodel());
 			prepared.setString(10, bean.getRegCarmake());
@@ -136,7 +136,7 @@ public class RegisterDao {
 				bean.setRegAge(rs.getInt("reg_age"));
 				bean.setRegProvince(rs.getString("reg_province"));
 				bean.setRegTelephone(rs.getInt("reg_telephone"));
-				bean.setRegIdCard(rs.getInt("reg_idcard"));
+				bean.setRegIdCard(rs.getLong("reg_idcard"));
 				bean.setRegEmail(rs.getString("reg_email"));
 				bean.setRegCarmodel(rs.getString("reg_carmodel"));
 				bean.setRegCarmake(rs.getString("reg_carmake"));

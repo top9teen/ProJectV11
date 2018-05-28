@@ -102,26 +102,28 @@ public class WelcomeController {
 		model.addAttribute("se", "3");
 		return "welcomeMember";
 	}
+
 	@RequestMapping("/msg")
 	public String msg(Model model) {
-		
+
 		model.addAttribute("se", "5");
 		model.addAttribute("dd", "");
 		return "welcomeMember";
 	}
+
 	@RequestMapping("/gotomsg")
-	public String msgg(Model model,String name ,String msghard ,String msgbody) {
-		name=uu;
-		MsgadminBean  bean = new MsgadminBean();
+	public String msgg(Model model, String name, String msghard, String msgbody) {
+		name = uu;
+		MsgadminBean bean = new MsgadminBean();
 		bean.setMsName(name);
 		bean.setMsMsgbody(msgbody);
 		bean.setMsMsghard(msghard);
 		bean.setMsDate(new Date());
 		try {
 
-		menberDao.sssss(bean);
-		model.addAttribute("se", "5");
-		model.addAttribute("dd", "L");
+			menberDao.sssss(bean);
+			model.addAttribute("se", "5");
+			model.addAttribute("dd", "L");
 		} catch (Exception e) {
 			model.addAttribute("se", "5");
 			model.addAttribute("dd", "G");
@@ -169,31 +171,48 @@ public class WelcomeController {
 	}
 
 	// updatecarmember
-	/*
-	 * @RequestMapping("/updatecar2") public String updatecar2(Model model, String
-	 * groupType, String carMake, String carMake2, HttpServletRequest reqest) {
-	 * String lin = ""; String a = groupType; String b = carMake2; SimBean bb = new
-	 * SimBean(); KasikornPriceBean kabean = new KasikornPriceBean();
-	 * KrungsriPriceBean krbean = new KrungsriPriceBean(); ScbeasyPriceBean scbean =
-	 * new ScbeasyPriceBean(); ThanachartPriceBean thbean = new
-	 * ThanachartPriceBean(); try { kabean = customerDao.checkpriceKa(groupType,
-	 * carMake2); krbean = customerDao.checkpricekr(groupType, carMake2); scbean =
-	 * customerDao.checkpricesc(groupType, carMake2); thbean =
-	 * customerDao.checkpriceth(groupType, carMake2); if (kabean.getKaPrice() > 0 &&
-	 * krbean.getKrPrice() > 0 && scbean.getScPrice() > 0 && thbean.getThPrice() >
-	 * 0) { lin = "banksalary"; bb.setMycar(carMake); bb.setMybrand(carMake2);
-	 * bb.setMyYear(groupType); } else { model.addAttribute("sel1", "0");
-	 * model.addAttribute("sel2", "0"); lin = "car"; }
-	 * 
-	 * } catch (Exception e) { e.printStackTrace(); }
-	 * 
-	 * //// model.addAttribute("sel1","1"); /// model.addAttribute("sel2","1");
-	 * reqest.getSession().setAttribute("kabean", kabean);
-	 * reqest.getSession().setAttribute("krbean", krbean);
-	 * reqest.getSession().setAttribute("scbean", scbean);
-	 * reqest.getSession().setAttribute("thbean", thbean);
-	 * reqest.getSession().setAttribute("simbean", bb); return lin; }
-	 */
+
+	@RequestMapping("/updatecar2")
+	public String updatecar2(Model model, String groupType, String carMake, String carMake2,
+			HttpServletRequest reqest) {
+		String lin = "";
+		String a = groupType;
+		String b = carMake2;
+		SimBean bb = new SimBean();
+		KasikornPriceBean kabean = new KasikornPriceBean();
+		KrungsriPriceBean krbean = new KrungsriPriceBean();
+		ScbeasyPriceBean scbean = new ScbeasyPriceBean();
+		ThanachartPriceBean thbean = new ThanachartPriceBean();
+		try {
+			kabean = customerDao.checkpriceKa(groupType, carMake2);
+			krbean = customerDao.checkpricekr(groupType, carMake2);
+			scbean = customerDao.checkpricesc(groupType, carMake2);
+			thbean = customerDao.checkpriceth(groupType, carMake2);
+			if (kabean.getKaPrice() > 0 && krbean.getKrPrice() > 0 && scbean.getScPrice() > 0
+					&& thbean.getThPrice() > 0) {
+				lin = "banksalary";
+				bb.setMycar(carMake);
+				bb.setMybrand(carMake2);
+				bb.setMyYear(groupType);
+			} else {
+				model.addAttribute("sel1", "0");
+				model.addAttribute("sel2", "0");
+				lin = "car";
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		//// model.addAttribute("sel1","1"); /// model.addAttribute("sel2","1");
+		reqest.getSession().setAttribute("kabean", kabean);
+		reqest.getSession().setAttribute("krbean", krbean);
+		reqest.getSession().setAttribute("scbean", scbean);
+		reqest.getSession().setAttribute("thbean", thbean);
+		reqest.getSession().setAttribute("simbean", bb);
+		return lin;
+	}
+
 	@RequestMapping("/gotologin")
 	public String login(Model model) {
 		model.addAttribute("messessError", "");
@@ -314,13 +333,12 @@ public class WelcomeController {
 					registerDao.register2(bean);
 					model.addAttribute("se", "sss");
 					gg = "welcomeMember";
-					
+
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
 
-			}
-			else {
+			} else {
 				model.addAttribute("se", "gg");
 				gg = "welcomeMember";
 			}
@@ -332,7 +350,7 @@ public class WelcomeController {
 	}
 
 	@RequestMapping(value = "/coler", method = RequestMethod.POST)
-	public String vv(Integer name, Model model, HttpServletRequest res) {
+	public String vv(Long name, Model model, HttpServletRequest res) {
 
 		String mm = "";
 		ColeridcardBean bean = new ColeridcardBean();

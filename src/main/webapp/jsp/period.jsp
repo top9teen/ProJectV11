@@ -102,16 +102,21 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 						name="Mybrand"> <input type="hidden"
 						value="<%=bean.getMyYear()%>" name="MyYear">
 						<h2>เงินที่คุณต้องการคือ : <%=bean.getPring1() %> บาท</h2>
+		<div class="col-md-12">
+			<div class="col-md-12">
+			
+			</div>
+		</div>
 		<table class="table table-bordered">
 			<thead>
-				<tr>
+				<tr style="background-color: fuchsia;">
 					<th class="col-md-4 iefix">ระยะเวลาผ่อนชำระ</th>
 					<th class="col-md-4 iefix">อัตราดอกเบี้ย</th>
 					<th class="col-md-4 iefix">ค่างวด (ต่อเดือน)</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
+				<tr style="background-color: inactivecaptiontext;">
 					<td><input type="radio" name="yy" value="12" checked="checked">12 งวด</td>
 					<td>0.55</td>
 					<td><%=test.getPrig1() %></td>
@@ -121,7 +126,7 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 					<td>0.55</td>
 					<td><%=test.getPrig2() %></td>
 				</tr>
-				<tr>
+				<tr style="background-color: inactivecaptiontext;">
 					<td><input type="radio" name="yy" value="36">36งวด</td>
 					<td>0.55</td>
 					<td><%=test.getPrig3() %></td>
@@ -132,7 +137,7 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 					<td>0.60</td>
 					<td><%=test.getPrig4() %></td>
 				</tr>
-				<tr>
+				<tr style="background-color: inactivecaptiontext;">
 					<td><input type="radio" name="yy" value="60">60 งวด</td>
 					<td>0.66</td>
 					<td><%=test.getPrig5() %></td>

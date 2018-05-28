@@ -9,10 +9,11 @@
 	<form name="wel" action="coler" method="post" onsubmit="return fncSubmit();">
 	<div align="center" >
 	<label  class="form-group">เลขบัตรประชาชน ที่ต้องการค้นหา  <span>:</span></label>
-	<input  value="" type="number" name="name">
+	<input  value="" type="number" name="name" id="name">
 	</div>
 	 <div class="panel-footer" align="center">
 	<input type="submit" class="btn btn-success" value="ค้นหา" name="coler" id="vos" >
+
 	</div>
 	</form>
 	<div>
@@ -33,7 +34,6 @@
 		}	
 	    document.getElementById("demo").innerHTML = txt;
 	}
-	
 	
 	
 	</script>

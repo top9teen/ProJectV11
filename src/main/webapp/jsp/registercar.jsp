@@ -23,6 +23,9 @@ body, h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 	margin: 150px;
 }
+span {
+	color: red;
+}
 </style>
 <%
 	SimBean bean = null;
@@ -86,51 +89,51 @@ body, h1, h2, h3, h4, h5, h6 {
 		</div>
 		</header>
 		<!-- First Photo Grid-->
-		<h1 a><%=bean.getName()%></h1>
+	
 		<div class="form-group" align="center">
-			<form id="loanForm" name="loanForm" action="finish" method="post"
+	<form id="loanForm" name="loanForm" action="finish" method="post"
 				class="form-horizontal loan-registration" role="form"
-				autocomplete="off" enctype="multipart/form-data">
+				autocomplete="off" enctype="multipart/form-data" OnSubmit="return fncSubmit();">
 				<h1 a><%=bean.getName()%></h1>
 				<input type="hidden" name="bankName" value="<%=bean.getName()%>">
 				
-				</div>
-				<div class="row">
-					<div class="col-md-6">
+				<div class="form-group row">
+					<div class="form-group col-md-6">
 						<label for="firstname" class="col-sm-5 control-label">ชื่อ<span
 							class="red-star">*</span>:
 						</label>
-						<div class="col-sm-7">
+						<div class="form-group col-sm-7">
 							<input type="text" name="firstName" maxlength="100" value=""
-								id="firstname" class="form-calculate">
+								id="firstname" class="form-control">
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="form-group col-md-6">
 						<label for="lastname" class="col-sm-5 control-label">นามสกุล<span
 							class="red-star">*</span>:
 						</label>
-						<div class="col-sm-7">
+						<div class="form-group col-sm-7">
 							<input type="text" name="lastName" maxlength="150" value=""
-								id="lastname" class="form-calculate">
+								id="lastname" class="form-control">
 						</div>
 					</div>
 				</div>
-				<div class="row ">
-					<div class="col-md-6">
+				
+				<div class="form-group row ">
+					<div class="form-group col-md-6">
 						<label for="age" class="col-sm-5 control-label">อายุ<span
 							class="red-star">*</span>:
 						</label>
-						<div class="col-sm-7">
-							<input type="number" name="age" maxlength="3" value=""
-								id="age" class="form-calculate">
+						<div class="form-group col-sm-7">
+							<input type="number" name="age" min="20" max="100" value=""
+								id="age" class="form-control">
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="form-group col-md-6">
 						<label for="province" class="col-sm-5 control-label">จังหวัดที่อยู่ปัจจุบัน<span
 							class="red-star">*</span>:
 						</label>
-						<div class="col-sm-7">
-							<select name="provinceId" id="province" class="selectlist">
+						<div class="form-group col-sm-7">
+							<select name="provinceId" id="province" class="form-control">
 								<option value="">กรุณาเลือก</option>
 								<option value="กระบี่">กระบี่</option>
 								<option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
@@ -210,146 +213,165 @@ body, h1, h2, h3, h4, h5, h6 {
 								<option value="อุตรดิตถ์">อุตรดิตถ์</option>
 								<option value="อุทัยธานี">อุทัยธานี</option>
 								<option value="อุบลราชธานี">อุบลราชธานี</option>
-
-
 							</select>
 						</div>
 					</div>
 				</div>
-				<div class="row ">
-					<div class="col-md-6">
+				
+				
+				<div class="form-group row ">
+					<div class="form-group col-md-6">
 						<label for="tel" class="col-sm-5 control-label">เบอร์โทรศัพท์ที่ติดต่อได้<span
 							class="red-star">*</span>:
 						</label>
-						<div class="col-sm-7">
-							<input type="number" name="telephoneNo" maxlength="50"
-								value="" id="tel" class="form-calculate">
+						<div class="form-group col-sm-7">
+							<input type="number" name="telephoneNo" min="800000000" max="999999999"
+								value="" id="tel" class="form-control">
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="form-group col-md-6">
 						<label for="tel" class="col-sm-5 control-label">เลขบัตรประชาชน<span
 							class="red-star">*</span>:
 						</label>
-						<div class="col-sm-7">
-							<input type="number" name="idcard" maxlength="13"
-								value="">
+						<div class="form-group col-sm-7">
+							<input type="number" name="idcard"  class="form-control"
+								value="" min="1000000000000" max="9999999999999">
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="form-group col-md-6">
 						<label for="email" class="col-sm-5 control-label">อีเมล์<span
 							class="red-star">*</span>:
 						</label>
-						<div class="col-sm-7">
+						<div class="form-group col-sm-7">
 							<input type="text" name="email" maxlength="90" value=""
-								id="email" class="form-calculate">
+								id="email" class="form-control">
 						</div>
 					</div>
 				</div>
-				<div class="row ">
-					<div class="col-md-6">
+				
+				
+					<div class="form-group row ">
+					<div class="form-group col-md-6">
 						<label for="brand" class="col-sm-5 control-label">ยี่ห้อ<span
 							class="red-star">*</span>:
 						</label>
-						<div class="col-sm-7">
+						<div class="form-group col-sm-7">
 							<input type="text"  maxlength="50"
-								value="<%=bean.getMycar()%>" id="brand" class="form-calculate"
+								value="<%=bean.getMycar()%>" id="brand" class="form-control"
 								disabled="disabled">
 								<input type="hidden" name="carMake" 
 								value="<%=bean.getMycar()%>" >
 								
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="form-group col-md-6">
 						<label for="model" class="col-sm-5 control-label">รุ่น<span
 							class="red-star">*</span>:
 						</label>
-						<div class="col-sm-7">
+						<div class="form-group col-sm-7">
 							<input type="text" name="" maxlength="250"
 								value="<%=bean.getMybrand()%>" id="model" disabled="disabled"
-								class="form-calculate">
+								class="form-control">
 								<input type="hidden" name="carModel" 
 								value="<%=bean.getMybrand()%>" >
 						</div>
 					</div>
 				</div>
-				<div class="row ">
-					<div class="col-md-6">
+				
+				
+				<div class="form-group row ">
+					<div class="form-group col-md-6">
 						<label for="year_registration" class="col-sm-5 control-label">ปีที่จดทะเบียน
 							(ค.ศ.)<span class="red-star">*</span>:
 						</label>
-						<div class="col-sm-7">
+						<div class="form-group col-sm-7">
 
 							<input type="text" name="" maxlength="13"
-								value="<%=bean.getMyYear()%>" id="income" class="form-calculate"
+								value="<%=bean.getMyYear()%>" id="income" class="form-control"
 								disabled="disabled">
 								<input type="hidden" name="totalIncome"
-								value="<%=bean.getMyYear()%>" id="income" class="form-calculate">
+								value="<%=bean.getMyYear()%>" id="income" class="">
 								
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="form-group col-md-6">
 						<label for="income" class="col-sm-5 control-label">รายได้สุทธิต่อเดือน<span
 							class="red-star">*</span>:
 						</label>
-						<div class="col-sm-7">
+						<div class="form-group col-sm-7">
 							<input type="text" name="salary" maxlength="13"
-								value="" id="income" class="form-calculate">
+								value="" id="income" class="form-control">
 						</div>
 					</div>
 				</div>
-				<div class="row ">
-					<div class="col-md-6">
+				
+				<div class="form-group row ">
+					<div class="form-group col-md-6">
 						<label for="loan_amount" class="col-sm-5 control-label">วงเงินขั้นต่ำที่ต้องการ<span
 							class="red-star">*</span>:
 						</label>
-						<div class="col-sm-7">
+						<div class="form-group col-sm-7">
 							<input type="text" name="lessLimit" maxlength="13"
 								value="<%=bean.getPring1()%>" id="loan_amount"
-								class="form-calculate"
+								class="form-control"
 								onblur="isCurrency(this); FormatNumber(this, 2);"
 								disabled="disabled">
 								<input type="hidden" name="lessLimit" 
 								value="<%=bean.getPring1()%>" 
-								class="form-calculate">
+								class="form-control">
 								
 								
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="form-group col-md-6">
 						<label for="period" class="col-sm-5 control-label">ระยะเวลาในการชำระคืน<span
 							class="red-star">*</span>:
 						</label>
-						<div class="col-sm-7">
+						<div class="form-group col-sm-7">
 
 							<input type="text"  maxlength="13"
 								value="<%=bean.getHos()%>" id="loan_amount"
-								class="form-calculate" disabled> 
+								class="form-control" disabled> 
 								<input type="hidden" name="lassday" 
 								value="<%=bean.getHos()%>" 
-								class="form-calculate">
+								class="form-control">
 						</div>
-					</div>
-				 	<div class="col-md-6">
-						<label for="period" class="col-sm-5 control-label">
+						</div>
+						</div>
+						
+						<div class="form-group row" >
+						<div class="form-group col-md-3" >
+						</div>
+						<div class="form-group col-md-6" >
+						<label for="period" class="form-group">
 							รูปรถของท่าน<span class="red-star">*</span>:
-						</label> <label for="period" class="col-sm-5 control-label">
+						</label> 
+						<br>
+						<label for="period" class="form-group">
 							รูปรถด้านหน้า<span class="red-star">*</span>:
-						</label> <input type="file" name="file1" class="form-calculate"> <label
-							for="period" class="col-sm-5 control-label">
+						</label> <input type="file" name="file1" class="form-control">
+						
+						 <label
+							for="period" class="form-group">
 							รูปรถด้าหลัง<span class="red-star">*</span>:
-						</label> <input type="file" name="file2" class="form-calculate"> <label
-							for="period" class="col-sm-5 control-label">
+						</label> <input type="file" name="file2" class="form-control">
+						
+						 <label
+							for="period" class="form-group">
 							รูปรถด้านซ้าย<span class="red-star">*</span>:
-						</label> <input type="file" name="file3" class="form-calculate"> <label
-							for="period" class="col-sm-5 control-label">
+						</label> <input type="file" name="file3" class="form-control"> 
+						
+						<label
+							for="period" class="form-group">
 							รูปรถด้านขวา<span class="red-star">*</span>:
-						</label> <input type="file" name="file4" class="form-calculate">
+						</label> <input type="file" name="file4" class="form-control">
 
 					</div> 
+					<div class="form-group col-md-3" >
+						</div>
 				</div>
-				<br>
 				<div id="divSubmit" class="row ">
-					<div class="col-md-6">
+					<div class="form-group col-md-6">
 						<label class="col-sm-5 control-label">&nbsp;</label>
 						<div class="col-sm-7">
 							<button type="submit" class="btn btn-success">ส่งข้อมูล</button>
@@ -357,8 +379,9 @@ body, h1, h2, h3, h4, h5, h6 {
 						</div>
 					</div>
 				</div>
-
-			</form>
+				
+				
+				</form>
 		</div>
 		<form name="backForm" action="/" method="post" th:hidden="true"></form>
 		<div class="w3-row-padding w3-padding-16" id="about">
@@ -390,6 +413,48 @@ body, h1, h2, h3, h4, h5, h6 {
 	    	
 	    } 
 	    document.getElementById("demo").innerHTML = txt;
+	}
+	function fncSubmit() {
+		if(document.loanForm.firstName.value ==""){
+			alert('Please input firstName');
+			document.loanForm.firstName.focus();
+			return false;
+		}
+		if(document.loanForm.lastName.value ==""){
+			alert('Please input lastName');
+			document.loanForm.lastName.focus();
+			return false;
+		}
+		if(document.loanForm.age.value ==""){
+			alert('Please input age');
+			document.loanForm.age.focus();
+			return false;
+		}
+		if(document.loanForm.provinceId.value ==""){
+			alert('Please input provinceId');
+			document.loanForm.provinceId.focus();
+			return false;
+		}
+		if(document.loanForm.telephoneNo.value ==""){
+			alert('Please input telephoneNo');
+			document.loanForm.telephoneNo.focus();
+			return false;
+		}
+		if(document.loanForm.idcard.value ==""){
+			alert('Please input idcard');
+			document.loanForm.idcard.focus();
+			return false;
+		}
+		if(document.loanForm.email.value ==""){
+			alert('Please input email');
+			document.loanForm.email.focus();isEmpty
+			return false;
+		}
+		if(document.loanForm.salary.value ==""){
+			alert('Please input salary');
+			document.loanForm.salary.focus();
+			return false;
+		}	
 	}
 	
 	</script>
