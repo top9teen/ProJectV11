@@ -4,66 +4,116 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <%
 	String result = "";
 %>
 <%
-	result = (String) request.getAttribute("msg");
+	result = (String) request.getAttribute("SE");
 %>
+<style type="text/css">
+body {
+	background-color: #9999FF;
+}
+h1{
+font-family: cursive;
+font-variant: small-caps;
+font-size-adjust: inherit;
+font-stretch: narrower;
+font-size: 60px;
+color: #7FFF00;
+}
+span {
+	font-family: monospace;
+	font-variant: small-caps;
+font-size-adjust: inherit;
+font-stretch: narrower;
+font-size: 30px;
+color: #FF7F50;
+}
+label {
+	color: #FF7F50;
+	font-stretch: extra-condensed;
+	font-size: 20px;
+	font-family: monospace;
+}
+</style>
 </head>
-<body style="margin-top: 5%">
-	<form name="welcome" action="register" method="post" onSubmit="return fncSubmit();">
-		<div class="container">
-			<div class="alert alert-success" align="right">
-				<strong>Welcome new user </strong>
-	
-			</div>
-			<%
-				if (result.equals("S")) {
-			%>
-			<div class="alert alert-success">
-				<strong>Success!</strong> Insert Success..
-			</div>
-			<%
-				} else if (result.equals("F")) {
-			%>
-			<div class="alert alert-danger">
-				<strong>Danger!</strong> Insert Fail !..
-			</div>
-			<%
-				}
-			%>
-			<div class="form-group">
-				<label for="exampleInputEmail1">Username</label> <input type="text"
-					class="form-control" name="username">
-			</div>
-			<div class="form-group">
-				<label for="exampleInputEmail1">Password</label> <input type="password"
-					class="form-control" name="password">
-			</div>
-			<div class="form-group">
-				<label for="exampleInputEmail1">Re-Password</label> <input type="password"
-					class="form-control" name="repassword">
-			</div>
-			<button type="submit" class="btn btn-success">สมัคร</button>
-			<a type="button" class="btn btn-danger"
-				href="javascript: document.backForm.submit()"> Back</a>
+<body style="margin-top: 5%; height: 20%;">
+	<br>
+	<br>
+	<br>
+	<div class="container">
+	<h1 align="center">Welcome<span>New</span>User</h1>
+		<div class="form-group row">
+			<div class="form-group col-md-2"></div>
+			<div class="form-group col-md-8">
+				<form name="welcome" action="register" method="post"
+					onSubmit="return fncSubmit();">
 
+					<%
+						if (result.equals("S")) {
+					%>
+					<div class="alert alert-success">
+						<strong>Success!</strong> Insert Success..
+					</div>
+					<%
+						} else if (result.equals("F")) {
+					%>
+					<div class="alert alert-danger">
+						<strong>Danger!</strong> Insert Fail !..
+					</div>
+					<%
+						} else if (result.equals("M")) {
+					%>
+					<div class="alert alert-danger">
+						<strong>Membership!</strong> USER Membership !..
+					</div>
+					<%}%>
+					<div class="form-group">
+						<label for="exampleInputEmail1">FristName :</label> <input
+							type="text" class="form-control" name="fristName">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">LastName :</label> <input
+							type="text" class="form-control" name="lastName">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Username :</label> <input
+							type="text" class="form-control" name="username">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Password :</label> <input
+							type="password" class="form-control" name="password">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Re-Password :</label> <input
+							type="password" class="form-control" name="repassword">
+					</div>
+					
+					<div class="panel-footer" align="right">
+						<button style="width: 4cm;" type="submit" class="btn btn-outline-success">สมัคร</button>
+						<button style="width: 4cm;" type="button" class="btn btn-outline-primary" 
+							onclick="javascript: document.backForm.submit()"> Back</button>
+					</div>
+
+				</form>
+			</div>
+			<div class="form-group col-md-2"></div>
 		</div>
-	</form>
-	<form name="backForm" action="/" method="post"
-		th:hidden="true"></form>
+	</div>
+	<form name="backForm" action="/" method="post" th:hidden="true"></form>
 	<form name="logoutForm" action="logout" method="post" th:hidden="true"></form>
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="assets/js/checknewuser.js"></script>
+	<script type="text/javascript" src="assets/js/checknewuser.js"></script>
 </body>
 </html>

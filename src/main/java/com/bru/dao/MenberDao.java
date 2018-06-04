@@ -16,6 +16,7 @@ import com.bru.model.RegnameBean;
 import com.bru.model.SimBean;
 import com.bru.model.SimpleTestBean;
 import com.bru.model.UpdatecarBean;
+import com.bru.model.UserAllBean;
 import com.bru.util.ConnectDB;
 import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
@@ -274,6 +275,30 @@ public class MenberDao {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+	}
+	public void rester(UserAllBean bean) {
+		ConnectDB con = new ConnectDB();
+		PreparedStatement prepared = null;
+		StringBuilder sql = new StringBuilder();
+		try {
+			sql.append("INSERT INTO userall(us_fname,us_lname,us_address,us_role,us_createdate,us_username,us_password,us_img) VALUES(?,?,?,?,?,?,?,?)");
+			prepared = con.openConnect().prepareStatement(sql.toString());
+			prepared.setString(1, bean.getUsFname());
+			prepared.setString(2, bean.getUsLname());
+			prepared.setString(3, bean.getUsAddress());
+			prepared.setString(4, bean.getUsRole());
+			prepared.setDate(5, new Date(bean.getUsCreatedate().getTime()));
+			prepared.setString(6, bean.getUsUsername());
+			prepared.setString(7, bean.getUsPassword());
+			prepared.setString(8, bean.getUsImg());
+			prepared.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+
+		
 	}
 	// end class
 }

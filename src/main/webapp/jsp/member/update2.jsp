@@ -1,11 +1,13 @@
 <%@page import="com.bru.model.RegnameBean"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@page import="com.bru.model.UserAllBean"%>
+ <%@page import="com.bru.model.UserAllBean"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
@@ -25,7 +27,7 @@ body, h1, h2, h3, h4, h5, h6 {
 	margin: 150px;
 }
 </style>
-<%
+ <%
 	UserAllBean bean = null;
 RegnameBean be = null;
 %>
@@ -37,9 +39,9 @@ RegnameBean be = null;
 %>
 <%
 	bean = (UserAllBean) request.getSession().getAttribute("Login");
-	be = (RegnameBean) request.getSession().getAttribute("resultBean");
+	be  = (RegnameBean) request.getSession().getAttribute("resultBean");
 %>
-
+ 
 <title>Welcome to Project</title>
 </head>
 <body class="w3-light-grey w3-content" style="max-width: 1600px">
@@ -301,7 +303,7 @@ RegnameBean be = null;
 				<div id="divSubmit" class="row " align="center">
 					<div class="col-md-6">
 						<label class="col-sm-5 control-label">&nbsp;</label>
-						
+						<a ></a>
 							<a type="button" class="btn btn-danger" onclick="black()">
 								Back</a>
 						</div>

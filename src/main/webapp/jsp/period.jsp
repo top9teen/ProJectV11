@@ -46,27 +46,14 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 		<a href="#" onclick="w3_close()"
 			class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey"
 			title="close menu"> <i class="fa fa-remove"></i>
-		</a> <img src="assets/img/noname.png" style="width: 45%;" class="w3-round"><br>
+		</a> <img src="assets/img/imgpro/noname.png" style="width: 45%;" class="w3-round"><br>
 		<br>
 		<h4>
 			<b> Car Loan Analysis System</b>
 		</h4>
 		<p class="w3-text-grey">Simple web and system</p>
 	</div>
-	<div class="w3-bar-block">
-		<a href="car" onclick="w3_close()"
-			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
-			class="	fa fa-automobile fa-fw w3-margin-right"></i>วิเคราะห์ระบบสินเชื่อรถยต์</a>
-		<a href="select" onclick="w3_close()"
-			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
-			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
-		</i>ข้อมูลสินเชื่อรถยนต์</a> <a href="gotoresiter" onclick="w3_close()"
-			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
-			class="	fa fa-automobile fa-fw w3-margin-right"></i>สมัครสมาชิก</a> <a
-			href="gotologin" onclick="w3_close()"
-			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
-			class="	fa fa-automobile fa-fw w3-margin-right"></i>เข้าสู่ระบบ</a>
-	</div>
+	<%@include file="User/hader.jsp"%>
 	</nav>
 
 	<!-- Overlay effect when opening sidebar on small screens -->
@@ -79,7 +66,7 @@ bean = (SimBean) request.getSession().getAttribute("simbean");
 
 		<!-- Header -->
 		<header id="portfolio"> <a href="#"><img
-			src="assets/img/noname.png" style="width: 65px;"
+			src="assets/img/imgpro/noname.png" style="width: 65px;"
 			class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
 		<span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey"
 			onclick="w3_open()"><i class="fa fa-bars"></i></span>

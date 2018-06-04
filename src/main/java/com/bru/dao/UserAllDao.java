@@ -44,4 +44,31 @@ public UserAllBean login(String username, String password) {
 		
 	} 
 
+public UserAllBean ck(String username,String fristName) {
+	
+	UserAllBean bean = new UserAllBean();
+	ConnectDB con = new ConnectDB();
+		PreparedStatement prepared = null;
+		StringBuilder sql = new StringBuilder();
+		
+		
+		try {
+			sql.append(" SELECT us_username FROM  userall WHERE us_username = ? AND us_fname = ? ");
+			prepared = con.openConnect().prepareStatement(sql.toString());
+			prepared.setString(1,username);
+			prepared.setString(2,fristName);
+
+			ResultSet rs = prepared.executeQuery();
+			while (rs.next()) {
+				bean.setUsUsername(rs.getString("us_username"));
+			}
+
+	}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bean ;
+		
+	} 
+// end class
 }

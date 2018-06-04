@@ -6,10 +6,10 @@ import java.math.RoundingMode;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bru.dao.CarDao;
@@ -33,6 +33,7 @@ public class FunctionController {
 	RegisterDao registerDao;
 	@Autowired
 	CarDao carDao;
+	
 
 	// adasd
 	@RequestMapping("/gotopreriod")
@@ -85,7 +86,7 @@ public class FunctionController {
 
 	@RequestMapping("/gotoresiter")
 	public String resiter(Model model) {
-		model.addAttribute("msg", "");
+		model.addAttribute("SE", "");
 
 		return "resiter";
 	}

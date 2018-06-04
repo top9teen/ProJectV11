@@ -1,5 +1,8 @@
 package com.bru.controller;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bru.dao.CarDao;
 import com.bru.dao.CustomerDao;
@@ -50,8 +55,8 @@ public class WelcomeController {
 
 	@RequestMapping("/")
 	public String welcome(Model model) {
-		model.addAttribute("msg", "0");
-		return "welcome";
+		model.addAttribute("messessError", "");
+		return "index";
 	}
 
 	@RequestMapping("/select")
@@ -228,18 +233,22 @@ public class WelcomeController {
 			if (bean.getUsUsername() != null) {
 
 				if (bean.getUsRole().equals("1")) {
+					uu = bean.getUsFname();
 					outhen = "welcomeAdmin";
 				} else if (bean.getUsRole().equals("2")) {
 					model.addAttribute("se", "");
 					uu = bean.getUsFname();
 					outhen = "welcomeMember";
-				} else {
-					model.addAttribute("messessError", "F");
-					outhen = "login";
-				}
+				} else if (bean.getUsRole().equals("5")) {
+					model.addAttribute("box", "");
+					model.addAttribute("msg", "");
+					uu = bean.getUsFname();
+					outhen = "welcome";
+				} 
+				
 			} else {
 				model.addAttribute("messessError", "F");
-				outhen = "login";
+				outhen = "index";
 			}
 
 		} catch (Exception e) {
@@ -251,15 +260,15 @@ public class WelcomeController {
 
 	@RequestMapping("/logoutadmin")
 	public String Loout(HttpServletRequest request, Model model) {
-		model.addAttribute("msg", "0");
-		return "welcome";
+		model.addAttribute("messessError", "0");
+		return "index";
 
 	}
 
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest request, Model model) {
-		model.addAttribute("msg", "0");
-		return "welcome";
+		model.addAttribute("messessError", "0");
+		return "index";
 
 	}
 
@@ -374,6 +383,55 @@ public class WelcomeController {
 	public String updatecar() {
 
 		return "member/updatecar";
+	}
+@RequestMapping(value ="/register", method = RequestMethod.POST)
+	public String rester(@ModelAttribute("SpringWeb") UserAllBean bean, String fristName, String lastName, String username, String password,
+			 Model model) {
+		String oo = "";
+		try {
+			bean = userAllDao.login(username, fristName);
+			if (bean.getUsUsername() != null) {
+				model.addAttribute("SE", "M");
+				oo = "resiter";
+			} else {
+				try {
+					
+					bean.setUsFname(fristName);
+					bean.setUsLname(lastName);
+					bean.setUsUsername(username);
+					bean.setUsPassword(password);
+					bean.setUsImg("assets/img/imgpro/noname.png");
+					bean.setUsAddress("NO ADDRESS");
+					bean.setUsRole("5");
+					bean.setUsCreatedate(new Date());
+					try {
+						menberDao.rester(bean);
+						model.addAttribute("SE", "S");
+						oo = "resiter";
+					
+							
+
+					} catch (Exception e) {
+						// TODO: handle exception
+						e.printStackTrace();
+						model.addAttribute("SE", "F");
+						oo = "resiter";
+					}
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+					model.addAttribute("SE", "F");
+					oo = "resiter";
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("SE", "F");
+			oo = "resiter";
+		}
+
+		return oo;
 	}
 
 	// end class
