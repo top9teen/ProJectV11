@@ -2,6 +2,7 @@ package com.bru.controller;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,6 +19,7 @@ import com.bru.dao.CustomerDao;
 import com.bru.dao.RegisterDao;
 import com.bru.dao.UserAllDao;
 import com.bru.model.ColeridcardBean;
+
 import com.bru.model.SimBean;
 import com.bru.model.SimpleTestBean;
 
@@ -65,24 +67,12 @@ public class FunctionController {
 		testbean.setPrig5(e1.setScale(0, RoundingMode.HALF_UP));
 		request.getSession().setAttribute("simbean", simbean);
 		request.getSession().setAttribute("test", testbean);
-		return "period";
+		model.addAttribute("msg", "6");
+		model.addAttribute("box", "");
+		return "welcome";
 	}
 
-	@RequestMapping("/gotoregister")
-	public String registercar(HttpServletRequest request, String yy, String Mycar, String MyYear, String Mybrand,
-			int pp, String name) {
 
-		SimBean bran = new SimBean();
-
-		bran.setHos(yy);
-		bran.setMycar(Mycar);
-		bran.setMybrand(Mybrand);
-		bran.setMyYear(MyYear);
-		bran.setPring1(pp);
-		bran.setName(name);
-		request.getSession().setAttribute("simbean", bran);
-		return "registercar";
-	}
 
 	@RequestMapping("/gotoresiter")
 	public String resiter(Model model) {
@@ -99,7 +89,7 @@ public class FunctionController {
 	}
 
 	@RequestMapping("/coler23")
-	public String DSAD(Model model, String coler, Long name) {
+	public String DSAD(Model model, String coler, Long name)throws SQLException {
 		ColeridcardBean bean = new ColeridcardBean();
 		SimBean bb = new SimBean();
 		bb.setCoco(name);

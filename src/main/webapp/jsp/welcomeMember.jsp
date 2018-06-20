@@ -33,8 +33,11 @@ body, h1, h2, h3, h4, h5, h6 {
 <%
 	String result = "";
 String result2 = "";
+String rs = "";
+
 %>
 <%
+rs =(String) request.getAttribute("head");
 	result = (String) request.getAttribute("se");
 result2 = (String) request.getAttribute("dd");
 %>
@@ -60,26 +63,10 @@ result2 = (String) request.getAttribute("dd");
 		</h4>
 		<p class="w3-text-grey">Simple web and system</p>
 	</div>
-	<div class="w3-bar-block">
-		<a href="gototabel" onclick="w3_close()"
-			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
-			class="	fa fa-automobile fa-fw w3-margin-right"></i>รอการตอบกลับ</a> <a
-			href="gotofist" onclick="w3_close()"
-			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
-			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
-		</i>ดูรายชื่อที่ทำสินเชื่อ</a> <a href="selidcard" onclick="w3_close()"
-			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
-			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
-		</i>ระบบเช็คเครดิต</a>
-		 <a href="msg" onclick="w3_close()"
-			class="w3-bar-item w3-button w3-padding w3-text-teal"><i
-			class="fa fa-address-book-o fa-fw w3-margin-right w3-text-teal">
-		</i>ข้อความถึงผู้ดูเเล</a> 
-		<a href="logout" onclick="w3_close()"
-			class="w3-bar-item w3-button w3-padding w3-text-teal"> <i
-			class="	fa fa-automobile fa-fw w3-margin-right"></i>ออกจากระบบ
-		</a>
-	</div>
+	<%if(rs.equals("2")){ %> <%@include file="member/headermember.jsp"%>
+	<%} else if (rs.equals("3")){ %> <%@include
+		file="member/head3.jsp"%> <%} else if (rs.equals("4")){ %>
+	<%@include file="member/head4.jsp"%> <%} %>
 	</nav>
 
 	<!-- Overlay effect when opening sidebar on small screens -->
@@ -117,15 +104,56 @@ result2 = (String) request.getAttribute("dd");
 					%>
 		<div class="alert alert-danger">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-			<strong>เตือน  </strong> ได้เพิ่มไว้ก่อนหน้านี้แล้ว
+			<strong>เตือน </strong> ได้เพิ่มไว้ก่อนหน้านี้แล้ว
 		</div>
 
 		<%	}	%>
+		
+		<%
+						if (result2.equals("update")) {
+					%>
+	<%@include file="member/update.jsp"%>
+
+		<%	}	%>
+			<%
+						if (result2.equals("update2")) {
+					%>
+	<%@include file="member/update2.jsp"%>
+
+		<%	}	%>
+		<%
+						if (result2.equals("update3")) {
+					%>
+	<%@include file="member/update3.jsp"%>
+
+		<%	}	%>
+		<%
+						if (result2.equals("update31")) {
+					%>
+	<%@include file="member/update4.jsp"%>
+
+		<%	}	%>
+			<%
+						if (result2.equals("update56")) {
+					%>
+	<%@include file="member/update5.jsp"%>
+
+		<%	}	%>
+		
 		<%
 			if (result.equals("1")) {
 		%>
 		<div class="blank">
 			<%@include file="member/boot.jsp"%>
+		</div>
+		<%
+			}
+		%>
+		<%
+			if (result.equals("7")) {
+		%>
+		<div class="blank">
+			<%@include file="member/boot3.jsp"%>
 		</div>
 		<%
 			}
@@ -140,6 +168,24 @@ result2 = (String) request.getAttribute("dd");
 			}
 		%>
 		<%
+			if (result.equals("31")) {
+		%>
+		<div class="blank">
+			<%@include file="member/boot4.jsp"%>
+		</div>
+		<%
+			}
+		%>
+		<%
+			if (result.equals("56")) {
+		%>
+		<div class="blank">
+			<%@include file="member/boot5.jsp"%>
+		</div>
+		<%
+			}
+		%>
+		<%
 			if (result.equals("3")) {
 		%>
 		<div class="blank">
@@ -149,81 +195,83 @@ result2 = (String) request.getAttribute("dd");
 			}
 		%>
 		<%if(result.equals("5")){ %>
-		<div class="container" >
-		
-		<form name="msg" action="gotomsg" method="post" OnSubmit="return fncSubmit();">
-			<div class="panel panel-primary" style="margin-top: 15%">
-				<div class="panel-heading" align="center"></div>
-				<h2 align="center">ส่งถึง Admin</h2>
-				<br>
-				<div class="panel-body"> 
-				<%
+		<div class="container">
+
+			<form name="msg" action="gotomsg" method="post"
+				OnSubmit="return fncSubmit();">
+				<div class="panel panel-primary" style="margin-top: 15%">
+					<div class="panel-heading" align="center"></div>
+					<h2 align="center">ส่งถึง Admin</h2>
+					<br>
+					<div class="panel-body">
+						<%
 						if (result2.equals("E")) {
 					%>
-					<div class="alert alert-danger">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						<strong>danner </strong> error 
-					</div>
-					
-					<%
+						<div class="alert alert-danger">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							<strong>danner </strong> error
+						</div>
+
+						<%
 						}else if(result2.equals("L")){
 					%>
 						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-							<div class="alert alert-success">
-						<strong>Success </strong>  Success
-					</div>
-					<%
+						<div class="alert alert-success">
+							<strong>Success </strong> Success
+						</div>
+						<%
 						}
 					%>
-					<div class="form-group">
-						<label for="exampleInputEmail1">ชื่อเรื่อง</label> <input type="text"
-							class="form-control" name="msghard">
+						<div class="form-group">
+							<label for="exampleInputEmail1">ชื่อเรื่อง</label> <input
+								type="text" class="form-control" name="msghard">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">ข้อความ</label>
+							<textarea rows="5" class="form-control" cols="" name="msgbody"></textarea>
+						</div>
+						<input type="hidden" value=" <%=bean.getUsFname()%>" name="name">
+						<br>
+						<div class="panel-footer" align="right">
+							<input type="submit" class="btn btn-success" value="ส่งข่อความ">&nbsp;
+
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">ข้อความ</label><textarea  rows="5" class="form-control" cols="" name="msgbody"></textarea>
-					</div>
-					<input type="hidden" value=" <%=bean.getUsFname()%>" name="name">
-				<br>
-				<div class="panel-footer" align="right">
-					<input type="submit" class="btn btn-success" value="ส่งข่อความ">&nbsp;
-					
 				</div>
-			</div>
-			</div>
-		</form>
-	</div>
-	
-		
+			</form>
 		</div>
-		
-		<%} %>
-			<%if(result.equals("6")){ %>
-		<div class="container" >
-				<div class="panel-body"> 
-				<%
+
+
+	</div>
+
+	<%} %>
+	<%if(result.equals("6")){ %>
+	<div class="container">
+		<div class="panel-body">
+			<%
 						if (result2.equals("E")) {
 					%>
-					<div class="alert alert-danger">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						<strong>danner </strong> error 
-					</div>
-					
-					<%
+			<div class="alert alert-danger">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>danner </strong> error
+			</div>
+
+			<%
 						}else if(result2.equals("L")){
 					%>
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-							<div class="alert alert-success">
-						<strong>Success </strong>  Success
-					</div>
-					<%
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<div class="alert alert-success">
+				<strong>Success </strong> Success
+			</div>
+			<%
 					}
 					%>
-					
-					<%@include file="member/insertcoler.jsp"%>
-	</div>
-		
-		
-		
+
+			<%@include file="member/insertcoler.jsp"%>
+		</div>
+
+
+
 		<%} %>
 
 		<div class="w3-row-padding w3-padding-16" id="about">

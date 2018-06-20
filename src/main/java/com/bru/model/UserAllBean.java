@@ -13,9 +13,17 @@ public class UserAllBean {
 	private String usUsername;
 	private String usPassword;
 	private String usImg;
+	private String usRights;
 	
 	
 	
+	
+	public String getUsRights() {
+		return usRights;
+	}
+	public void setUsRights(String usRights) {
+		this.usRights = usRights;
+	}
 	public String getUsImg() {
 		return usImg;
 	}

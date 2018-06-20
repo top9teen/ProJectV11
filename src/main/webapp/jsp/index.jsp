@@ -63,8 +63,8 @@ body {
 							}
 						%>
 						<div class="form-group">
-							<label for="exampleInputEmail1"></label> <input type="text"
-								class="form-control" placeholder="Usermane" name="username">
+							<label for="exampleInputEmail1"></label> <input type="email"
+								class="form-control" placeholder="Enter email" name="username">
 						</div>
 						<div class="form-group">
 							<label for="exampleInputPassword1"></label> <input

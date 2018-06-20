@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@page import="java.util.List"%>
-<%@page import="com.bru.model.UserAllBean"%>
+<%@page import="com.bru.model.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script
+	src="assets/jquery/jquery.min.js"></script>
+<link rel="stylesheet" href="assets/css/w3css.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet"
@@ -14,6 +16,9 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	
 <style>
 body, h1, h2, h3, h4, h5, h6 {
 	font-family: "Raleway", sans-serif;
@@ -38,6 +43,7 @@ body, h1, h2, h3, h4, h5, h6 {
 	result = (String) request.getAttribute("msg");
 	result2 = (String) request.getAttribute("box");
 %>
+
 <title>Welcome My <%=bean.getUsFname()%></title>
 </head>
 <body class="w3-light-grey w3-content" style="max-width: 1600px">
@@ -52,9 +58,10 @@ body, h1, h2, h3, h4, h5, h6 {
 		</a> <img src="<%=bean.getUsImg()%>" style="width: 45%;" class="w3-round"><br>
 		<br>
 		<h4>
-			<b> Car Loan Analysis System</b>
+			<b> Welcome My <%=bean.getUsFname()%></b>
 		</h4>
-		<p class="w3-text-grey">Simple web and system</p>
+	
+		<p class="w3-text-grey"><%=bean.getUsFname()%></p>
 	</div>
 		<%@include file="User/hader.jsp"%>
 	</nav>
@@ -74,16 +81,24 @@ body, h1, h2, h3, h4, h5, h6 {
 		<span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey"
 			onclick="w3_open()"><i class="fa fa-bars"></i></span>
 		<div class="w3-container">
-			<h1>
+			
+			<h1 align="center">
 				<b>Welcome My Car Loan Analysis System</b>
 			</h1>
 
 		</div>
 		</header>
-		<!-- First Photo Grid-->
+		
+		
+		<%
+		 if(result2.equals("car")) {
+		%>
+		<%@include file="User/car2.jsp" %>
+		<%} %>
 		<%
 			if (result.equals("0")) {
 		%>
+		
 		<%@include file="Bank/dag.jsp"%>
 		<%
 			} else if (result2.equals("select")) {
@@ -129,7 +144,25 @@ body, h1, h2, h3, h4, h5, h6 {
 		<%
 			}
 		%>
-
+		<%if(result.equals("5")){ %>
+		<%@include file="User/banksalary.jsp"%>
+		
+		<%} %>
+	<%if(result.equals("6")){ %>
+		<%@include file="User/pr2.jsp"%>
+		<%} %>
+		<%if(result.equals("7")){ %>
+		<%@include file="User/tabeltip.jsp"%>
+		<%} %>
+			<%if(result.equals("10")){ %>
+		<%@include file="User/tabeltip2.jsp"%>
+		<%} %>
+		<%if(result.equals("8")){ %>
+		<%@include file="User/seluser.jsp"%>
+		<%} %>
+		<%if(result.equals("9")){ %>
+		<%@include file="User/seluser2.jsp"%>
+		<%} %>
 		<div class="w3-row-padding w3-padding-16" id="about">
 			<div class="w3-col m6">
 				<img src="assets/img/car4.jpg" alt="Me" style="width: 100%">
@@ -150,5 +183,8 @@ body, h1, h2, h3, h4, h5, h6 {
 	</div>
 
 	<script type="text/javascript" src="assets/js/checknewuser.js"></script>
+	<script type="text/javascript" src="assets/js/selcarall.js"></script>
+	
+
 </body>
 </html>

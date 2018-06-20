@@ -1,36 +1,3 @@
-function fncSubmit()
-{
-
-	if(document.welcome.username.value == "" )
-	{
-		alert('Please input Username');
-		document.welcome.username.focus();
-		return false;
-	}	
-	
-	if(document.welcome.password.value == "" )
-	{
-		alert('Please input Password');
-		document.welcome.password.focus();		
-		return false;
-	}	
-
-	if(document.welcome.repassword.value == "")
-	{
-		alert('Please input Confirm Password');
-		document.welcome.repassword.focus();		
-		return false;
-	}	
-
-	if(document.welcome.password.value != document.welcome.repassword.value)
-	{
-		alert('Confirm Password Not Match');
-		document.welcome.repassword.focus();		
-		return false;
-	}	
-		document.welcome.submit();
-
-    }
 
 //Script to open and close sidebar
 function w3_open() {
@@ -51,6 +18,24 @@ function fncSubmit() {
 	if (document.gotohome.password.value == "") {
 		alert('Please input password');
 		document.gotohome.password.focus();
+		return false;
+	}
+}
+function fncSubmit2() {
+	if (document.gotohome.groupType.value == "") {
+		alert('Please input Year');
+		document.gotohome.groupType.focus();
+		return false;
+	}
+	if (document.gotohome.carMake.value == "") {
+		alert('Please input Brand');
+		document.gotohome.carMake.focus();
+		return false;
+		
+	}
+	if (document.gotohome.carMake2.value == "") {
+		alert('Please input CarModel');
+		document.gotohome.carMake2.focus();
 		return false;
 	}
 }

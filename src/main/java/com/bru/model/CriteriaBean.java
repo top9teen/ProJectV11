@@ -6,7 +6,15 @@ public class CriteriaBean {
 	private String brand;
 	private String carModel;
 	private Integer coler;
+	private int xxx;
 	
+	
+	public int getXxx() {
+		return xxx;
+	}
+	public void setXxx(int xxx) {
+		this.xxx = xxx;
+	}
 	public Integer getColer() {
 		return coler;
 	}

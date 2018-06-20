@@ -18,6 +18,7 @@
 			
 			$('#groupType').change(function () {
 				$('#brand').empty();
+				$('#carmodel').empty();
 				var criteriaBean = { "year" :  $('#groupType').val()};
 				
 				$.ajax({

@@ -87,8 +87,8 @@ label {
 							type="text" class="form-control" name="lastName">
 					</div>
 					<div class="form-group">
-						<label for="exampleInputEmail1">Username :</label> <input
-							type="text" class="form-control" name="username">
+						<label for="exampleInputEmail1">Email :</label> <input
+							type="email" class="form-control" name="username" id="exampleInputEmail1">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputEmail1">Password :</label> <input
@@ -115,5 +115,52 @@ label {
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/js/checknewuser.js"></script>
+	<script type="text/javascript">
+	function fncSubmit()
+	{
+
+		if(document.welcome.fristName.value == "" )
+		{
+			alert('Please input fristName');
+			document.welcome.fristName.focus();
+			return false;
+		}	
+		if(document.welcome.lastName.value == "" )
+		{
+			alert('Please input lastName');
+			document.welcome.lastName.focus();
+			return false;
+		}	
+		if(document.welcome.username.value == "" )
+		{
+			alert('Please input Email');
+			document.welcome.username.focus();
+			return false;
+		}	
+		
+		if(document.welcome.password.value == "" )
+		{
+			alert('Please input password');
+			document.welcome.password.focus();		
+			return false;
+		}	
+
+		if(document.welcome.repassword.value == "")
+		{
+			alert('Please input Confirm repassword');
+			document.welcome.repassword.focus();		
+			return false;
+		}	
+
+		if(document.welcome.password.value != document.welcome.repassword.value)
+		{
+			alert('Confirm Password Not Match');
+			document.welcome.repassword.focus();		
+			return false;
+		}	
+			document.welcome.submit();
+
+	    }
+</script>
 </body>
 </html>

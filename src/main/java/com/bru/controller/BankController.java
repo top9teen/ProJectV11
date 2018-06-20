@@ -43,4 +43,5 @@ public class BankController {
 		model.addAttribute("box", "select");
 		return "welcome";
 	}
+	
 }

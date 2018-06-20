@@ -53,8 +53,8 @@ body {
 					</div>
 					<%} %>
 					<div class="form-group">
-						<label for="exampleInputEmail1"></label> <input type="text"
-							class="form-control" placeholder="Usermane" name="username">
+						<label for="exampleInputEmail1"></label> <input type="email" id="exampleInputEmail1"
+							class="form-control" placeholder="Email" name="username">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1"></label> <input

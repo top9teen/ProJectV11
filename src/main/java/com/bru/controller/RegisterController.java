@@ -3,6 +3,7 @@ package com.bru.controller;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.SQLException;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.bru.dao.CkDao;
 import com.bru.dao.RegisterDao;
+import com.bru.model.AmphurBean;
+import com.bru.model.DistrictBean;
+import com.bru.model.ProvinceBean;
 import com.bru.model.RegisterallBean;
 
 
@@ -23,42 +28,60 @@ import com.bru.model.RegisterallBean;
 public class RegisterController {
 	@Autowired
 	RegisterDao registerDao;
+	@Autowired
+	CkDao ckDao;
 	//rename
 	@RequestMapping(value = "/finish")
 	public String register(@ModelAttribute("SpringWeb") RegisterallBean bean, String bankName, String firstName,
-			String lastName, int age, String provinceId, int telephoneNo, Long idcard, String email, String carMake,
+			String lastName, int age, String provinceId, String telephoneNo, String idcard, String email, String carMake,
 			String carModel, String totalIncome, String salary, String lessLimit, String lassday ,@RequestParam("file1") MultipartFile file1
 			,@RequestParam("file2") MultipartFile file2,@RequestParam("file3") MultipartFile file3,@RequestParam("file4") MultipartFile file4,
-						RedirectAttributes redirectAttributes,Model model) {
+						RedirectAttributes redirectAttributes,Model model,String amphurId,String districtId,String mobanId 
+						,AmphurBean amp ,ProvinceBean pro ,DistrictBean dis , String lat,String log  )throws SQLException {
 		
 		String oo ="";
+		int i1=Integer.parseInt(provinceId);
+		int i2=Integer.parseInt(amphurId);
+		int i3=Integer.parseInt(districtId);
+		amp=ckDao.amphur(i2);
+		pro=ckDao.province(i1);
+		dis=ckDao.dis(i3);
+	
+		try {
+			
+			bean.setRegBankname(bankName);
+			bean.setRegFirstname(firstName);
+			bean.setRegLastname(lastName);
+			bean.setRegAge(age);                         
+			bean.setRegProvince(pro.getProvinceName());
+			bean.setRegTelephone(telephoneNo);
+			bean.setRegIdCard(idcard);
+			bean.setRegEmail(email);
+			bean.setRegCarmodel(carModel);
+			bean.setRegCarmake(carMake);
+			bean.setRegTotalincome(totalIncome);
+			bean.setRegSalary(salary);
+			bean.setRegLesslimit(lessLimit);
+			bean.setRegLessday(lassday);
+			bean.setRegImgback("assets/img/imgreg/"+file2.getOriginalFilename());
+			bean.setRegImgfront("assets/img/imgreg/"+file1.getOriginalFilename());
+			bean.setRegImgLeft("assets/img/imgreg/"+file3.getOriginalFilename());
+			bean.setRegImgright("assets/img/imgreg/"+file4.getOriginalFilename());
+			bean.setRegDate(new Date());
+			bean.setRegAmphur(amp.getAmphurName());
+			bean.setRegDistrict(dis.getDistrictName());
+			bean.setRegRoleuser("1");
+			bean.setRegmoban(mobanId);
+			bean.setRegStatusmember("1");
+			bean.setRegLat(lat);
+			bean.setRegLog(log);
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
-if(file1.isEmpty() || file2.isEmpty() || file3.isEmpty() || file4.isEmpty()) {
 	
-	oo ="registercar";
-	
-}
-else
-{
-	bean.setRegBankname(bankName);
-	bean.setRegFirstname(firstName);
-	bean.setRegLastname(lastName);
-	bean.setRegAge(age);                         
-	bean.setRegProvince(provinceId);
-	bean.setRegTelephone(telephoneNo);
-	bean.setRegIdCard(idcard);
-	bean.setRegEmail(email);
-	bean.setRegCarmodel(carModel);
-	bean.setRegCarmake(carMake);
-	bean.setRegTotalincome(totalIncome);
-	bean.setRegSalary(salary);
-	bean.setRegLesslimit(lessLimit);
-	bean.setRegLessday(lassday);
-	bean.setRegImgback("assets/img/imgreg/"+file2.getOriginalFilename());
-	bean.setRegImgfront("assets/img/imgreg/"+file1.getOriginalFilename());
-	bean.setRegImgLeft("assets/img/imgreg/"+file3.getOriginalFilename());
-	bean.setRegImgright("assets/img/imgreg/"+file4.getOriginalFilename());
-	bean.setRegDate(new Date());
 	
 
 	try {
@@ -87,9 +110,10 @@ else
 		e.printStackTrace();
 	}
 	model.addAttribute("msg", "0");
+	model.addAttribute("box", "");
 	oo="welcome";
 	
-}
+
 		
 	
 		

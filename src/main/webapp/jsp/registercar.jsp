@@ -5,6 +5,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
@@ -23,17 +25,19 @@ body, h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 	margin: 150px;
 }
+
 span {
 	color: red;
 }
 </style>
+
 <%
 	SimBean bean = null;
 %>
 <%
 	bean = (SimBean) request.getSession().getAttribute("simbean");
 %>
-<title>Welcome to Project</title>
+<title>Welcome to <%=bean.getFname() %></title>
 </head>
 <body class="w3-light-grey w3-content" style="max-width: 1600px">
 
@@ -44,15 +48,14 @@ span {
 		<a href="#" onclick="w3_close()"
 			class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey"
 			title="close menu"> <i class="fa fa-remove"></i>
-		</a> <img src="assets/img/imgpro/noname.png" style="width: 45%;" class="w3-round"><br>
-		<br>
+		</a> <img src="assets/img/imgpro/noname.png" style="width: 45%;"
+			class="w3-round"><br> <br>
 		<h4>
-			<b> Car Loan Analysis System</b>
+			<b> Welcome My <%=bean.getFname()%></b>
 		</h4>
-		<p class="w3-text-grey">Simple web and system</p>
+		<p class="w3-text-grey"><%=bean.getFname()%></p>
 	</div>
-<%@include file="User/hader.jsp"%>
-	</nav>
+	<%@include file="User/hader.jsp"%> </nav>
 
 	<!-- Overlay effect when opening sidebar on small screens -->
 	<div class="w3-overlay w3-hide-large w3-animate-opacity"
@@ -69,382 +72,307 @@ span {
 		<span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey"
 			onclick="w3_open()"><i class="fa fa-bars"></i></span>
 		<div class="w3-container">
-			<h1>
+			<h1 align="center">
 				<b>Welcome My Car Loan Analysis System</b>
 			</h1>
 
 		</div>
 		</header>
-		<!-- First Photo Grid-->
-	
-		<div class="form-group" align="center">
-	<form id="loanForm" name="loanForm" action="finish" method="post"
-				class="form-horizontal loan-registration" role="form"
-				autocomplete="off" enctype="multipart/form-data" OnSubmit="return fncSubmit();">
-				<h1 a><%=bean.getName()%></h1>
-				<input type="hidden" name="bankName" value="<%=bean.getName()%>">
-				
-				<div class="form-group row">
-					<div class="form-group col-md-6">
-						<label for="firstname" class="col-sm-5 control-label">ชื่อ<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="text" name="firstName" maxlength="100" value=""
-								id="firstname" class="form-control">
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						<label for="lastname" class="col-sm-5 control-label">นามสกุล<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="text" name="lastName" maxlength="150" value=""
-								id="lastname" class="form-control">
-						</div>
-					</div>
-				</div>
-				
-				<div class="form-group row ">
-					<div class="form-group col-md-6">
-						<label for="age" class="col-sm-5 control-label">อายุ<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="number" name="age" min="20" max="100" value=""
-								id="age" class="form-control">
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						<label for="province" class="col-sm-5 control-label">จังหวัดที่อยู่ปัจจุบัน<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<select name="provinceId" id="province" class="form-control">
-								<option value="">กรุณาเลือก</option>
-								<option value="กระบี่">กระบี่</option>
-								<option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
-								<option value="กาญจนบุรี">กาญจนบุรี</option>
-								<option value="กาฬสินธุ์">กาฬสินธุ์</option>
-								<option value="กำแพงเพชร">กำแพงเพชร</option>
-								<option value="ขอนแก่น">ขอนแก่น</option>
-								<option value="จันทบุรี">จันทบุรี</option>
-								<option value="ฉะเชิงเทรา">ฉะเชิงเทรา</option>
-								<option value="ชลบุรี">ชลบุรี</option>
-								<option value="ชัยนาท">ชัยนาท</option>
-								<option value="ชัยภูมิ">ชัยภูมิ</option>
-								<option value="ชุมพร">ชุมพร</option>
-								<option value="เชียงราย">เชียงราย</option>
-								<option value="เชียงใหม่">เชียงใหม่</option>
-								<option value="ตรัง">ตรัง</option>
-								<option value="ตราด">ตราด</option>
-								<option value="ตาก">ตาก</option>
-								<option value="นครนายก">นครนายก</option>
-								<option value="นครปฐม">นครปฐม</option>
-								<option value="นครพนม">นครพนม</option>
-								<option value="นครราชสีมา">นครราชสีมา</option>
-								<option value="นครศรีธรรมราช">นครศรีธรรมราช</option>
-								<option value="นครสวรรค์">นครสวรรค์</option>
-								<option value="นนทบุรี">นนทบุรี</option>
-								<option value="นราธิวาส">นราธิวาส</option>
-								<option value="น่าน">น่าน</option>
-								<option value="บึงกาฬ">บึงกาฬ</option>
-								<option value="บุรีรัมย์">บุรีรัมย์</option>
-								<option value="เบตง">เบตง</option>
-								<option value="ปทุมธานี">ปทุมธานี</option>
-								<option value="ประจวบคีรีขันธ์">ประจวบคีรีขันธ์</option>
-								<option value="ปราจีนบุรี">ปราจีนบุรี</option>
-								<option value="ปัตตานี">ปัตตานี</option>
-								<option value="พระนครศรีอยุธยา">พระนครศรีอยุธยา</option>
-								<option value="พะเยา">พะเยา</option>
-								<option value="พังงา">พังงา</option>
-								<option value="พัทลุง">พัทลุง</option>
-								<option value="พิจิตร">พิจิตร</option>
-								<option value="พิษณุโลก">พิษณุโลก</option>
-								<option value="เพชรบุรี">เพชรบุรี</option>
-								<option value="เพชรบูรณ์">เพชรบูรณ์</option>
-								<option value="แพร่">แพร่</option>
-								<option value="ภูเก็ต">ภูเก็ต</option>
-								<option value="มหาสารคาม">มหาสารคาม</option>
-								<option value="มุกดาหาร">มุกดาหาร</option>
-								<option value="แม่ฮ่องสอน">แม่ฮ่องสอน</option>
-								<option value="ยโสธร">ยโสธร</option>
-								<option value="ยะลา">ยะลา</option>
-								<option value="ร้อยเอ็ด">ร้อยเอ็ด</option>
-								<option value="ระนอง">ระนอง</option>
-								<option value="ระยอง">ระยอง</option>
-								<option value="ราชบุรี">ราชบุรี</option>
-								<option value="ลพบุรี">ลพบุรี</option>
-								<option value="ลำปาง">ลำปาง</option>
-								<option value="ลำพูน">ลำพูน</option>
-								<option value="เลย">เลย</option>
-								<option value="ศรีสะเกษ">ศรีสะเกษ</option>
-								<option value="สกลนคร">สกลนคร</option>
-								<option value="สงขลา">สงขลา</option>
-								<option value="สตูล">สตูล</option>
-								<option value="สมุทรปราการ">สมุทรปราการ</option>
-								<option value="สมุทรสงคราม">สมุทรสงคราม</option>
-								<option value="สมุทรสาคร">สมุทรสาคร</option>
-								<option value="สระแก้ว">สระแก้ว</option>
-								<option value="สระบุรี">สระบุรี</option>
-								<option value="สิงห์บุรี">สิงห์บุรี</option>
-								<option value="สุโขทัย">สุโขทัย</option>
-								<option value="สุพรรณบุรี">สุพรรณบุรี</option>
-								<option value="สุราษฎร์ธานี">สุราษฎร์ธานี</option>
-								<option value="สุรินทร์">สุรินทร์</option>
-								<option value="หนองคาย">หนองคาย</option>
-								<option value="หนองบัวลำภู">หนองบัวลำภู</option>
-								<option value="อ่างทอง">อ่างทอง</option>
-								<option value="อำนาจเจริญ">อำนาจเจริญ</option>
-								<option value="อุดรธานี">อุดรธานี</option>
-								<option value="อุตรดิตถ์">อุตรดิตถ์</option>
-								<option value="อุทัยธานี">อุทัยธานี</option>
-								<option value="อุบลราชธานี">อุบลราชธานี</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				
-				
-				<div class="form-group row ">
-					<div class="form-group col-md-6">
-						<label for="tel" class="col-sm-5 control-label">เบอร์โทรศัพท์ที่ติดต่อได้<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="number" name="telephoneNo" min="800000000" max="999999999"
-								value="" id="tel" class="form-control">
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						<label for="tel" class="col-sm-5 control-label">เลขบัตรประชาชน<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="number" name="idcard"  class="form-control"
-								value="" min="1000000000000" max="9999999999999">
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						<label for="email" class="col-sm-5 control-label">อีเมล์<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="text" name="email" maxlength="90" value=""
-								id="email" class="form-control">
-						</div>
-					</div>
-				</div>
-				
-				
-					<div class="form-group row ">
-					<div class="form-group col-md-6">
-						<label for="brand" class="col-sm-5 control-label">ยี่ห้อ<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="text"  maxlength="50"
-								value="<%=bean.getMycar()%>" id="brand" class="form-control"
-								disabled="disabled">
-								<input type="hidden" name="carMake" 
-								value="<%=bean.getMycar()%>" >
-								
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						<label for="model" class="col-sm-5 control-label">รุ่น<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="text" name="" maxlength="250"
-								value="<%=bean.getMybrand()%>" id="model" disabled="disabled"
-								class="form-control">
-								<input type="hidden" name="carModel" 
-								value="<%=bean.getMybrand()%>" >
-						</div>
-					</div>
-				</div>
-				
-				
-				<div class="form-group row ">
-					<div class="form-group col-md-6">
-						<label for="year_registration" class="col-sm-5 control-label">ปีที่จดทะเบียน
-							(ค.ศ.)<span class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
+	</div>
+	<!-- First Photo Grid-->
+	<div class="form-group col-md-3"></div>
 
-							<input type="text" name="" maxlength="13"
-								value="<%=bean.getMyYear()%>" id="income" class="form-control"
-								disabled="disabled">
-								<input type="hidden" name="totalIncome"
-								value="<%=bean.getMyYear()%>" id="income" class="">
-								
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						<label for="income" class="col-sm-5 control-label">รายได้สุทธิต่อเดือน<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="text" name="salary" maxlength="13"
-								value="" id="income" class="form-control">
-						</div>
-					</div>
-				</div>
-				
-				<div class="form-group row ">
-					<div class="form-group col-md-6">
-						<label for="loan_amount" class="col-sm-5 control-label">วงเงินขั้นต่ำที่ต้องการ<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
-							<input type="text" name="lessLimit" maxlength="13"
-								value="<%=bean.getPring1()%>" id="loan_amount"
-								class="form-control"
-								onblur="isCurrency(this); FormatNumber(this, 2);"
-								disabled="disabled">
-								<input type="hidden" name="lessLimit" 
-								value="<%=bean.getPring1()%>" 
-								class="form-control">
-								
-								
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						<label for="period" class="col-sm-5 control-label">ระยะเวลาในการชำระคืน<span
-							class="red-star">*</span>:
-						</label>
-						<div class="form-group col-sm-7">
 
-							<input type="text"  maxlength="13"
-								value="<%=bean.getHos()%>" id="loan_amount"
-								class="form-control" disabled> 
-								<input type="hidden" name="lassday" 
-								value="<%=bean.getHos()%>" 
-								class="form-control">
-						</div>
-						</div>
-						</div>
-						
-						<div class="form-group row" >
-						<div class="form-group col-md-3" >
-						</div>
-						<div class="form-group col-md-6" >
-						<label for="period" class="form-group">
-							รูปรถของท่าน<span class="red-star">*</span>:
-						</label> 
-						<br>
-						<label for="period" class="form-group">
-							รูปรถด้านหน้า<span class="red-star">*</span>:
-						</label> <input type="file" name="file1" class="form-control">
-						
-						 <label
-							for="period" class="form-group">
-							รูปรถด้าหลัง<span class="red-star">*</span>:
-						</label> <input type="file" name="file2" class="form-control">
-						
-						 <label
-							for="period" class="form-group">
-							รูปรถด้านซ้าย<span class="red-star">*</span>:
-						</label> <input type="file" name="file3" class="form-control"> 
-						
-						<label
-							for="period" class="form-group">
-							รูปรถด้านขวา<span class="red-star">*</span>:
-						</label> <input type="file" name="file4" class="form-control">
 
-					</div> 
-					<div class="form-group col-md-3" >
-						</div>
-				</div>
-				<div id="divSubmit" class="row ">
-					<div class="form-group col-md-6">
-						<label class="col-sm-5 control-label">&nbsp;</label>
-						<div class="col-sm-7">
-							<button type="submit" class="btn btn-success">ส่งข้อมูล</button>
-							<a type="button" class="btn btn-danger" onclick="black()"> Back</a>
-						</div>
+	<div class="form-group col-md-9" align="center">
+		<form id="loanForm" name="loanForm" action="finish" method="post"
+			class="form-horizontal loan-registration" role="form"
+			autocomplete="off" enctype="multipart/form-data"
+			OnSubmit="return fncSubmit();">
+			<h1 align="center"><%=bean.getName()%></h1>
+			<br> <input type="hidden" name="bankName"
+				value="<%=bean.getName()%>"> <input name="lat" id="lat"
+				value="22" type="hidden" style="width: 785px;"> <input
+				name="log" id="log" value="11" type="hidden" style="width: 785px;">
+			<div class="form-group row">
+				<div class="form-group col-md-6">
+					<label for="firstname" class="col-sm-5 control-label">ชื่อ<span
+						class="red-star">*</span>:
+					</label>
+					<div class="form-group col-sm-7">
+						<input type="hidden" name="firstName" maxlength="100"
+							value="<%=bean.getFname() %>" id="firstname" class="form-control">
+						<input type="text" name="" maxlength="100"
+							value="<%=bean.getFname() %>" id="firstname" class="form-control"
+							disabled="disabled">
 					</div>
 				</div>
-				
-				
-				</form>
-		</div>
-		<form name="backForm" action="/" method="post" th:hidden="true"></form>
-		<div class="w3-row-padding w3-padding-16" id="about">
-			<div class="w3-col m6">
-				<img src="assets/img/car4.jpg" alt="Me" style="width: 100%">
+				<div class="form-group col-md-6">
+					<label for="lastname" class="col-sm-5 control-label">นามสกุล<span
+						class="red-star">*</span>:
+					</label>
+					<div class="form-group col-sm-7">
+						<input type="hidden" name="lastName" maxlength="150"
+							value="<%=bean.getLname() %>" id="lastname" class="form-control">
+						<input type="text" name="" maxlength="150"
+							value="<%=bean.getLname() %>" id="lastname" class="form-control"
+							disabled="disabled">
+					</div>
+				</div>
 			</div>
-			<div class="w3-col m6">
-				<img src="assets/img/car5.png" alt="Me" style="width: 100%">
+
+			<div class="form-group row ">
+				<div class="form-group col-md-6">
+					<label for="age" class="col-sm-5 control-label">อายุ<span
+						class="red-star">*</span>:
+					</label>
+					<div class="form-group col-sm-7">
+						<input type="number" name="age" min="20" max="100" value=""
+							id="age" class="form-control">
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="province" class="col-sm-5 control-label">จังหวัดที่อยู่ปัจจุบัน<span
+						class="red-star">*</span>:
+					</label>
+					<div class="form-group col-sm-7">
+						<select name="provinceId" id="province" class="form-control">
+						</select>
+					</div>
+					<label for="province" class="col-sm-5 control-label">อำเภอที่อยู่ปัจจุบัน<span
+						class="red-star">*</span>:
+					</label>
+					<div class="form-group col-sm-7">
+						<select name="amphurId" id="amphur" class="form-control">
+						</select>
+					</div>
+					<label for="province" class="col-sm-5 control-label">ตำบลที่อยู่ปัจจุบัน<span
+						class="red-star">*</span>:
+					</label>
+					<div class="form-group col-sm-7">
+						<select name="districtId" id="district" class="form-control">
+						</select>
+					</div>
+					<label for="province" class="col-sm-5 control-label">บ้านเลขที่และหมู่บ้านที่อยู่ปัจจุบัน<span
+						class="red-star">*</span>:
+					</label>
+					<div class="form-group col-sm-7">
+						<input name="mobanId" id="" class="form-control">
+
+					</div>
+				</div>
+
 			</div>
+
+
+			<div class="form-group row ">
+				<div class="form-group col-md-6">
+					<label for="tel" class="col-sm-5 control-label">เบอร์โทรศัพท์ที่ติดต่อได้<span
+						class="red-star">*</span>:
+					</label>
+					<div class="form-group col-sm-7">
+						<input type="text" name="telephoneNo" maxlength="10" value=""
+							id="tel" class="form-control">
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="tel" class="col-sm-5 control-label">เลขบัตรประชาชน<span
+						class="red-star">*</span>:
+					</label>
+					<div class="form-group col-sm-7">
+						<input type="text" name="idcard" class="form-control" value=""
+							maxlength="13">
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="email" class="col-sm-5 control-label">อีเมล์<span
+						class="red-star">*</span>:
+					</label>
+					<div class="form-group col-sm-7">
+						<input type="text" name="email" maxlength="90" value="" id="email"
+							class="form-control">
+					</div>
+				</div>
+			</div>
+
+
+			<div class="form-group row ">
+				<div class="form-group col-md-6">
+					<label for="brand" class="col-sm-5 control-label">ยี่ห้อ<span
+						class="red-star">*</span>:
+					</label>
+					<div class="form-group col-sm-7">
+						<input type="text" maxlength="50" value="<%=bean.getMycar()%>"
+							id="brand" class="form-control" disabled="disabled"> <input
+							type="hidden" name="carMake" value="<%=bean.getMycar()%>">
+
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="model" class="col-sm-5 control-label">รุ่น<span
+						class="red-star">*</span>:
+					</label>
+					<div class="form-group col-sm-7">
+						<input type="text" name="" maxlength="250"
+							value="<%=bean.getMybrand()%>" id="model" disabled="disabled"
+							class="form-control"> <input type="hidden"
+							name="carModel" value="<%=bean.getMybrand()%>">
+					</div>
+				</div>
+			</div>
+
+
+			<div class="form-group row ">
+				<div class="form-group col-md-6">
+					<label for="year_registration" class="col-sm-5 control-label">ปีที่จดทะเบียน
+						(ค.ศ.)<span class="red-star">*</span>:
+					</label>
+					<div class="form-group col-sm-7">
+
+						<input type="text" name="" maxlength="13"
+							value="<%=bean.getMyYear()%>" id="income" class="form-control"
+							disabled="disabled"> <input type="hidden"
+							name="totalIncome" value="<%=bean.getMyYear()%>" id="income"
+							class="">
+
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="income" class="col-sm-5 control-label">รายได้สุทธิต่อเดือน<span
+						class="red-star">*</span>:
+					</label>
+					<div class="form-group col-sm-7">
+						<input type="text" name="salary" maxlength="13" value=""
+							id="income" class="form-control">
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group row ">
+				<div class="form-group col-md-6">
+					<label for="loan_amount" class="col-sm-5 control-label">วงเงินขั้นต่ำที่ต้องการ<span
+						class="red-star">*</span>:
+					</label>
+					<div class="form-group col-sm-7">
+						<input type="text" name="lessLimit" maxlength="13"
+							value="<%=bean.getPring1()%>" id="loan_amount"
+							class="form-control"
+							onblur="isCurrency(this); FormatNumber(this, 2);"
+							disabled="disabled"> <input type="hidden"
+							name="lessLimit" value="<%=bean.getPring1()%>"
+							class="form-control">
+
+
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="period" class="col-sm-5 control-label">ระยะเวลาในการชำระคืน<span
+						class="red-star">*</span>:
+					</label>
+					<div class="form-group col-sm-7">
+
+						<input type="text" maxlength="13" value="<%=bean.getHos()%>"
+							id="loan_amount" class="form-control" disabled> <input
+							type="hidden" name="lassday" value="<%=bean.getHos()%>"
+							class="form-control">
+					</div>
+				</div>
+			</div>
+
+
+			<div class="form-group row">
+				<div class="form-group col-md-3"></div>
+				<div class="form-group col-md-6">
+					<label for="period" class="form-group"> รูปรถของท่าน<span
+						class="red-star">*</span>:
+					</label> <br> <label for="period" class="form-group">
+						รูปรถด้านหน้า<span class="red-star">*</span>:
+					</label> <input type="file" name="file1" class="form-control"> <label
+						for="period" class="form-group"> รูปรถด้าหลัง<span
+						class="red-star">*</span>:
+					</label> <input type="file" name="file2" class="form-control"> <label
+						for="period" class="form-group"> รูปรถด้านซ้าย<span
+						class="red-star">*</span>:
+					</label> <input type="file" name="file3" class="form-control"> <label
+						for="period" class="form-group"> รูปรถด้านขวา<span
+						class="red-star">*</span>:
+					</label> <input type="file" name="file4" class="form-control">
+
+				</div>
+				<div class="form-group col-md-3"></div>
+			</div>
+			<div id="divSubmit" class="row ">
+				<div class="form-group col-md-6">
+					<label class="col-sm-5 control-label">&nbsp;</label>
+					<div class="col-sm-7">
+						<button type="submit" class="btn btn-success">ส่งข้อมูล</button>
+						<a type="button" class="btn btn-danger" onclick="black()">
+							Back</a>
+					</div>
+				</div>
+			</div>
+
+
+		</form>
+
+	</div>
+	<form name="backForm" action="/" method="post" th:hidden="true"></form>
+	<div class="w3-row-padding w3-padding-16" id="about">
+		<div class="w3-col m6">
+			<img src="assets/img/car4.jpg" alt="Me" style="width: 100%">
 		</div>
-
-
-		<div class="w3-black w3-center w3-padding-24">
-			@ COPYRIGHT 2016 <a
-				href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS"
-				target="_blank" class="w3-hover-opacity"></a>
+		<div class="w3-col m6">
+			<img src="assets/img/car5.png" alt="Me" style="width: 100%">
 		</div>
+	</div>
 
-		<!-- End page content -->
+
+	<div class="w3-black w3-center w3-padding-24">
+		@ COPYRIGHT 2016 <a href="https://www.w3schools.com/w3css/default.asp"
+			title="W3.CSS" target="_blank" class="w3-hover-opacity"></a>
+	</div>
+
+	<!-- End page content -->
 
 
 	<script type="text/javascript" src="assets/js/checknewuser.js"></script>
-	<script type="text/javascript" src="assets/js/loan_registration.js"></script>
-	<script type="text/javascript">
-	function black() {
-	    var txt;
-	    if (confirm("คุณต้องการจะยกเลิกหรือไม่")) {
-	    	 window.location="/"; 
-	    	
-	    } 
-	    document.getElementById("demo").innerHTML = txt;
-	}
-	function fncSubmit() {
-		if(document.loanForm.firstName.value ==""){
-			alert('Please input firstName');
-			document.loanForm.firstName.focus();
-			return false;
-		}
-		if(document.loanForm.lastName.value ==""){
-			alert('Please input lastName');
-			document.loanForm.lastName.focus();
-			return false;
-		}
-		if(document.loanForm.age.value ==""){
-			alert('Please input age');
-			document.loanForm.age.focus();
-			return false;
-		}
-		if(document.loanForm.provinceId.value ==""){
-			alert('Please input provinceId');
-			document.loanForm.provinceId.focus();
-			return false;
-		}
-		if(document.loanForm.telephoneNo.value ==""){
-			alert('Please input telephoneNo');
-			document.loanForm.telephoneNo.focus();
-			return false;
-		}
-		if(document.loanForm.idcard.value ==""){
-			alert('Please input idcard');
-			document.loanForm.idcard.focus();
-			return false;
-		}
-		if(document.loanForm.email.value ==""){
-			alert('Please input email');
-			document.loanForm.email.focus();isEmpty
-			return false;
-		}
-		if(document.loanForm.salary.value ==""){
-			alert('Please input salary');
-			document.loanForm.salary.focus();
-			return false;
-		}	
-	}
-	
-	</script>
+	<script type="text/javascript" src="assets/js/province.js"></script>
+	<script type="text/javascript" src="assets/js/reg.js"></script>
 </body>
 
+<script>
+    $(document).ready(function() {
+
+    	 
+
+    	  if (!navigator.geolocation){
+    	   
+    	    return;
+    	  }
+
+    	  function success(position) {
+    	    var t1  = position.coords.latitude;
+    	    var t2 = position.coords.longitude;
+    	    
+    	   // $('#test1').val(t1);
+    	   
+    	    $('#lat').val(t1);
+    	    $('#log').val(t2);
+    	  }
+
+    	  function error() {
+    	  
+    	    
+    	   // $('#test1').val(t1);
+    	    
+    	    $('#bb').val('10');
+    	    $('#aa').val('10');
+    	  }
+
+
+
+    	  navigator.geolocation.getCurrentPosition(success, error);
+    	 
+    	});
+    </script>
 </html>

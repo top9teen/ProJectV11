@@ -1,7 +1,6 @@
 package com.bru.controller;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,8 +27,7 @@ import com.bru.model.RegisterallBean;
 import com.bru.model.RegnameBean;
 import com.bru.model.ScbeasyPriceBean;
 import com.bru.model.SimBean;
-import com.bru.model.SimpleTestBean;
-import com.bru.model.TestBean;
+
 import com.bru.model.ThanachartPriceBean;
 import com.bru.model.UpdatecarBean;
 import com.bru.model.UserAllBean;
@@ -78,7 +76,7 @@ public class AdminController {
 	}
 
 	@RequestMapping("/adminsel1")
-	public String gototabel(Model model, HttpServletRequest requst) {
+	public String gototabel(Model model, HttpServletRequest requst) throws SQLException {
 
 		List<RegisterallBean> list = new ArrayList<>();
 
@@ -106,7 +104,7 @@ public class AdminController {
 		return "admin/adminsel2";
 	}
 	@RequestMapping("/adminsel2")
-	public String gotofist(Model model,HttpServletRequest requst) {
+	public String gotofist(Model model,HttpServletRequest requst) throws SQLException{
 		 List<RegnameBean> list = new ArrayList<>();
 		 
 		 list = menberDao.listuser3();
@@ -135,7 +133,7 @@ public class AdminController {
 
 	//user
 	@RequestMapping("/adminsel3")
-	public String yyy(HttpServletRequest res,Model model){
+	public String yyy(HttpServletRequest res,Model model)throws SQLException{
 		List<UserAllBean> list = new ArrayList<>();
 		list = customerDao.userall();
 		res.getSession().setAttribute("listUser", list);
@@ -144,7 +142,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/adminmsg")
-	public String adminmsg(HttpServletRequest res) {
+	public String adminmsg(HttpServletRequest res)throws SQLException {
 		List<MsgadminBean> list = new ArrayList<>();
 		list=menberDao.listmsg();
 		res.getSession().setAttribute("listUser", list);

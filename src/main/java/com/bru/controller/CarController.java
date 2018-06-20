@@ -1,6 +1,7 @@
 package com.bru.controller;
 
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class CarController {
 	CarDao carDao;
 	
 	@RequestMapping(value="/year")
-	public List<YearBean> xxx() {
+	public List<YearBean> xxx() throws SQLException{
 		List<YearBean> list = new ArrayList<YearBean>();
 	
 		list =carDao.findAll();
@@ -38,7 +39,7 @@ public class CarController {
 	}
 	
 	@RequestMapping(value="/brand", method = RequestMethod.POST)
-	public List<CarBean> brand(@RequestBody CriteriaBean criteriaBean) {
+	public List<CarBean> brand(@RequestBody CriteriaBean criteriaBean) throws SQLException{
 		
 		List<CarBean> list = new ArrayList<>();
 		
@@ -57,7 +58,7 @@ public class CarController {
 	}
 	
 	@RequestMapping(value="/carmodel", method = RequestMethod.POST)
-	public List<BrandBean> carmodel(@RequestBody CriteriaBean criteriaBean) {
+	public List<BrandBean> carmodel(@RequestBody CriteriaBean criteriaBean) throws SQLException{
 		
 		List<BrandBean> list = new ArrayList<>();
 		

@@ -6,6 +6,9 @@ public class SimBean {
 	private String name;
 	private String hos;
 
+	private String lname;
+	private String fname;
+	
 	
 	private String mycar;
 	private String mybrand;
@@ -14,7 +17,24 @@ public class SimBean {
 	private String coname;
 	private Long coco;
 	
+	
 
+
+	public String getLname() {
+		return lname;
+	}
+
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+
+	public String getFname() {
+		return fname;
+	}
+
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
 
 	public String getConame() {
 		return coname;

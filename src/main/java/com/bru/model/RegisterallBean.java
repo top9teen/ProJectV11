@@ -10,8 +10,8 @@ public class RegisterallBean {
 	private String regLastname;
 	private int regAge;
 	private String regProvince;
-	private int regTelephone;
-	private Long regIdCard;
+	private String regTelephone;
+	private String regIdCard;
 	private  String regEmail;
 	private String regCarmodel;
 	private String regCarmake;
@@ -19,20 +19,79 @@ public class RegisterallBean {
 	private String regSalary;
 	private String regLesslimit;
 	private String regLessday;
-	public Long getRegIdCard() {
-		return regIdCard;
-	}
-	public void setRegIdCard(Long regIdCard) {
-		this.regIdCard = regIdCard;
-	}
 	private String regImgfront;
 	private String regImgback;
 	private String regImgLeft;
 	private String regImgright;
 	private Date regDate;
+	private String regAmphur;
+	private String regDistrict;
+	private String regmoban;
+	private String regRoleuser;
+	private String regStatusmember;
+	private String regLat;
+	private String regLog;
+	private String regLessdayformy;
+	private String regReadtext;
 	
 	
 
+
+	public String getRegReadtext() {
+		return regReadtext;
+	}
+	public void setRegReadtext(String regReadtext) {
+		this.regReadtext = regReadtext;
+	}
+	public String getRegLessdayformy() {
+		return regLessdayformy;
+	}
+	public void setRegLessdayformy(String regLessdayformy) {
+		this.regLessdayformy = regLessdayformy;
+	}
+	public String getRegStatusmember() {
+		return regStatusmember;
+	}
+	public void setRegStatusmember(String regStatusmember) {
+		this.regStatusmember = regStatusmember;
+	}
+	public String getRegLat() {
+		return regLat;
+	}
+	public void setRegLat(String regLat) {
+		this.regLat = regLat;
+	}
+	public String getRegLog() {
+		return regLog;
+	}
+	public void setRegLog(String regLog) {
+		this.regLog = regLog;
+	}
+	public String getRegRoleuser() {
+		return regRoleuser;
+	}
+	public void setRegRoleuser(String regRoleuser) {
+		this.regRoleuser = regRoleuser;
+	}
+	
+	public String getRegAmphur() {
+		return regAmphur;
+	}
+	public void setRegAmphur(String regAmphur) {
+		this.regAmphur = regAmphur;
+	}
+	public String getRegDistrict() {
+		return regDistrict;
+	}
+	public void setRegDistrict(String regDistrict) {
+		this.regDistrict = regDistrict;
+	}
+	public String getRegmoban() {
+		return regmoban;
+	}
+	public void setRegmoban(String regmoban) {
+		this.regmoban = regmoban;
+	}
 	public Date getRegDate() {
 		return regDate;
 	}
@@ -75,13 +134,20 @@ public class RegisterallBean {
 	public void setRegProvince(String regProvince) {
 		this.regProvince = regProvince;
 	}
-	public int getRegTelephone() {
+
+
+	public String getRegTelephone() {
 		return regTelephone;
 	}
-	public void setRegTelephone(int regTelephone) {
+	public void setRegTelephone(String regTelephone) {
 		this.regTelephone = regTelephone;
 	}
-
+	public String getRegIdCard() {
+		return regIdCard;
+	}
+	public void setRegIdCard(String regIdCard) {
+		this.regIdCard = regIdCard;
+	}
 	public String getRegEmail() {
 		return regEmail;
 	}
